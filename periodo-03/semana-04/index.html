@@ -1,1 +1,504 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simbología Eléctrica - Prof. William Fdo Bernal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos Personalizados y Glassmorphism */
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            background-attachment: fixed;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Utilidades para Flip Cards 3D */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .flip-card-inner { transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
+        .group:hover .flip-card-inner { transform: rotateY(180deg); }
+
+        /* Animación de brillo para el botón del simulador */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+        }
+        .animate-pulse-glow { animation: pulse-glow 2s infinite; }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    </style>
+</head>
+<body class="text-slate-200 font-sans min-h-screen flex flex-col pt-6 px-4 pb-0">
+
+    <div class="max-w-5xl mx-auto w-full flex justify-end gap-3 mb-8 z-50 relative">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-700">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 hover:bg-purple-500 hover:shadow-purple-500/50">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/50 flex items-center gap-2">
+           <i class="fas fa-link"></i> Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500/90 text-white px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.4)] backdrop-blur z-[100] font-bold border border-emerald-400">
+        Enlace copiado ✅
+    </div>
+
+    <header class="max-w-5xl mx-auto w-full mb-12 text-center">
+        <div class="glass-panel rounded-3xl p-10 relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+            <h3 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-2">Colegio Santa Mariana de Jesús</h3>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                El Lenguaje de la Electricidad
+            </h1>
+            <p class="text-xl text-slate-300 mb-6 font-light">Simbología y Lectura de Planos Eléctricos Básicos</p>
+            
+            <div class="inline-block bg-slate-800/50 border border-slate-600 rounded-2xl px-6 py-3 backdrop-blur-sm">
+                <p class="text-slate-200"><i class="fas fa-chalkboard-teacher text-purple-400 mr-2"></i> Prof. William Fdo Bernal | Grado 10</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto w-full flex-grow space-y-12">
+
+        <section>
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i class="fas fa-shapes text-blue-400"></i> Símbolos Básicos
+            </h2>
+            <p class="mb-6 text-slate-300 text-lg">Pasa el ratón (o toca) sobre cada tarjeta para revelar su símbolo en un plano eléctrico y su función.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transform-style-preserve-3d flip-card-inner rounded-2xl shadow-lg">
+                        <div class="absolute w-full h-full backface-hidden glass-panel rounded-2xl flex flex-col items-center justify-center border-t-4 border-t-blue-500">
+                            <i class="fas fa-battery-full text-5xl text-blue-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold">Batería</h3>
+                            <p class="text-sm text-slate-400 mt-2">Pasa el cursor</p>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden glass-panel bg-blue-900/40 rounded-2xl flex flex-col items-center justify-center rotate-y-180 p-4 text-center border border-blue-500">
+                            <div class="text-4xl font-black text-blue-300 mb-2">+| |-</div>
+                            <p class="text-sm font-semibold mb-2">Símbolo</p>
+                            <p class="text-xs text-slate-200">Es el "corazón" del circuito. Empuja la energía. Se dibuja con líneas paralelas (larga +, corta -).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transform-style-preserve-3d flip-card-inner rounded-2xl shadow-lg">
+                        <div class="absolute w-full h-full backface-hidden glass-panel rounded-2xl flex flex-col items-center justify-center border-t-4 border-t-yellow-500">
+                            <i class="far fa-lightbulb text-5xl text-yellow-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold">Bombillo</h3>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden glass-panel bg-yellow-900/40 rounded-2xl flex flex-col items-center justify-center rotate-y-180 p-4 text-center border border-yellow-500">
+                            <div class="w-12 h-12 rounded-full border-2 border-yellow-300 flex items-center justify-center mb-2">
+                                <i class="fas fa-times text-yellow-300"></i>
+                            </div>
+                            <p class="text-sm font-semibold mb-2">Símbolo</p>
+                            <p class="text-xs text-slate-200">El receptor. Transforma la energía eléctrica en luz. Un círculo con una 'X'.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transform-style-preserve-3d flip-card-inner rounded-2xl shadow-lg">
+                        <div class="absolute w-full h-full backface-hidden glass-panel rounded-2xl flex flex-col items-center justify-center border-t-4 border-t-emerald-500">
+                            <i class="fas fa-toggle-on text-5xl text-emerald-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold">Interruptor</h3>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden glass-panel bg-emerald-900/40 rounded-2xl flex flex-col items-center justify-center rotate-y-180 p-4 text-center border border-emerald-500">
+                            <div class="text-3xl text-emerald-300 font-bold mb-2">__/ __</div>
+                            <p class="text-sm font-semibold mb-2">Símbolo</p>
+                            <p class="text-xs text-slate-200">El "puente levadizo". Controla el paso de la corriente. Abierto = no hay luz, Cerrado = hay luz.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transform-style-preserve-3d flip-card-inner rounded-2xl shadow-lg">
+                        <div class="absolute w-full h-full backface-hidden glass-panel rounded-2xl flex flex-col items-center justify-center border-t-4 border-t-red-500">
+                            <i class="fas fa-wave-square text-5xl text-red-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold">Resistencia</h3>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden glass-panel bg-red-900/40 rounded-2xl flex flex-col items-center justify-center rotate-y-180 p-4 text-center border border-red-500">
+                            <div class="text-3xl text-red-300 font-bold mb-2">/\/\/\</div>
+                            <p class="text-sm font-semibold mb-2">Símbolo</p>
+                            <p class="text-xs text-slate-200">Frena el paso de la corriente para proteger otros componentes. Se dibuja como un zigzag.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel p-8 rounded-3xl">
+            <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+                <i class="fas fa-microchip text-purple-400"></i> Laboratorio: Lectura de Plano Simple
+            </h2>
+            <p class="mb-6 text-slate-300">Interactúa con el interruptor en el plano eléctrico para ver cómo fluye la corriente. Recuerda: el circuito debe estar completamente cerrado para funcionar.</p>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <div class="relative bg-slate-900 rounded-xl p-4 border border-slate-700 shadow-2xl">
+                    <canvas id="circuitCanvas" width="400" height="300" class="rounded-lg"></canvas>
+                    
+                    <button id="toggleSwitchBtn" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 animate-pulse-glow flex items-center gap-2">
+                        <i class="fas fa-power-off"></i> <span>Cerrar Interruptor</span>
+                    </button>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl w-full md:w-1/3">
+                    <h4 class="text-xl font-bold text-blue-300 mb-3">Estado del Circuito</h4>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div id="statusIndicator" class="w-4 h-4 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)] transition-colors duration-300"></div>
+                        <span id="statusText" class="font-bold text-red-400 text-lg">Circuito Abierto</span>
+                    </div>
+                    <ul class="text-sm space-y-2 text-slate-300">
+                        <li><i class="fas fa-arrow-right text-blue-400 mr-2"></i>La corriente sale del polo (+)</li>
+                        <li><i class="fas fa-arrow-right text-blue-400 mr-2"></i>Viaja por los cables (líneas)</li>
+                        <li><i class="fas fa-arrow-right text-blue-400 mr-2"></i>Pasa por el interruptor</li>
+                        <li><i class="fas fa-arrow-right text-blue-400 mr-2"></i>Llega al bombillo (carga)</li>
+                        <li><i class="fas fa-arrow-right text-blue-400 mr-2"></i>Retorna al polo (-)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel p-8 rounded-3xl relative overflow-hidden border-t-4 border-t-emerald-500">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <i class="fas fa-robot text-emerald-400"></i> Actividad: Inventario Inteligente (Excel + IA)
+            </h2>
+            <p class="text-lg text-slate-300 mb-8">Vamos a combinar tu cuaderno, la Inteligencia Artificial y una hoja de cálculo en 3 pasos sencillos.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-600 hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                    <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-emerald-500/30">1</div>
+                    <h3 class="text-xl font-bold text-emerald-300 mb-3"><i class="fas fa-book-open"></i> En tu cuaderno</h3>
+                    <p class="text-slate-300 text-sm mb-4">Dibuja una tabla vacía con los siguientes encabezados para prepararte:</p>
+                    <table class="w-full text-xs text-left text-slate-300 border-collapse border border-slate-600">
+                        <thead class="bg-slate-700">
+                            <tr>
+                                <th class="border border-slate-600 p-2">Componente</th>
+                                <th class="border border-slate-600 p-2">Función</th>
+                                <th class="border border-slate-600 p-2">Símbolo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="border border-slate-600 p-4"></td><td class="border border-slate-600 p-4"></td><td class="border border-slate-600 p-4"></td></tr>
+                            <tr><td class="border border-slate-600 p-4"></td><td class="border border-slate-600 p-4"></td><td class="border border-slate-600 p-4"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-600 hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-blue-500/30">2</div>
+                    <h3 class="text-xl font-bold text-blue-300 mb-3"><i class="fas fa-comment-dots"></i> Interacción IA</h3>
+                    <p class="text-slate-300 text-sm mb-4">Abre ChatGPT, Gemini o Claude y copia este texto exacto (Prompt):</p>
+                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-700 relative group cursor-text">
+                        <p class="text-xs text-emerald-400 font-mono italic">"Hola IA, soy un estudiante de 10° grado. Por favor, crea una tabla para Excel que contenga 5 componentes básicos de electrónica. Columnas: 'Componente', 'Función' y 'Nivel de importancia (1 al 10)'. Dame los datos en formato de tabla para copiar."</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-600 hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-purple-500/30">3</div>
+                    <h3 class="text-xl font-bold text-purple-300 mb-3"><i class="fas fa-file-excel"></i> Sala de Sistemas</h3>
+                    <ul class="text-sm space-y-3 text-slate-300">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-emerald-400 mt-1"></i> Abre un libro en blanco en Excel.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-emerald-400 mt-1"></i> Pega la tabla que te generó la IA.</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-emerald-400 mt-1"></i> <b>Reto:</b> Aplica un diseño de "Dar formato como tabla".</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-emerald-400 mt-1"></i> Completa tu tabla del cuaderno mirando la pantalla.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-orange-900/30 border border-orange-500/50 p-5 rounded-2xl flex items-center gap-4">
+                <i class="fas fa-home text-4xl text-orange-400"></i>
+                <div>
+                    <h4 class="text-lg font-bold text-orange-300">Tarea para la casa</h4>
+                    <p class="text-sm text-slate-300">Dibuja en tu cuaderno un plano eléctrico que tenga: <b>Una batería, dos bombillos y un interruptor</b> que apague ambos al mismo tiempo. Investiga y dibuja el símbolo de <b>Tierra (Ground)</b>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel p-8 rounded-3xl mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center text-white">
+                <i class="fas fa-gamepad text-pink-400"></i> Comprueba tu aprendizaje
+            </h2>
+            
+            <div id="quiz-container" class="max-w-2xl mx-auto bg-slate-800/50 p-6 rounded-2xl border border-slate-600">
+                <div class="quiz-question" id="q1">
+                    <h3 class="text-xl font-bold mb-4 text-blue-200">1. ¿Qué símbolo eléctrico se dibuja como un zigzag?</h3>
+                    <div class="space-y-3">
+                        <button class="w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none" onclick="checkAnswer('q1', false, this)">A) El bombillo</button>
+                        <button class="w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none" onclick="checkAnswer('q1', false, this)">B) La batería</button>
+                        <button class="w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none" onclick="checkAnswer('q1', true, this)">C) La resistencia</button>
+                    </div>
+                </div>
+
+                <div class="quiz-question hidden" id="q2">
+                    <h3 class="text-xl font-bold mb-4 text-blue-200">2. Si un interruptor está "abierto", ¿qué sucede en el circuito?</h3>
+                    <div class="space-y-3">
+                        <button class="w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none" onclick="checkAnswer('q2', true, this)">A) La corriente no pasa y el bombillo está apagado.</button>
+                        <button class="w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none" onclick="checkAnswer('q2', false, this)">B) La corriente pasa muy rápido.</button>
+                        <button class="w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none" onclick="checkAnswer('q2', false, this)">C) El bombillo se enciende inmediatamente.</button>
+                    </div>
+                </div>
+
+                <div class="quiz-result hidden text-center py-8" id="quiz-result">
+                    <div class="text-6xl mb-4">🏆</div>
+                    <h3 class="text-3xl font-bold text-emerald-400 mb-2">¡Excelente Trabajo!</h3>
+                    <p class="text-slate-300">Has demostrado que dominas el lenguaje de la electricidad.</p>
+                    <button onclick="resetQuiz()" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded-xl shadow hover:bg-blue-500 transition-colors">Volver a intentar</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full bg-slate-950 py-6 mt-12 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto text-center">
+            <p class="text-slate-400 font-medium">© 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática</p>
+        </div>
+    </footer>
+
+    <script>
+        // ----------------------------------------
+        // FUNCIÓN OBLIGATORIA: Copiar Enlace
+        // ----------------------------------------
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    // Animación de entrada
+                    t.animate([
+                        { transform: 'translateY(-20px)', opacity: 0 },
+                        { transform: 'translateY(0)', opacity: 1 }
+                    ], { duration: 300, fill: 'forwards' });
+
+                    setTimeout(() => {
+                        // Animación de salida
+                        const out = t.animate([
+                            { transform: 'translateY(0)', opacity: 1 },
+                            { transform: 'translateY(-20px)', opacity: 0 }
+                        ], { duration: 300, fill: 'forwards' });
+                        out.onfinish = () => t.classList.add('hidden');
+                    }, 2500);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente.");
+            });
+        }
+
+        // ----------------------------------------
+        // SIMULADOR CONCEPTUAL (HTML5 Canvas)
+        // ----------------------------------------
+        const canvas = document.getElementById('circuitCanvas');
+        const ctx = canvas.getContext('2d');
+        let isSwitchClosed = false;
+
+        function drawCircuit() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Estilos generales
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            // Dibujar Cables (Líneas grises si está apagado, amarillas/azules si fluye)
+            ctx.strokeStyle = isSwitchClosed ? '#3b82f6' : '#475569';
+            if(isSwitchClosed) {
+                ctx.shadowColor = '#3b82f6';
+                ctx.shadowBlur = 5;
+            } else {
+                ctx.shadowBlur = 0;
+            }
+
+            // Ruta del cable principal
+            ctx.beginPath();
+            ctx.moveTo(100, 200); // Desde Batería (-)
+            ctx.lineTo(100, 100); // Arriba
+            ctx.lineTo(300, 100); // Derecha hacia bombillo
+            ctx.lineTo(300, 200); // Abajo hacia interruptor
+            ctx.stroke();
+
+            // Cable inferior (separado por interruptor)
+            ctx.beginPath();
+            ctx.moveTo(300, 200);
+            ctx.lineTo(240, 200); // Hacia interruptor
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(160, 200); // Desde interruptor
+            ctx.lineTo(100, 200); // Hacia batería (+)
+            ctx.stroke();
+
+            ctx.shadowBlur = 0; // Reset shadow
+
+            // Dibujar Batería (Símbolo en el lado izquierdo)
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(80, 140, 40, 20); // Caja central visual
+            ctx.fillStyle = '#ef4444'; // Polo Positivo
+            ctx.fillRect(80, 140, 15, 20);
+            
+            // Texto batería
+            ctx.fillStyle = 'white';
+            ctx.font = '12px Arial';
+            ctx.fillText('+   -', 85, 135);
+
+            // Dibujar Bombillo (Superior derecha)
+            ctx.beginPath();
+            ctx.arc(300, 100, 25, 0, Math.PI * 2);
+            ctx.fillStyle = isSwitchClosed ? '#fef08a' : '#334155';
+            
+            if(isSwitchClosed) {
+                ctx.shadowColor = '#eab308';
+                ctx.shadowBlur = 30;
+            }
+            ctx.fill();
+            ctx.strokeStyle = isSwitchClosed ? '#eab308' : '#64748b';
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // X del bombillo
+            ctx.beginPath();
+            ctx.moveTo(285, 85);
+            ctx.lineTo(315, 115);
+            ctx.moveTo(315, 85);
+            ctx.lineTo(285, 115);
+            ctx.stroke();
+
+            // Dibujar Interruptor (Inferior centro)
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(160, 200, 5, 0, Math.PI * 2); // Nodo 1
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(240, 200, 5, 0, Math.PI * 2); // Nodo 2
+            ctx.stroke();
+
+            // Línea del interruptor (movible)
+            ctx.beginPath();
+            ctx.moveTo(160, 200);
+            if(isSwitchClosed) {
+                ctx.lineTo(240, 200); // Cerrado
+            } else {
+                ctx.lineTo(230, 170); // Abierto (levantado)
+            }
+            ctx.stroke();
+        }
+
+        // Inicializar Dibujo
+        drawCircuit();
+
+        // Lógica del botón del simulador
+        const toggleBtn = document.getElementById('toggleSwitchBtn');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+
+        toggleBtn.addEventListener('click', () => {
+            isSwitchClosed = !isSwitchClosed;
+            drawCircuit();
+            
+            if(isSwitchClosed) {
+                toggleBtn.innerHTML = '<i class="fas fa-power-off"></i> <span>Abrir Interruptor</span>';
+                toggleBtn.classList.replace('bg-blue-600', 'bg-red-600');
+                toggleBtn.classList.replace('hover:bg-blue-500', 'hover:bg-red-500');
+                
+                statusIndicator.classList.replace('bg-red-500', 'bg-emerald-500');
+                statusIndicator.classList.replace('shadow-[0_0_10px_rgba(239,68,68,0.8)]', 'shadow-[0_0_10px_rgba(16,185,129,0.8)]');
+                statusText.classList.replace('text-red-400', 'text-emerald-400');
+                statusText.innerText = 'Circuito Cerrado (Fluye corriente)';
+            } else {
+                toggleBtn.innerHTML = '<i class="fas fa-power-off"></i> <span>Cerrar Interruptor</span>';
+                toggleBtn.classList.replace('bg-red-600', 'bg-blue-600');
+                toggleBtn.classList.replace('hover:bg-red-500', 'hover:bg-blue-500');
+                
+                statusIndicator.classList.replace('bg-emerald-500', 'bg-red-500');
+                statusIndicator.classList.replace('shadow-[0_0_10px_rgba(16,185,129,0.8)]', 'shadow-[0_0_10px_rgba(239,68,68,0.8)]');
+                statusText.classList.replace('text-emerald-400', 'text-red-400');
+                statusText.innerText = 'Circuito Abierto';
+            }
+        });
+
+        // ----------------------------------------
+        // LÓGICA DEL MICRO-QUIZ
+        // ----------------------------------------
+        let score = 0;
+        function checkAnswer(questionId, isCorrect, btnElement) {
+            const buttons = document.querySelectorAll(`#${questionId} button`);
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-600');
+            });
+
+            if(isCorrect) {
+                btnElement.classList.replace('bg-slate-700', 'bg-emerald-600');
+                score++;
+                // Animación de éxito
+                btnElement.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.05)' },
+                    { transform: 'scale(1)' }
+                ], { duration: 300 });
+            } else {
+                btnElement.classList.replace('bg-slate-700', 'bg-red-600');
+                // Vibración de error
+                btnElement.animate([
+                    { transform: 'translateX(0)' },
+                    { transform: 'translateX(-5px)' },
+                    { transform: 'translateX(5px)' },
+                    { transform: 'translateX(0)' }
+                ], { duration: 300 });
+            }
+
+            setTimeout(() => {
+                document.getElementById(questionId).classList.add('hidden');
+                if(questionId === 'q1') {
+                    document.getElementById('q2').classList.remove('hidden');
+                } else {
+                    document.getElementById('quiz-result').classList.remove('hidden');
+                }
+            }, 1000);
+        }
+
+        function resetQuiz() {
+            score = 0;
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('q1').classList.remove('hidden');
+            
+            const buttons = document.querySelectorAll('.quiz-question button');
+            buttons.forEach(btn => {
+                btn.disabled = false;
+                btn.className = 'w-full text-left p-4 rounded-xl bg-slate-700 hover:bg-slate-600 transition-colors border border-slate-600 focus:outline-none';
+            });
+        }
+    </script>
+</body>
+</html>
