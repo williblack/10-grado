@@ -1,1 +1,252 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 6 - Instrumentos de Medición | Prof. William Fdo Bernal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .hero-gradient { background: radial-gradient(circle at top right, #4f46e5, #1e1b4b); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .pulse-green { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-200 antialiased min-h-screen">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 p-4 mt-2">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-600">
+            ⬅ Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+            ⬅ Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+                class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+            🔗 Copiar enlace
+        </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur z-50 font-bold border-2 border-white/20">
+        ¡Enlace copiado con éxito! ✅
+    </div>
+
+    <header class="max-w-6xl mx-auto mt-6 p-8 rounded-3xl hero-gradient shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+        <div class="relative z-10">
+            <span class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Tecnología 10° - 2026</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold mt-4 mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                Midiendo la Energía Invisible
+            </h1>
+            <p class="text-blue-100 text-lg opacity-90">Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal</p>
+            
+            <div class="mt-8 glass p-6 rounded-2xl max-w-2xl">
+                <h3 class="font-bold flex items-center gap-2">
+                    <span class="text-yellow-400 text-xl">🎯</span> Objetivo de Aprendizaje:
+                </h3>
+                <p class="text-sm md:text-base mt-2 opacity-90">
+                    Dominar el uso técnico del multímetro para medir voltaje, corriente y continuidad, comprendiendo las normas de seguridad fundamentales en sistemas electrónicos.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 md:p-8 space-y-12">
+
+        <section class="space-y-6">
+            <span class="bg-blue-600 text-xs font-bold rounded-full px-4 py-1 text-white uppercase tracking-wider">📝 Copiar al Cuaderno</span>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-8 rounded-3xl border-l-4 border-blue-500">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-300">Resumen de Herramientas</h3>
+                    <p class="text-sm leading-relaxed mb-4">
+                        Para diagnosticar circuitos, usamos el <strong>Multímetro</strong>, que integra:
+                    </p>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-400 rounded-full"></span> <strong>Voltímetro:</strong> Mide la diferencia de potencial (Paralelo).</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-400 rounded-full"></span> <strong>Amperímetro:</strong> Mide el flujo de electrones (Serie).</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-400 rounded-full"></span> <strong>Probador de Continuidad:</strong> Verifica si el camino está unido (Pita).</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/50 p-8 rounded-3xl border-dashed border-2 border-slate-600">
+                    <h4 class="font-bold text-yellow-400 mb-2 italic">⚠️ Conexión con Tema Anterior:</h4>
+                    <p class="text-sm opacity-80 italic">
+                        "En la semana 5 aprendimos que el Voltaje empuja y la Resistencia frena. Hoy aprenderemos a ver esos valores con números reales usando instrumentos digitales."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <span class="bg-purple-600 text-xs font-bold rounded-full px-4 py-1 text-white uppercase tracking-wider">💻 Interactuar en el PC</span>
+            <div class="glass p-8 rounded-3xl">
+                <h3 class="text-2xl font-bold mb-6 text-center">Laboratorio de Datos: Consumo del Hogar</h3>
+                <div class="max-w-3xl mx-auto h-[400px]">
+                    <canvas id="electrosChart"></canvas>
+                </div>
+                <div class="mt-8 flex justify-center gap-4">
+                    <button onclick="updateChart('casa')" class="bg-indigo-500 hover:bg-indigo-600 px-6 py-2 rounded-xl transition-all font-bold">Modo Casa</button>
+                    <button onclick="updateChart('oficina')" class="bg-slate-700 hover:bg-slate-600 px-6 py-2 rounded-xl transition-all font-bold">Modo Oficina</button>
+                </div>
+                <p class="text-center text-xs mt-4 text-slate-400 italic">Haz clic en los botones para simular diferentes cargas eléctricas y observar cómo varía el Amperaje.</p>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <span class="bg-emerald-600 text-xs font-bold rounded-full px-4 py-1 text-white uppercase tracking-wider">🖥️ Trabajo en la Sala</span>
+            <div class="bg-white text-slate-900 p-8 rounded-3xl shadow-2xl relative">
+                <div class="absolute top-4 right-8 text-6xl opacity-10">💻</div>
+                <h3 class="text-3xl font-black mb-6">Proyecto: IA + Arquitectura de Datos en Excel</h3>
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold italic">1</div>
+                        <p>Abre <strong>ChatGPT</strong> o <strong>Gemini</strong> y utiliza el prompt de la caja oscura para obtener datos precisos.</p>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-2xl text-emerald-400 font-mono text-sm relative group">
+                        <p id="promptIA">Actúa como un experto en tecnología. Crea una tabla con 5 aparatos eléctricos comunes del hogar. La tabla debe tener tres columnas: 'Aparato', 'Voltaje (V)' y 'Corriente aproximada (A)'. Formatea la salida usando tabulaciones para copiar directo a Excel.</p>
+                        <button onclick="copiarPrompt()" class="absolute top-2 right-2 bg-emerald-600 text-white p-1 rounded hover:scale-110 transition-all">📋 Copiar</button>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold italic">2</div>
+                        <p>En <strong>Microsoft Excel</strong>, pega los datos y aplica el formato "Todos los bordes", negrita en encabezados y color de relleno en el título.</p>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold italic">3</div>
+                        <p>Crea una fórmula sencilla multiplicando (V * A) para obtener la Potencia (W) en una cuarta columna.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <section class="space-y-4">
+                <span class="bg-orange-600 text-xs font-bold rounded-full px-4 py-1 text-white uppercase tracking-wider">🔍 Investigación</span>
+                <div class="glass p-8 rounded-3xl h-full">
+                    <h4 class="text-xl font-bold text-orange-400">¿Qué son las Categorías CAT?</h4>
+                    <p class="text-sm mt-4 opacity-90 leading-relaxed">
+                        Investiga en Google por qué los multímetros tienen etiquetas como <strong>CAT III</strong> o <strong>CAT IV</strong>. 
+                        ¿Qué pasa si uso un multímetro CAT II en una subestación eléctrica de alta tensión? Escribe la respuesta en tu cuaderno.
+                    </p>
+                </div>
+            </section>
+
+            <section class="space-y-4">
+                <span class="bg-red-600 text-xs font-bold rounded-full px-4 py-1 text-white uppercase tracking-wider">📄 Tarea en Hoja Suelta</span>
+                <div class="bg-white p-6 rounded-3xl text-slate-800 shadow-xl border-4 border-slate-200">
+                    <h4 class="font-bold border-b pb-2 mb-4">Ejemplo Visual de la Tarea</h4>
+                    <div class="border-2 border-dashed border-slate-300 p-4 rounded-xl text-center bg-slate-50">
+                        <p class="text-xs uppercase font-bold text-slate-400 mb-4">Hoja de Entrega</p>
+                        <div class="w-16 h-24 border-2 border-blue-500 mx-auto rounded-lg relative flex items-center justify-center mb-2">
+                             <div class="w-8 h-8 bg-blue-200 rounded-full border-2 border-blue-500 flex items-center justify-center text-[10px] font-bold">LCD</div>
+                        </div>
+                        <p class="text-[10px] font-bold">DIBUJO DEL MULTÍMETRO TÉCNICO</p>
+                        <p class="text-[9px] mt-2">Debe señalar: Pantalla, Perilla de Selección y las 3 clavijas de conexión (COM, V, A).</p>
+                    </div>
+                    <p class="text-[10px] mt-4 text-red-600 font-bold">Entregar: Próxima clase física.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="space-y-6">
+            <div class="glass p-8 rounded-3xl text-center">
+                <h3 class="text-3xl font-black mb-8">⚡ Test de Seguridad Rápido</h3>
+                <div id="quiz-container" class="max-w-xl mx-auto space-y-4 text-left">
+                    <div id="question" class="text-lg font-bold mb-4">¿Cómo se conecta el multímetro para medir VOLTAJE en una batería?</div>
+                    <div id="options" class="grid gap-3">
+                        <button onclick="checkAnswer(0)" class="option-btn bg-slate-700/50 p-4 rounded-xl hover:bg-blue-600 transition-all">A. En serie (cortando el cable)</button>
+                        <button onclick="checkAnswer(1)" class="option-btn bg-slate-700/50 p-4 rounded-xl hover:bg-blue-600 transition-all">B. En paralelo (abrazando los polos)</button>
+                        <button onclick="checkAnswer(2)" class="option-btn bg-slate-700/50 p-4 rounded-xl hover:bg-blue-600 transition-all">C. No se puede medir voltaje en baterías</button>
+                    </div>
+                    <div id="feedback" class="mt-6 font-bold hidden text-center p-4 rounded-xl"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-12 bg-slate-950 border-t border-slate-800 text-center">
+        <p class="text-slate-500 font-bold tracking-widest">© 2026 | PROF. WILLIAM FDO BERNAL</p>
+        <p class="text-slate-600 text-xs mt-2 uppercase">Área de Tecnología e Informática - Colegio Santa Mariana de Jesús</p>
+    </footer>
+
+    <script>
+        // LÓGICA DE CHART.JS
+        const ctx = document.getElementById('electrosChart').getContext('2d');
+        let myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Nevera', 'Bombillo LED', 'Microondas', 'PC Gamer', 'TV 50"'],
+                datasets: [{
+                    label: 'Amperaje (A) aproximado',
+                    data: [1.2, 0.05, 10.5, 2.5, 0.8],
+                    backgroundColor: 'rgba(99, 102, 241, 0.6)',
+                    borderColor: '#818cf8',
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8' } },
+                    x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#fff' } }
+                }
+            }
+        });
+
+        function updateChart(mode) {
+            if(mode === 'casa') {
+                myChart.data.datasets[0].data = [1.2, 0.05, 10.5, 2.5, 0.8];
+                myChart.data.datasets[0].label = 'Amperaje Casa (A)';
+                myChart.data.datasets[0].backgroundColor = 'rgba(99, 102, 241, 0.6)';
+            } else {
+                myChart.data.datasets[0].data = [15.0, 1.2, 0.5, 8.0, 4.0];
+                myChart.data.datasets[0].label = 'Amperaje Oficina (A)';
+                myChart.data.datasets[0].backgroundColor = 'rgba(16, 185, 129, 0.6)';
+            }
+            myChart.update();
+        }
+
+        // LÓGICA DE COPIADO
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                t.classList.remove('hidden');
+                setTimeout(()=> t.classList.add('hidden'), 2500);
+            });
+        }
+
+        function copiarPrompt() {
+            const text = document.getElementById('promptIA').innerText;
+            navigator.clipboard.writeText(text);
+            alert("¡Prompt copiado para pegar en la IA! ✅");
+        }
+
+        // LÓGICA DE QUIZ
+        function checkAnswer(idx) {
+            const feedback = document.getElementById('feedback');
+            feedback.classList.remove('hidden');
+            if(idx === 1) {
+                feedback.innerText = "¡CORRECTO! Siempre medimos voltaje en paralelo.";
+                feedback.className = "mt-6 font-bold text-center p-4 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500";
+            } else {
+                feedback.innerText = "Incorrecto. Recuerda que para medir voltaje no cortamos el circuito.";
+                feedback.className = "mt-6 font-bold text-center p-4 rounded-xl bg-red-500/20 text-red-400 border border-red-500";
+            }
+        }
+    </script>
+</body>
+</html>
