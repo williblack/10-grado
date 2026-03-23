@@ -1,1 +1,447 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Ohm - Tecnología 10°</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            light: '#1e293b',
+                            accent: '#6366f1'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.6);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+    </style>
+</head>
+<body class="p-4 md:p-8 font-sans antialiased">
+
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-end gap-3 mb-6">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur text-sm font-semibold">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 text-sm font-semibold">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 text-sm font-semibold">
+           🔗 Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden z-50 bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur border border-emerald-500/50">
+        Enlace copiado ✅
+    </div>
+
+    <main class="max-w-5xl mx-auto space-y-8">
+        
+        <header class="glass-panel p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+            <div class="relative z-10 text-center space-y-4">
+                <h3 class="text-indigo-400 font-bold uppercase tracking-widest text-sm">Colegio Santa Mariana de Jesús</h3>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">
+                    La Ley de Ohm
+                </h1>
+                <p class="text-slate-300 text-lg">Prof. William Fdo Bernal • Área de Tecnología e Informática</p>
+                
+                <div class="mt-6 inline-block bg-indigo-900/50 border border-indigo-500/30 rounded-2xl p-4 max-w-2xl mx-auto backdrop-blur-sm">
+                    <p class="text-indigo-100 font-medium">
+                        🎯 <strong class="text-white">Objetivo de Aprendizaje:</strong> Modelar y calcular la relación matemática entre voltaje, corriente y resistencia mediante simuladores interactivos, y organizar los datos técnicos utilizando herramientas de ofimática avanzadas (Excel).
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <section class="glass-panel p-6 hover-lift border-l-4 border-l-blue-500">
+            <span class="inline-block bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-500/30">
+                📝 COPIAR AL CUADERNO
+            </span>
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">Fundamentos de la Ley de Ohm</h2>
+            <div class="space-y-3 text-slate-300">
+                <p><strong>Conexión:</strong> En el tema anterior, <em>"Midiendo la Energía Invisible"</em>, descubrimos que la electricidad fluye gracias a diferentes magnitudes físicas. Hoy le daremos estructura matemática a ese flujo.</p>
+                <p>La <strong>Ley de Ohm</strong>, postulada por el físico alemán Georg Simon Ohm, establece la relación fundamental en los circuitos eléctricos de corriente continua:</p>
+                <blockquote class="bg-slate-800/50 p-4 rounded-lg border-l-2 border-indigo-400 italic text-white my-4">
+                    "La intensidad de corriente (I) que circula por un conductor es directamente proporcional al voltaje (V) aplicado en sus extremos, e inversamente proporcional a su resistencia (R)."
+                </blockquote>
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <div class="bg-slate-800/80 p-3 rounded-lg flex-1 min-w-[150px] text-center">
+                        <span class="block text-xl font-bold text-yellow-400">V = I × R</span>
+                        <span class="text-sm">Voltaje (Voltios - V)</span>
+                    </div>
+                    <div class="bg-slate-800/80 p-3 rounded-lg flex-1 min-w-[150px] text-center">
+                        <span class="block text-xl font-bold text-cyan-400">I = V / R</span>
+                        <span class="text-sm">Corriente (Amperios - A)</span>
+                    </div>
+                    <div class="bg-slate-800/80 p-3 rounded-lg flex-1 min-w-[150px] text-center">
+                        <span class="block text-xl font-bold text-red-400">R = V / I</span>
+                        <span class="text-sm">Resistencia (Ohmios - &Omega;)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel p-6 hover-lift border-l-4 border-l-indigo-500">
+            <span class="inline-block bg-indigo-500/20 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-indigo-500/30">
+                💻 INTERACTUAR EN EL PC
+            </span>
+            <h2 class="text-2xl font-bold mb-4">Simulador Dinámico: Ecuación en Tiempo Real</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6 bg-slate-800/40 p-6 rounded-xl border border-slate-700/50">
+                    <div>
+                        <label class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-yellow-400">Voltaje (V)</span>
+                            <span id="valV" class="text-white font-mono bg-slate-900 px-2 rounded">12 V</span>
+                        </label>
+                        <input type="range" id="sliderV" min="1" max="24" value="12" class="w-full accent-yellow-400">
+                        <p class="text-xs text-slate-400 mt-1">A mayor voltaje, mayor 'empuje' de electrones.</p>
+                    </div>
+                    
+                    <div>
+                        <label class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-red-400">Resistencia (R)</span>
+                            <span id="valR" class="text-white font-mono bg-slate-900 px-2 rounded">4 &Omega;</span>
+                        </label>
+                        <input type="range" id="sliderR" min="1" max="20" value="4" class="w-full accent-red-400">
+                        <p class="text-xs text-slate-400 mt-1">A mayor resistencia, mayor 'fricción' al paso de corriente.</p>
+                    </div>
+
+                    <div class="p-4 bg-cyan-900/30 rounded-lg border border-cyan-500/30 text-center">
+                        <span class="block text-sm text-cyan-200 font-semibold mb-1">Corriente Resultante (I = V / R)</span>
+                        <span id="valI" class="text-4xl font-black text-cyan-400 font-mono drop-shadow-lg">3.00 A</span>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
+                    <canvas id="ohmChart" height="250"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel p-6 hover-lift border-l-4 border-l-emerald-500">
+            <span class="inline-block bg-emerald-500/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-emerald-500/30">
+                🖥️ TRABAJO EN LA SALA
+            </span>
+            <h2 class="text-2xl font-bold mb-4">Reto Práctico: Análisis de Datos en Excel</h2>
+            <div class="text-slate-300 space-y-4">
+                <p>Como profesionales técnicos, no solo calculamos, también gestionamos y presentamos información. Sigue estos pasos:</p>
+                <ol class="list-decimal list-inside space-y-2 font-medium text-slate-200">
+                    <li>Interactúa con el simulador de arriba y encuentra 3 combinaciones diferentes.</li>
+                    <li>Abre Microsoft Excel en tu computadora.</li>
+                    <li>Selecciona y copia <strong>exactamente</strong> la tabla que aparece debajo.</li>
+                    <li>Pégala en Excel (A1). Aplica formato profesional: cambia la tipografía, pon colores de fondo en los títulos, ajusta el ancho de las columnas, y centra el texto.</li>
+                    <li>Inserta una imagen de un circuito eléctrico al lado de tu tabla en Excel.</li>
+                    <li>Guarda el archivo en tu carpeta de evidencias tecnológicas.</li>
+                </ol>
+
+                <div class="mt-6 overflow-x-auto bg-white text-black rounded-lg p-2 shadow-inner">
+                    <table class="w-full border-collapse border border-slate-300 text-sm">
+                        <thead>
+                            <tr class="bg-slate-200">
+                                <th class="border border-slate-400 px-4 py-2">ID Dispositivo</th>
+                                <th class="border border-slate-400 px-4 py-2">Voltaje (V)</th>
+                                <th class="border border-slate-400 px-4 py-2">Resistencia (&Omega;)</th>
+                                <th class="border border-slate-400 px-4 py-2">Corriente Calculada (A)</th>
+                                <th class="border border-slate-400 px-4 py-2">Estado del Equipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-slate-300 px-4 py-2">Motor Servo AX</td>
+                                <td class="border border-slate-300 px-4 py-2">12</td>
+                                <td class="border border-slate-300 px-4 py-2">4</td>
+                                <td class="border border-slate-300 px-4 py-2">3.00</td>
+                                <td class="border border-slate-300 px-4 py-2">Óptimo</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-300 px-4 py-2">Microcontrolador</td>
+                                <td class="border border-slate-300 px-4 py-2">5</td>
+                                <td class="border border-slate-300 px-4 py-2">10</td>
+                                <td class="border border-slate-300 px-4 py-2">0.50</td>
+                                <td class="border border-slate-300 px-4 py-2">Óptimo</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-300 px-4 py-2">Bomba de Agua</td>
+                                <td class="border border-slate-300 px-4 py-2">24</td>
+                                <td class="border border-slate-300 px-4 py-2">2</td>
+                                <td class="border border-slate-300 px-4 py-2">12.00</td>
+                                <td class="border border-slate-300 px-4 py-2">Requiere Disipador</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-300 px-4 py-2">Sensor Ultrasónico</td>
+                                <td class="border border-slate-300 px-4 py-2">5</td>
+                                <td class="border border-slate-300 px-4 py-2">50</td>
+                                <td class="border border-slate-300 px-4 py-2">0.10</td>
+                                <td class="border border-slate-300 px-4 py-2">Óptimo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section class="glass-panel p-6 hover-lift border-l-4 border-l-purple-500">
+                <span class="inline-block bg-purple-500/20 text-purple-300 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-purple-500/30">
+                    🔍 INVESTIGACIÓN
+                </span>
+                <h2 class="text-xl font-bold mb-3">Conexión con el Mundo Real</h2>
+                <p class="text-slate-300 text-sm italic">"Investiga cómo la inteligencia artificial optimiza el consumo eléctrico y la resistencia térmica en grandes centros de datos (Data Centers) corporativos basándose en los principios de la Ley de Ohm."</p>
+            </section>
+
+            <section class="glass-panel p-6 hover-lift border-l-4 border-l-pink-500 flex flex-col justify-center items-center text-center">
+                <span class="inline-block bg-pink-500/20 text-pink-300 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-pink-500/30">
+                    📄 TAREA EN HOJA SUELTA
+                </span>
+                <h2 class="text-xl font-bold mb-2">Semana de Práctica</h2>
+                <div class="bg-green-500/20 border border-green-500/50 text-green-300 px-4 py-2 rounded-lg font-semibold w-full">
+                    🎉 Esta semana no hay tarea de entrega física.
+                </div>
+                <p class="text-sm text-slate-400 mt-2">Enfócate en repasar los simuladores interactivos.</p>
+            </section>
+        </div>
+
+        <section class="glass-panel p-6 border-t-4 border-t-yellow-500">
+            <h2 class="text-2xl font-bold mb-6 text-center text-yellow-400">⚡ Micro-Quiz Interactivo</h2>
+            
+            <div id="quiz-container" class="max-w-2xl mx-auto space-y-6">
+                </div>
+            
+            <div id="quiz-result" class="hidden text-center mt-6 p-4 rounded-xl bg-slate-800/80 border border-slate-600">
+                <h3 class="text-2xl font-bold text-white mb-2">¡Completado!</h3>
+                <p id="score-text" class="text-lg text-slate-300"></p>
+                <button onclick="resetQuiz()" class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg font-bold transition-colors">Reintentar</button>
+            </div>
+        </section>
+
+        <footer class="mt-12 py-6 border-t border-slate-800 text-center">
+            <p class="text-slate-500 text-sm font-medium tracking-wide hover:text-slate-300 transition-colors">
+                © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- NAVEGACIÓN (Copiar Enlace) ---
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t) {
+                    t.classList.remove('hidden');
+                    setTimeout(() => t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente.");
+            });
+        }
+
+        // --- SIMULADOR & CHART.JS ---
+        const sliderV = document.getElementById('sliderV');
+        const sliderR = document.getElementById('sliderR');
+        const valV = document.getElementById('valV');
+        const valR = document.getElementById('valR');
+        const valI = document.getElementById('valI');
+        
+        const ctx = document.getElementById('ohmChart').getContext('2d');
+        const ohmChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Voltaje (V)', 'Resistencia (Ω)', 'Corriente (A)'],
+                datasets: [{
+                    label: 'Magnitudes Eléctricas',
+                    data: [12, 4, 3],
+                    backgroundColor: [
+                        'rgba(250, 204, 21, 0.7)', // Yellow
+                        'rgba(248, 113, 113, 0.7)', // Red
+                        'rgba(34, 211, 238, 0.7)'  // Cyan
+                    ],
+                    borderColor: [
+                        'rgba(250, 204, 21, 1)',
+                        'rgba(248, 113, 113, 1)',
+                        'rgba(34, 211, 238, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.raw + (context.dataIndex === 0 ? ' V' : context.dataIndex === 1 ? ' Ω' : ' A');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8', font: { weight: 'bold' } }
+                    }
+                },
+                animation: { duration: 400 }
+            }
+        });
+
+        function updateSimulation() {
+            const v = parseFloat(sliderV.value);
+            const r = parseFloat(sliderR.value);
+            const i = v / r;
+
+            valV.textContent = v + ' V';
+            valR.textContent = r + ' Ω';
+            valI.textContent = i.toFixed(2) + ' A';
+
+            ohmChart.data.datasets[0].data = [v, r, i];
+            ohmChart.update();
+        }
+
+        sliderV.addEventListener('input', updateSimulation);
+        sliderR.addEventListener('input', updateSimulation);
+
+        // --- MICRO-QUIZ LÓGICA ---
+        const questions = [
+            {
+                q: "Si aumentas la Resistencia en un circuito manteniendo el mismo Voltaje, ¿qué pasa con la Corriente?",
+                options: ["Aumenta proporcionalmente", "Disminuye", "Se mantiene igual"],
+                correct: 1
+            },
+            {
+                q: "Según la Ley de Ohm, ¿cuál es la fórmula correcta para hallar el Voltaje?",
+                options: ["V = I / R", "V = R / I", "V = I × R"],
+                correct: 2
+            },
+            {
+                q: "Tienes un equipo que requiere 2A y tiene una resistencia de 5Ω. ¿Qué voltaje necesita?",
+                options: ["10 V", "2.5 V", "7 V"],
+                correct: 0
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResult = document.getElementById('quiz-result');
+        const scoreText = document.getElementById('score-text');
+
+        function renderQuiz() {
+            if (currentQ >= questions.length) {
+                quizContainer.classList.add('hidden');
+                quizResult.classList.remove('hidden');
+                scoreText.innerHTML = `Acertaste <strong class="text-white">${score}</strong> de <strong class="text-white">${questions.length}</strong> preguntas.`;
+                return;
+            }
+
+            const qData = questions[currentQ];
+            let html = `
+                <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700 shadow-lg transform transition-all duration-300">
+                    <p class="text-sm text-indigo-400 font-bold mb-2">Pregunta ${currentQ + 1} de ${questions.length}</p>
+                    <p class="text-lg font-medium text-white mb-4">${qData.q}</p>
+                    <div class="space-y-3">
+            `;
+            
+            qData.options.forEach((opt, index) => {
+                html += `
+                    <button onclick="checkAnswer(${index}, ${qData.correct}, this)" 
+                            class="w-full text-left px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-600 hover:bg-indigo-600/30 hover:border-indigo-400 transition-colors focus:outline-none">
+                        ${opt}
+                    </button>
+                `;
+            });
+
+            html += `</div></div>`;
+            quizContainer.innerHTML = html;
+        }
+
+        function checkAnswer(selected, correct, btn) {
+            const buttons = btn.parentElement.querySelectorAll('button');
+            buttons.forEach(b => b.disabled = true); // Disable all
+
+            if (selected === correct) {
+                btn.classList.replace('bg-slate-900/50', 'bg-green-600/50');
+                btn.classList.replace('border-slate-600', 'border-green-500');
+                score++;
+            } else {
+                btn.classList.replace('bg-slate-900/50', 'bg-red-600/50');
+                btn.classList.replace('border-slate-600', 'border-red-500');
+                // Highlight correct
+                buttons[correct].classList.replace('bg-slate-900/50', 'bg-green-600/50');
+                buttons[correct].classList.replace('border-slate-600', 'border-green-500');
+            }
+
+            setTimeout(() => {
+                currentQ++;
+                renderQuiz();
+            }, 1500);
+        }
+
+        function resetQuiz() {
+            currentQ = 0;
+            score = 0;
+            quizResult.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            renderQuiz();
+        }
+
+        // Initialize
+        renderQuiz();
+
+    </script>
+</body>
+</html>
