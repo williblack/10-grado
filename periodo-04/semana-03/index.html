@@ -3,436 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicación Visual y Materiales del Futuro - Grado 10</title>
+    <title>Semana 3 | Tecnología e Informática - Bernal Interactivo</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            color: #f8fafc;
-            min-height: 100vh;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #0f172a; }
         
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: linear-gradient(145deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.7) 100%);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        /* Flip Card Styles */
-        .flip-card {
-            perspective: 1000px;
-            height: 250px;
-        }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-        }
-        .flip-card-front {
-            background: linear-gradient(145deg, #3b82f622, #8b5cf622);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .flip-card-back {
-            background: linear-gradient(145deg, #8b5cf6, #3b82f6);
-            transform: rotateY(180deg);
-        }
+        /* 3D Flip Cards for Analogies */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .group:hover .group-hover\:rotate-y-180 { transform: rotateY(180deg); }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
-<body class="p-4 md:p-8 overflow-x-hidden">
+<body class="text-slate-200 antialiased relative overflow-x-hidden">
 
-    <!-- BOTONES OBLIGATORIOS (RUTAS DINÁMICAS) -->
-    <div class="max-w-5xl mx-auto flex flex-wrap justify-end gap-3 mb-8 relative z-50">
+    <!-- Background Decoration -->
+    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-cyan-600/20 rounded-full blur-[150px] pointer-events-none"></div>
+
+    <!-- BOTONES DE NAVEGACIÓN OBLIGATORIOS -->
+    <div class="max-w-6xl mx-auto flex justify-end gap-3 mb-4 mt-6 px-6 relative z-50">
         <a href="../../../index.html"
-           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-600 flex items-center gap-2">
-           <i class="fas fa-home"></i> Inicio (Grado)
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow border border-slate-700 hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur">
+           ⬅ Inicio (Grado)
         </a>
 
         <a href="../../index.html"
-           class="bg-purple-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 hover:bg-purple-500 border border-purple-400 flex items-center gap-2">
-           <i class="fas fa-folder-open"></i> Menú del Periodo
+           class="bg-purple-600/90 text-white px-4 py-2 rounded-xl shadow border border-purple-500 hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur">
+           ⬅ Menú del Periodo
         </a>
 
         <button type="button" onclick="copiarEnlace()"
-           class="bg-emerald-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 hover:bg-emerald-500 border border-emerald-400 flex items-center gap-2">
-           <i class="fas fa-link"></i> Copiar enlace
+           class="bg-emerald-600/90 text-white px-4 py-2 rounded-xl shadow border border-emerald-500 hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <span>🔗</span> Copiar enlace
         </button>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-4 rounded-xl shadow-2xl backdrop-blur z-50 font-bold flex items-center gap-3 transform transition-all duration-300">
-        <i class="fas fa-check-circle text-2xl"></i> ¡Enlace copiado al portapapeles!
+    <!-- TOAST DE COPIA -->
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur z-50 transform transition-all font-semibold">
+        Enlace copiado al portapapeles ✅
     </div>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-5xl mx-auto space-y-12 pb-20">
+    <main class="max-w-6xl mx-auto px-6 pb-20 relative z-10">
 
-        <!-- HERO SECTION -->
-        <header class="glass-card rounded-3xl p-8 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+        <!-- SECTION 1: HERO -->
+        <header class="glass rounded-3xl p-10 mb-12 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-600/10 pointer-events-none"></div>
+            <h2 class="text-cyan-400 font-bold tracking-widest uppercase text-sm mb-2">Colegio Santa Mariana de Jesús</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400 mb-4 drop-shadow-lg">
+                Comunicación Visual y Materiales del Futuro
+            </h1>
+            <p class="text-xl text-slate-300 font-light mb-6">Semana 3 | Grado 10°</p>
             
-            <div class="relative z-10 text-center space-y-4">
-                <span class="inline-block px-4 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-sm font-bold tracking-widest uppercase mb-2">
-                    Periodo 4 | Semana 3 | Grado 10°
-                </span>
-                <h1 class="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 pb-2">
-                    Comunicación Visual y Materiales del Futuro
-                </h1>
-                <p class="text-xl text-slate-300 font-light">
-                    Colegio Santa Mariana de Jesús | <span class="font-semibold text-white">Prof. William Fdo Bernal</span>
+            <div class="inline-block glass-card border-l-4 border-l-cyan-400 px-6 py-4 rounded-r-xl shadow-lg mt-2 text-left max-w-2xl mx-auto">
+                <p class="text-slate-200 text-sm md:text-base leading-relaxed">
+                    <strong class="text-white">Objetivo de Aprendizaje:</strong> Comprender la estructura de una presentación digital efectiva y explorar cómo los nuevos materiales artificiales impactan la tecnología actual, modelando flujos de datos mediante IA y hojas de cálculo.
                 </p>
-                
-                <div class="mt-8 bg-black/30 border border-white/10 rounded-2xl p-6 max-w-3xl mx-auto backdrop-blur-md">
-                    <h3 class="text-emerald-400 font-bold mb-2 flex items-center justify-center gap-2">
-                        <i class="fas fa-bullseye"></i> Objetivo de Aprendizaje
-                    </h3>
-                    <p class="text-slate-200">
-                        Estructurar presentaciones digitales con alto impacto visual y comprender cómo los nuevos materiales artificiales están reescribiendo los límites de la tecnología y el diseño.
-                    </p>
-                </div>
             </div>
+            <div class="mt-8 text-sm font-semibold text-purple-300">👨‍🏫 Prof. William Fdo Bernal</div>
         </header>
 
-        <!-- SECCIÓN 1: COPIAR AL CUADERNO -->
-        <section class="glass-card rounded-3xl p-8 relative border-l-4 border-l-blue-500">
-            <div class="mb-6 flex items-center gap-3">
-                <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                    <i class="fas fa-pen-nib mr-1"></i> 📝 COPIAR AL CUADERNO
+        <!-- SECTION 2: COPIAR AL CUADERNO -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md shadow-blue-900/50">
+                    [📝 COPIAR AL CUADERNO]
                 </span>
-                <h2 class="text-2xl font-bold">Conceptos Clave de la Semana</h2>
-            </div>
-            
-            <div class="bg-blue-900/20 border border-blue-500/20 rounded-xl p-5 mb-6">
-                <p class="text-slate-300 text-sm">
-                    <i class="fas fa-link text-blue-400 mr-2"></i><strong>Conexión:</strong> En la <em>Semana 2 (Herramientas Digitales e Innovación)</em> exploramos cómo el software cambia nuestro flujo de trabajo. Hoy veremos cómo esa innovación se aplica a la <strong>comunicación de ideas</strong> y a la creación de <strong>materiales físicos</strong> revolucionarios en el hardware.
-                </p>
+                <h3 class="text-2xl font-bold text-white">Síntesis Conceptual</h3>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Presentaciones -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-purple-400 border-b border-purple-500/30 pb-2">1. Estructura de Presentaciones</h3>
-                    <p class="text-slate-300 text-sm">Una presentación no es un documento de lectura, es un soporte visual.</p>
-                    <ul class="space-y-3 text-slate-200">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-heading text-purple-400 mt-1"></i>
-                            <div><strong>Título:</strong> Corto, directo y que enganche al espectador.</div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-list-ul text-purple-400 mt-1"></i>
-                            <div><strong>Ideas Principales:</strong> Regla de 3 a 5 viñetas. Frases contundentes, cero párrafos.</div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-image text-purple-400 mt-1"></i>
-                            <div><strong>Imágenes:</strong> Alta calidad, metafóricas o descriptivas. "Menos texto, más visual".</div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-flag-checkered text-purple-400 mt-1"></i>
-                            <div><strong>Cierre:</strong> Conclusión memorable, llamado a la acción o pregunta detonadora.</div>
-                        </li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-1 transition-transform duration-300">
+                    <h4 class="text-xl font-semibold text-cyan-300 mb-3 border-b border-cyan-800 pb-2">1. Conexión: De la Herramienta al Mensaje</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        En la semana anterior ("Herramientas Digitales e Innovación"), vimos los medios técnicos. Ahora nos enfocamos en el <strong>mensaje</strong>. Una presentación digital no es un documento de lectura; es una interfaz de apoyo visual estructurada en 4 capas:
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-200">
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">🔹</span> <strong>Título:</strong> Ancla cognitiva corta.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">🔹</span> <strong>Ideas Principales:</strong> Datos sintetizados (3-5 puntos).</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">🔹</span> <strong>Imágenes:</strong> Elemento narrativo visual de alta fidelidad.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">🔹</span> <strong>Cierre:</strong> Llamado a la acción o resolución.</li>
                     </ul>
                 </div>
 
-                <!-- Materiales -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-emerald-400 border-b border-emerald-500/30 pb-2">2. Materiales Artificiales</h3>
-                    <p class="text-slate-300 text-sm">Sustancias creadas en laboratorio manipulando la estructura atómica para superar a la naturaleza.</p>
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-1 transition-transform duration-300">
+                    <h4 class="text-xl font-semibold text-purple-300 mb-3 border-b border-purple-800 pb-2">2. Hardware del Mañana: Materiales Artificiales</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        Para visualizar el futuro de la tecnología, debemos entender de qué estará construida. Los materiales artificiales son sintetizados mediante nanotecnología y química avanzada para superar las limitaciones de la naturaleza.
+                    </p>
+                    <div class="bg-slate-800/50 p-4 rounded-xl text-sm border border-slate-700">
+                        <p class="text-slate-300"><strong class="text-white">¿Por qué importan?</strong> Resuelven crisis de sostenibilidad (biodegradables), optimizan hardware (semiconductores ultra-finos) y revolucionan la ingeniería aeroespacial y médica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: INTERACTUAR EN EL PC -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-purple-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md shadow-purple-900/50">
+                    [💻 INTERACTUAR EN EL PC]
+                </span>
+                <h3 class="text-2xl font-bold text-white">Laboratorio de Materiales</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <!-- MOD-C: Zona de Analogías (Flip Cards) -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h4 class="text-lg font-semibold text-slate-300 mb-4 flex items-center gap-2">
+                        <span>🔍</span> Explorador Molecular
+                    </h4>
                     
-                    <div class="space-y-4 mt-4">
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5">
-                            <h4 class="font-bold text-white mb-1">Grafeno</h4>
-                            <p class="text-sm text-slate-300 mb-2">Una capa de carbono de un átomo de grosor. 200 veces más fuerte que el acero, flexible y conductor perfecto.</p>
-                            
-                        </div>
-                        <div class="bg-black/30 p-4 rounded-lg border border-white/5">
-                            <h4 class="font-bold text-white mb-1">Aerogel</h4>
-                            <p class="text-sm text-slate-300 mb-2">Conocido como "humo helado". Es 99.8% aire, el sólido más ligero del mundo y un aislante térmico extremo (usado por la NASA).</p>
-                            
+                    <!-- Card 1 -->
+                    <div class="relative h-32 perspective-1000 group cursor-pointer">
+                        <div class="absolute inset-0 w-full h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
+                            <!-- Front -->
+                            <div class="absolute inset-0 w-full h-full glass-card rounded-xl flex items-center justify-between px-6 backface-hidden border-cyan-500/30 border">
+                                <span class="text-xl font-bold text-white">Grafeno</span>
+                                <span class="text-3xl">⚛️</span>
+                            </div>
+                            <!-- Back -->
+                            <div class="absolute inset-0 w-full h-full bg-cyan-900/90 backdrop-blur rounded-xl flex flex-col justify-center px-6 backface-hidden rotate-y-180 border border-cyan-400">
+                                <p class="text-sm text-cyan-50 font-medium">Una sola capa de átomos de carbono. 200 veces más fuerte que el acero y ultra conductor.</p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Card 2 -->
+                    <div class="relative h-32 perspective-1000 group cursor-pointer">
+                        <div class="absolute inset-0 w-full h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
+                            <!-- Front -->
+                            <div class="absolute inset-0 w-full h-full glass-card rounded-xl flex items-center justify-between px-6 backface-hidden border-blue-500/30 border">
+                                <span class="text-xl font-bold text-white">Aerogel</span>
+                                <span class="text-3xl">☁️</span>
+                            </div>
+                            <!-- Back -->
+                            <div class="absolute inset-0 w-full h-full bg-blue-900/90 backdrop-blur rounded-xl flex flex-col justify-center px-6 backface-hidden rotate-y-180 border border-blue-400">
+                                <p class="text-sm text-blue-50 font-medium">99.8% aire. El sólido más ligero del mundo. Aislante térmico usado por la NASA.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="relative h-32 perspective-1000 group cursor-pointer">
+                        <div class="absolute inset-0 w-full h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
+                            <!-- Front -->
+                            <div class="absolute inset-0 w-full h-full glass-card rounded-xl flex items-center justify-between px-6 backface-hidden border-emerald-500/30 border">
+                                <span class="text-xl font-bold text-white">Polímeros Autorreparables</span>
+                                <span class="text-3xl">🧬</span>
+                            </div>
+                            <!-- Back -->
+                            <div class="absolute inset-0 w-full h-full bg-emerald-900/90 backdrop-blur rounded-xl flex flex-col justify-center px-6 backface-hidden rotate-y-180 border border-emerald-400">
+                                <p class="text-sm text-emerald-50 font-medium">Materiales que imitan la curación biológica, cerrando grietas al contacto con luz o calor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MOD-B: Data Lab (Chart.js) -->
+                <div class="lg:col-span-3 glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-lg font-semibold text-slate-200">Rendimiento Físico (Simulación de Datos)</h4>
+                        <button onclick="toggleChartData()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-1.5 rounded-lg transition-colors shadow">
+                            Alternar Vista
+                        </button>
+                    </div>
+                    <div class="relative flex-grow min-h-[300px] w-full">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center mt-4">Análisis comparativo de propiedades en escala 0-100.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 2: INTERACTUAR EN EL PC -->
-        <section class="glass-card rounded-3xl p-8 border-l-4 border-l-purple-500">
-            <div class="mb-8 flex items-center gap-3">
-                <span class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                    <i class="fas fa-mouse-pointer mr-1"></i> 💻 INTERACTUAR EN EL PC
+        <!-- SECTION 4: TRABAJO EN LA SALA -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md shadow-emerald-900/50">
+                    [🖥️ TRABAJO EN LA SALA]
                 </span>
-                <h2 class="text-2xl font-bold">Laboratorio de Datos & UI</h2>
+                <h3 class="text-2xl font-bold text-white">Reto: De la Idea a la Pantalla</h3>
             </div>
 
-            <!-- Mod C: Analogías (Flip Cards para Presentaciones) -->
-            <h3 class="text-xl font-semibold mb-4 text-center text-slate-200">Tips de Presentación Visual</h3>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-                <div class="flip-card cursor-pointer">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front shadow-lg">
-                            <i class="fas fa-font text-4xl text-blue-400 mb-3"></i>
-                            <h3 class="font-bold text-lg">Texto</h3>
-                            <p class="text-xs text-slate-300 mt-2">Pasa el ratón</p>
-                        </div>
-                        <div class="flip-card-back shadow-lg">
-                            <h3 class="font-bold text-lg mb-2">Regla 6x6</h3>
-                            <p class="text-sm">Máximo 6 líneas de texto por diapositiva. Máximo 6 palabras por línea.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card cursor-pointer">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front shadow-lg">
-                            <i class="fas fa-palette text-4xl text-purple-400 mb-3"></i>
-                            <h3 class="font-bold text-lg">Contraste</h3>
-                            <p class="text-xs text-slate-300 mt-2">Pasa el ratón</p>
-                        </div>
-                        <div class="flip-card-back shadow-lg">
-                            <h3 class="font-bold text-lg mb-2">Legibilidad</h3>
-                            <p class="text-sm">Fondo oscuro = Letra clara. Nunca uses colores vibrantes que cansen la vista al leer.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card cursor-pointer">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front shadow-lg">
-                            <i class="fas fa-image text-4xl text-emerald-400 mb-3"></i>
-                            <h3 class="font-bold text-lg">Imágenes</h3>
-                            <p class="text-xs text-slate-300 mt-2">Pasa el ratón</p>
-                        </div>
-                        <div class="flip-card-back shadow-lg">
-                            <h3 class="font-bold text-lg mb-2">Alta Resolución</h3>
-                            <p class="text-sm">No uses imágenes pixeladas o con marcas de agua. Usa bancos como Unsplash o Pexels.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card cursor-pointer">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front shadow-lg">
-                            <i class="fas fa-microphone text-4xl text-pink-400 mb-3"></i>
-                            <h3 class="font-bold text-lg">El Orador</h3>
-                            <p class="text-xs text-slate-300 mt-2">Pasa el ratón</p>
-                        </div>
-                        <div class="flip-card-back shadow-lg">
-                            <h3 class="font-bold text-lg mb-2">Tú eres el centro</h3>
-                            <p class="text-sm">La diapositiva te apoya, no te reemplaza. Nunca leas la pantalla de espaldas al público.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="glass-card rounded-2xl p-8 relative overflow-hidden border-t-4 border-t-emerald-500">
+                <div class="absolute top-0 right-0 bg-emerald-500 text-white font-bold px-4 py-1 rounded-bl-xl text-sm">40 MINUTOS</div>
+                
+                <h4 class="text-xl font-bold text-white mb-2">Diseño y Validación Estructurada en Excel</h4>
+                <p class="text-slate-300 text-sm mb-8">Usa la hoja de cálculo como motor lógico para pre-validar tu presentación antes del diseño gráfico.</p>
 
-            <!-- Mod B: Data Lab (Chart.js) -->
-            <hr class="border-white/10 my-8">
-            <h3 class="text-xl font-semibold mb-4 text-center text-slate-200">Data Lab: Comparativa de Materiales (Naturales vs Artificiales)</h3>
-            
-            <div class="flex flex-col md:flex-row gap-8 items-center bg-black/20 p-6 rounded-2xl border border-white/5">
-                <div class="w-full md:w-2/3 h-80 relative">
-                    <canvas id="materialsChart"></canvas>
-                </div>
-                <div class="w-full md:w-1/3 space-y-4">
-                    <p class="text-sm text-slate-300">Interactúa con el gráfico de radar para observar cómo los materiales artificiales creados en laboratorio rompen los límites de la física tradicional.</p>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="updateChart(0)" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm transition-colors text-white text-left border-l-4 border-gray-400"><i class="fas fa-tree mr-1"></i> Madera</button>
-                        <button onclick="updateChart(1)" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm transition-colors text-white text-left border-l-4 border-blue-400"><i class="fas fa-cubes mr-1"></i> Acero</button>
-                        <button onclick="updateChart(2)" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm transition-colors text-white text-left border-l-4 border-purple-400"><i class="fas fa-bolt mr-1"></i> Grafeno</button>
-                        <button onclick="updateChart(3)" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm transition-colors text-white text-left border-l-4 border-emerald-400"><i class="fas fa-cloud mr-1"></i> Aerogel</button>
-                        <button onclick="showAllChart()" class="col-span-2 px-3 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-sm transition-colors text-white font-bold text-center mt-2">Comparar Todos</button>
+                <div class="space-y-6">
+                    <!-- Paso 1 -->
+                    <div class="flex gap-4 group">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 border-2 border-cyan-500 flex items-center justify-center font-bold text-cyan-400 flex-shrink-0 group-hover:scale-110 transition-transform">1</div>
+                        <div>
+                            <h5 class="font-semibold text-cyan-300 text-lg flex items-center gap-2">🤖 Generación de contenido base con IA</h5>
+                            <p class="text-slate-300 text-sm mt-1 mb-2">Abre tu asistente de IA (ej. Gemini/ChatGPT) y ejecuta este prompt exacto:</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700 font-mono text-sm text-emerald-300 select-all">
+                                Genera 4 nuevos materiales artificiales (grafeno, polímeros autorreparables, metamateriales, aerogeles). Para cada uno incluye: qué es en 1 frase, cómo surge su producción y 1 aplicación actual en la vida diaria. Formato lista numerada.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="flex gap-4 group">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 border-2 border-purple-500 flex items-center justify-center font-bold text-purple-400 flex-shrink-0 group-hover:scale-110 transition-transform">2</div>
+                        <div>
+                            <h5 class="font-semibold text-purple-300 text-lg flex items-center gap-2">📊 Organización de Estructura en Excel</h5>
+                            <ul class="list-disc list-inside text-sm text-slate-300 space-y-1 mt-2">
+                                <li>Crea encabezados en A1 a E1: <code class="bg-slate-800 px-1 rounded text-pink-300">Material | Definición | Origen | Aplicación | Diapositiva</code></li>
+                                <li>Pega los datos de la IA. Formatea como Tabla (Ctrl+T) y nombra el rango <code class="bg-slate-800 px-1 rounded text-pink-300">GuionMateriales</code>.</li>
+                                <li>Asigna en la columna E el rol de la diapositiva: Título, Idea 1, Imagen, Cierre.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="flex gap-4 group">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 border-2 border-amber-500 flex items-center justify-center font-bold text-amber-400 flex-shrink-0 group-hover:scale-110 transition-transform">3</div>
+                        <div>
+                            <h5 class="font-semibold text-amber-300 text-lg flex items-center gap-2">⚙️ Validación Lógica Automática</h5>
+                            <p class="text-slate-300 text-sm mt-1 mb-2">Copia estas fórmulas exactamente en la columna G para validar calidad:</p>
+                            <div class="space-y-2 font-mono text-xs text-slate-300">
+                                <div class="bg-slate-900/80 p-2 rounded border border-slate-700">
+                                    <span class="text-slate-500">G2:</span> <span class="text-green-400">=SI(Y(CONTAR.SI(GuionMateriales[Diapositiva];"Título")=1;CONTAR.SI(GuionMateriales[Diapositiva];"Cierre")=1);"✅ Listo para presentar";"⚠️ Revisa título y cierre")</span>
+                                </div>
+                                <div class="bg-slate-900/80 p-2 rounded border border-slate-700">
+                                    <span class="text-slate-500">G3:</span> <span class="text-green-400">=SI(LARGO(INDICE(GuionMateriales[Definición];1))<=150;"✅ Texto conciso";"⚠️ Sintetiza a 150 caracteres")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="flex gap-4 group">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 border-2 border-blue-500 flex items-center justify-center font-bold text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform">4</div>
+                        <div>
+                            <h5 class="font-semibold text-blue-300 text-lg flex items-center gap-2">💾 Exportación y Cierre</h5>
+                            <p class="text-slate-300 text-sm mt-1">
+                                Si G2 muestra '✅ Listo para presentar', exporta al software de diapositivas.<br>
+                                Guarda con el formato técnico estricto: <code class="bg-slate-900 text-blue-300 px-2 py-1 rounded">grado_tema_fecha_nombre.xlsx</code> (Ej: 10_materiales_2026_03_05_JuanPerez.xlsx). Sin tildes ni espacios.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 3: TRABAJO EN LA SALA (SCRIPT EXACTO) -->
-        <section class="glass-card rounded-3xl p-8 border-l-4 border-l-pink-500">
-            <div class="mb-6 flex items-center gap-3">
-                <span class="bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                    <i class="fas fa-desktop mr-1"></i> 🖥️ TRABAJO EN LA SALA
-                </span>
-                <h2 class="text-2xl font-bold">Reto Práctico: Excel + IA</h2>
-            </div>
-            
-            <p class="mb-4 text-slate-300">Sigue estrictamente las instrucciones línea por línea en tu computador de la sala de sistemas.</p>
+        <!-- SECTION 5: GAMIFICACIÓN & CIERRE -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-6 text-center">🧠 Micro-Quiz de Comprobación</h3>
+            <div class="max-w-3xl mx-auto glass-card rounded-2xl p-8 shadow-xl">
+                
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Q1 -->
+                    <div class="quiz-q" data-correct="b">
+                        <p class="font-semibold text-lg text-slate-200 mb-3">1. Según la estructura básica vista, ¿cuál es el error más común en las "Ideas Principales"?</p>
+                        <div class="space-y-2">
+                            <label class="block bg-slate-800/50 hover:bg-slate-700/80 p-3 rounded-lg cursor-pointer border border-transparent transition-all"><input type="radio" name="q1" value="a" class="mr-2"> Usar imágenes de alta calidad.</label>
+                            <label class="block bg-slate-800/50 hover:bg-slate-700/80 p-3 rounded-lg cursor-pointer border border-transparent transition-all"><input type="radio" name="q1" value="b" class="mr-2"> Escribir párrafos largos en lugar de sintetizar en 3-5 puntos.</label>
+                            <label class="block bg-slate-800/50 hover:bg-slate-700/80 p-3 rounded-lg cursor-pointer border border-transparent transition-all"><input type="radio" name="q1" value="c" class="mr-2"> Usar títulos cortos.</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Q2 -->
+                    <div class="quiz-q" data-correct="c">
+                        <p class="font-semibold text-lg text-slate-200 mb-3 mt-6 border-t border-slate-700 pt-6">2. ¿Qué característica hace al Aerogel ideal para la exploración espacial?</p>
+                        <div class="space-y-2">
+                            <label class="block bg-slate-800/50 hover:bg-slate-700/80 p-3 rounded-lg cursor-pointer border border-transparent transition-all"><input type="radio" name="q2" value="a" class="mr-2"> Es 200 veces más fuerte que el acero.</label>
+                            <label class="block bg-slate-800/50 hover:bg-slate-700/80 p-3 rounded-lg cursor-pointer border border-transparent transition-all"><input type="radio" name="q2" value="b" class="mr-2"> Se autorepara con la luz solar.</label>
+                            <label class="block bg-slate-800/50 hover:bg-slate-700/80 p-3 rounded-lg cursor-pointer border border-transparent transition-all"><input type="radio" name="q2" value="c" class="mr-2"> Es extremadamente ligero (99.8% aire) y excelente aislante térmico.</label>
+                        </div>
+                    </div>
 
-            <!-- BLOQUE DE CÓDIGO NUMERADO (FORMATO OBLIGATORIO) -->
-            <div class="bg-[#1e1e1e] rounded-xl overflow-hidden border border-slate-700 shadow-2xl font-mono text-sm leading-relaxed relative">
-                <div class="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-slate-700">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    <span class="ml-2 text-slate-400 text-xs">reto_sala_10.txt</span>
+                    <button onclick="checkQuiz()" class="w-full mt-6 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all">
+                        Verificar Respuestas
+                    </button>
+                    
+                    <div id="quiz-feedback" class="hidden mt-4 text-center font-bold text-xl py-3 rounded-xl"></div>
                 </div>
-                <div class="p-4 overflow-x-auto text-emerald-300 whitespace-pre">1: # 📌 Actividad: "Estructurando el Futuro: Materiales, IA y Excel"
-2: **Grado:** 10° | **Duración:** 40 min | **Herramientas:** Excel, IA Generativa (Gemini/ChatGPT)
-3: **Objetivo:** Investigar nuevos materiales con IA y aplicar andamiaje de datos mediante herramientas analíticas en Excel.
-4: 
-5: 🤖 **Paso 1: Extracción de Datos con IA (10 min)** 🤖
-6: Abre la IA generativa de tu preferencia.
-7: Copia y pega el siguiente prompt exacto:
-8: "Actúa como experto en ciencia de materiales. Genera una tabla con 5 nuevos materiales artificiales (incluye Grafeno y Aerogel). Columnas: Material, Propiedad Principal, Sector de Uso, Nivel de Innovación (Alto/Medio)."
-9: 
-10: 📊 **Paso 2: Andamiaje en Excel (10 min)** 📊
-11: Abre Excel ('Ctrl + U' para libro nuevo).
-12: Pega la tabla generada por la IA en la celda A1.
-13: Selecciona los datos (A1 hasta la última celda) y presiona 'Ctrl + T'.
-14: Marca "La tabla tiene encabezados" y aplica un Diseño de Tabla moderno.
-15: Ajusta anchos de columna dando doble clic en los separadores superiores.
-16: 
-17: ⚙️ **Paso 3: Lógica y Fórmulas (10 min)** ⚙️
-18: En la primera columna vacía a la derecha, escribe el encabezado: "Prioridad".
-19: Haz clic en la primera celda vacía debajo de "Prioridad".
-20: Escribe la fórmula: '=SI([@[Nivel de Innovación]]="Alto";"⭐ Analizar";"En revisión")'
-21: Presiona 'Enter'. (La columna entera se autocompletará).
-22: Inserta un Slicer: Menú Diseño de Tabla > 'Insertar Segmentación de Datos' > Elige "Sector de Uso".
-23: 
-24: ✅ **Paso 4: Estructura de Presentación Digital (5 min)** ✅
-25: Crea una 'Hoja 2' en tu archivo Excel. Nómbrala "Guion Presentación".
-26: Arma la estructura base en las filas 1 a 4:
-27: Fila 1: Título | Fila 2: 3 Ideas Principales del material más innovador.
-28: Fila 3: Describe la Imagen a usar | Fila 4: Pregunta de cierre al público.
-29: 
-30: 💾 **Paso 5: Guarda con nombre EXACTO (5 min)** 💾
-31: Archivo > Guardar una copia.
-32: Sigue la nomenclatura obligatoria (Sin espacios, usa guion bajo).
-33: Ejemplo: `10_Materiales_26Feb_TuNombreApellido.xlsx`
-34: 
-35: ✨ **Reto avanzado:** Usa Formato Condicional en la columna "Prioridad" para poner en verde las celdas con "⭐ Analizar".
-36: 🛠️ **INSTRUCCIÓN PARA HTML:** Presentar archivo al profesor William al finalizar la clase.</div>
             </div>
         </section>
 
-        <!-- SECCIÓN 4: INVESTIGACIÓN & TAREA -->
-        <div class="grid md:grid-cols-2 gap-8">
-            <section class="glass-card rounded-3xl p-8 border-l-4 border-l-yellow-500">
-                <div class="mb-4 flex items-center gap-3">
-                    <span class="bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                        <i class="fas fa-search mr-1"></i> 🔍 INVESTIGACIÓN
+        <!-- SECTION 6: INVESTIGACIÓN Y TAREA -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div class="glass p-6 rounded-2xl border-l-4 border-l-amber-500">
+                <div class="mb-3">
+                    <span class="bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                        [🔍 INVESTIGACIÓN]
                     </span>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Para investigar en la web y anotar en el cuaderno:</h3>
-                <p class="text-slate-300 italic mb-4">"Investiga qué es el <strong>Siliceno</strong>. ¿Cuáles son sus propiedades y por qué algunos científicos creen que podría superar al Grafeno en la industria de los microchips de computadora?"</p>
-            </section>
+                <p class="text-slate-300 text-sm">
+                    Busca en Google y anota en tu cuaderno: <strong>¿Qué son los "Metamateriales" y cómo podrían lograr la invisibilidad óptica en el futuro?</strong>
+                </p>
+            </div>
 
-            <section class="glass-card rounded-3xl p-8 border-l-4 border-l-slate-500 bg-slate-900/50">
-                <div class="mb-4 flex items-center gap-3">
-                    <span class="bg-slate-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                        <i class="fas fa-file-alt mr-1"></i> 📄 TAREA EN HOJA SUELTA
+            <div class="glass p-6 rounded-2xl border-l-4 border-l-rose-500 flex items-center justify-center text-center">
+                <div>
+                    <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide inline-block mb-3">
+                        [📄 TAREA EN HOJA SUELTA]
                     </span>
+                    <p class="text-slate-300 font-semibold italic text-lg">Esta semana no hay tarea en hoja suelta. ¡Enfócate en tu reto en sala!</p>
                 </div>
-                <div class="flex items-center justify-center h-24 border-2 border-dashed border-slate-700 rounded-xl">
-                    <p class="text-slate-400 font-bold tracking-widest uppercase">Esta semana no hay tarea exterior.</p>
-                </div>
-            </section>
-        </div>
-
-        <!-- SECCIÓN 5: GAMIFICACIÓN (Micro-Quiz) -->
-        <section class="glass-card rounded-3xl p-8 border-l-4 border-l-indigo-500">
-            <div class="mb-6 flex items-center gap-3">
-                <span class="bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                    <i class="fas fa-gamepad mr-1"></i> RETO DE CONOCIMIENTO
-                </span>
-                <h2 class="text-2xl font-bold">Test Rápido de Validación</h2>
-            </div>
-
-            <div id="quiz-container" class="space-y-6">
-                <!-- P1 -->
-                <div class="quiz-question bg-black/20 p-5 rounded-xl border border-white/5" data-correct="b">
-                    <h3 class="font-bold mb-4">1. En una presentación digital, ¿cuál es la función principal de una imagen?</h3>
-                    <div class="space-y-2">
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'a')">A) Rellenar los espacios en blanco de la diapositiva.</button>
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'b')">B) Explicar o complementar visualmente el mensaje de forma poderosa.</button>
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'c')">C) Mostrar que sabemos insertar archivos multimedia.</button>
-                    </div>
-                </div>
-                <!-- P2 -->
-                <div class="quiz-question bg-black/20 p-5 rounded-xl border border-white/5" data-correct="a">
-                    <h3 class="font-bold mb-4">2. ¿Qué propiedad hace tan especial al Aerogel (conocido como "Humo helado")?</h3>
-                    <div class="space-y-2">
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'a')">A) Es el sólido más ligero del mundo y un aislante térmico extremo.</button>
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'b')">B) Es un líquido que se convierte en acero con la luz.</button>
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'c')">C) Es un material biológico extraído de árboles milenarios.</button>
-                    </div>
-                </div>
-                <!-- P3 -->
-                <div class="quiz-question bg-black/20 p-5 rounded-xl border border-white/5" data-correct="c">
-                    <h3 class="font-bold mb-4">3. ¿Por qué el ser humano invierte en crear "Nuevos Materiales Artificiales"?</h3>
-                    <div class="space-y-2">
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'a')">A) Porque los recursos naturales como la piedra son muy feos.</button>
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'b')">B) Para encarecer exclusivamente los productos de la NASA.</button>
-                        <button class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors border border-transparent" onclick="checkAnswer(this, 'c')">C) Para resolver problemas de diseño, peso y resistencia que los materiales naturales no pueden soportar.</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="quiz-result" class="hidden mt-6 p-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 text-center font-bold text-xl shadow-lg animate-bounce">
-                ¡Excelente trabajo! Has completado el módulo. 🚀
             </div>
         </section>
 
     </main>
 
     <!-- FOOTER OBLIGATORIO -->
-    <footer class="bg-black/80 py-8 text-center border-t border-white/10 mt-auto relative z-10 backdrop-blur-lg">
-        <p class="text-slate-400 font-mono text-sm tracking-wider">
+    <footer class="bg-slate-950 py-8 border-t border-slate-800 text-center relative z-20">
+        <p class="text-slate-500 text-sm font-semibold tracking-wider">
             © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
         </p>
     </footer>
 
     <!-- SCRIPTS -->
     <script>
-        // 1. FUNCIÓN COPIAR ENLACE OBLIGATORIA
+        // 1. FUNCION DE COPIA DE ENLACE (OBLIGATORIA)
         function copiarEnlace(){
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
                 const t = document.getElementById('toastCopiado');
                 if(t){
                     t.classList.remove('hidden');
-                    // Add entry animation
-                    t.classList.add('translate-y-0', 'opacity-100');
+                    t.classList.add('animate-bounce');
                     setTimeout(() => {
                         t.classList.add('hidden');
-                    }, 3000);
+                        t.classList.remove('animate-bounce');
+                    }, 2500);
                 } else {
                     alert("Enlace copiado ✅");
                 }
@@ -441,22 +364,38 @@
             });
         }
 
-        // 2. LÓGICA DEL GRÁFICO (CHART.JS)
+        // 2. LÓGICA DEL CHART.JS (DATA LAB)
+        let materialsChart;
+        let isNaturalView = false;
+
         const ctx = document.getElementById('materialsChart').getContext('2d');
         
-        // Data sets
-        const datasets = [
-            { label: 'Madera (Natural)', data: [40, 30, 20, 10, 80], borderColor: '#9ca3af', backgroundColor: 'rgba(156, 163, 175, 0.2)' },
-            { label: 'Acero (Tradicional)', data: [20, 90, 10, 30, 50], borderColor: '#60a5fa', backgroundColor: 'rgba(96, 165, 250, 0.2)' },
-            { label: 'Grafeno (Artificial)', data: [100, 100, 90, 100, 10], borderColor: '#c084fc', backgroundColor: 'rgba(192, 132, 252, 0.2)' },
-            { label: 'Aerogel (Artificial)', data: [100, 30, 10, 95, 90], borderColor: '#34d399', backgroundColor: 'rgba(52, 211, 153, 0.2)' }
-        ];
+        // Data configurations
+        const dataArtificial = {
+            label: 'Materiales Avanzados',
+            data: [100, 95, 85, 10], // Fuerza, Ligereza, Flexibilidad, Costo
+            backgroundColor: 'rgba(6, 182, 212, 0.4)', // Cyan
+            borderColor: 'rgba(6, 182, 212, 1)',
+            pointBackgroundColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(6, 182, 212, 1)'
+        };
 
-        let radarChart = new Chart(ctx, {
+        const dataNatural = {
+            label: 'Materiales Tradicionales (Acero/Madera)',
+            data: [70, 30, 20, 40],
+            backgroundColor: 'rgba(168, 85, 247, 0.4)', // Purple
+            borderColor: 'rgba(168, 85, 247, 1)',
+            pointBackgroundColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(168, 85, 247, 1)'
+        };
+
+        const chartConfig = {
             type: 'radar',
             data: {
-                labels: ['Ligereza', 'Resistencia', 'Flexibilidad', 'Innovación', 'Aislamiento'],
-                datasets: datasets
+                labels: ['Resistencia (Fuerza)', 'Ligereza', 'Flexibilidad', 'Impacto Ecológico / Costo'],
+                datasets: [dataArtificial, dataNatural]
             },
             options: {
                 responsive: true,
@@ -465,82 +404,82 @@
                     r: {
                         angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
                         grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                        pointLabels: { color: '#e2e8f0', font: { size: 12, family: 'Outfit' } },
+                        pointLabels: { color: '#cbd5e1', font: { family: 'Inter', size: 12 } },
                         ticks: { display: false, min: 0, max: 100 }
                     }
                 },
                 plugins: {
-                    legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+                    legend: { labels: { color: '#cbd5e1', font: { family: 'Inter' } } },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 13 },
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: true
+                    }
                 }
             }
-        });
+        };
 
-        function updateChart(index) {
-            radarChart.data.datasets = [datasets[index]];
-            radarChart.update();
-        }
+        // Initialize Chart
+        Chart.defaults.color = '#cbd5e1';
+        Chart.defaults.font.family = 'Inter';
+        materialsChart = new Chart(ctx, chartConfig);
 
-        function showAllChart() {
-            radarChart.data.datasets = datasets;
-            radarChart.update();
-        }
+        // Toggle Data Function
+        window.toggleChartData = function() {
+            isNaturalView = !isNaturalView;
+            if (isNaturalView) {
+                materialsChart.data.datasets = [dataNatural];
+            } else {
+                materialsChart.data.datasets = [dataArtificial, dataNatural];
+            }
+            materialsChart.update();
+        };
 
-        // 3. LÓGICA DEL MICRO-QUIZ (VANILLA JS)
-        let answeredQuestions = 0;
-        const totalQuestions = 3;
-
-        function checkAnswer(btn, answer) {
-            const container = btn.closest('.quiz-question');
+        // 3. LÓGICA DEL MICRO-QUIZ
+        window.checkQuiz = function() {
+            let score = 0;
+            const questions = document.querySelectorAll('.quiz-q');
             
-            // Si ya se respondió, no hacer nada
-            if(container.classList.contains('answered')) return;
-            
-            const correctAnswer = container.getAttribute('data-correct');
-            const buttons = container.querySelectorAll('button');
-            
-            // Deshabilitar todos los botones de esta pregunta
-            buttons.forEach(b => {
-                b.disabled = true;
-                b.classList.remove('hover:bg-slate-700');
+            questions.forEach(q => {
+                const correctVal = q.getAttribute('data-correct');
+                const selected = q.querySelector('input[type="radio"]:checked');
+                const labels = q.querySelectorAll('label');
+                
+                // Reset styles
+                labels.forEach(l => {
+                    l.classList.remove('border-emerald-500', 'bg-emerald-900/30', 'border-rose-500', 'bg-rose-900/30');
+                    l.classList.add('border-transparent');
+                });
+
+                if (selected) {
+                    const parentLabel = selected.parentElement;
+                    if (selected.value === correctVal) {
+                        score++;
+                        parentLabel.classList.remove('border-transparent');
+                        parentLabel.classList.add('border-emerald-500', 'bg-emerald-900/30');
+                    } else {
+                        parentLabel.classList.remove('border-transparent');
+                        parentLabel.classList.add('border-rose-500', 'bg-rose-900/30');
+                        // Highlight correct
+                        q.querySelector(`input[value="${correctVal}"]`).parentElement.classList.add('border-emerald-500', 'bg-emerald-900/30');
+                    }
+                }
             });
 
-            container.classList.add('answered');
-
-            if (answer === correctAnswer) {
-                // Correcto
-                btn.classList.replace('bg-slate-800', 'bg-emerald-600');
-                btn.classList.add('border-emerald-400');
-                // Efecto de vibración leve en verde
-                container.style.transform = "scale(1.02)";
-                setTimeout(() => container.style.transform = "scale(1)", 200);
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden', 'bg-emerald-600', 'bg-amber-600');
+            
+            if (score === questions.length) {
+                feedback.innerHTML = "¡Excelente! Nivel superado 🏆";
+                feedback.classList.add('bg-emerald-600', 'text-white');
             } else {
-                // Incorrecto
-                btn.classList.replace('bg-slate-800', 'bg-red-600');
-                btn.classList.add('border-red-400');
-                // Mostrar la correcta
-                buttons.forEach(b => {
-                    if(b.getAttribute('onclick').includes(`'${correctAnswer}'`)){
-                        b.classList.replace('bg-slate-800', 'bg-emerald-600/50');
-                        b.classList.add('border-emerald-400/50');
-                    }
-                });
-                // Efecto de error (shake)
-                container.animate([
-                    { transform: 'translateX(0)' },
-                    { transform: 'translateX(-10px)' },
-                    { transform: 'translateX(10px)' },
-                    { transform: 'translateX(-10px)' },
-                    { transform: 'translateX(0)' }
-                ], { duration: 400 });
+                feedback.innerHTML = `Acertaste ${score} de ${questions.length}. ¡Revisa los conceptos y vuelve a intentar! 🔄`;
+                feedback.classList.add('bg-amber-600', 'text-white');
             }
-
-            answeredQuestions++;
-            if(answeredQuestions === totalQuestions) {
-                setTimeout(() => {
-                    document.getElementById('quiz-result').classList.remove('hidden');
-                }, 500);
-            }
-        }
+        };
     </script>
 </body>
 </html>
