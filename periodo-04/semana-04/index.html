@@ -1,1 +1,353 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 4 | Comunicación Visual y Avances Médicos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-scale:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.5); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.8); }
+        
+        /* Animaciones Quiz */
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
+        .shake { animation: shake 0.4s; }
+        .correct { background-color: rgba(16, 185, 129, 0.2) !important; border-color: #10b981 !important; }
+        .incorrect { background-color: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 custom-scrollbar pb-10">
+
+    <!-- BARRA DE NAVEGACIÓN OBLIGATORIA -->
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 pt-6 mb-4 px-4 relative z-50">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-white/10">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+           🔗 Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur z-50 border border-emerald-500/50">
+        Enlace copiado ✅
+    </div>
+
+    <!-- SECCIÓN 1: HERO -->
+    <header class="max-w-5xl mx-auto px-4 mb-12 mt-4 text-center">
+        <h3 class="text-emerald-400 font-semibold tracking-widest uppercase text-sm mb-2">Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal</h3>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-emerald-400 mb-6 drop-shadow-lg">
+            Comunicación Visual y Avances Médicos
+        </h1>
+        
+        <div class="glass-card rounded-2xl p-6 md:p-8 max-w-3xl mx-auto hover-scale">
+            <h2 class="text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
+                <span>🎯</span> Objetivo de Aprendizaje
+            </h2>
+            <p class="text-slate-300 text-lg leading-relaxed">
+                Integrar los principios de <strong>comunicación visual</strong> aprendidos con el análisis de <strong>materiales artificiales en medicina</strong>, utilizando IA generativa y análisis de datos (Excel) para estructurar y presentar información compleja.
+            </p>
+        </div>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL: CONTENIDO Y MÓDULOS -->
+    <main class="max-w-5xl mx-auto px-4 space-y-10">
+
+        <!-- BLOQUE: COPIAR AL CUADERNO -->
+        <section class="glass-card rounded-2xl p-8 hover-scale relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl shadow-md">
+                [📝 COPIAR AL CUADERNO]
+            </div>
+            <h3 class="text-2xl font-bold text-blue-300 mb-4 border-b border-blue-500/30 pb-2">Síntesis Teórica</h3>
+            <p class="text-slate-300 mb-4"><strong>Conexión con la Semana 3:</strong> En la clase anterior exploramos los <em>Materiales del Futuro</em> y las bases visuales. Hoy unimos esos conceptos aplicando el diseño a datos médicos reales.</p>
+            <ul class="list-disc list-inside space-y-3 text-slate-200">
+                <li><strong>Biomateriales:</strong> Son materiales diseñados para interactuar con sistemas biológicos (ej. Hidrogeles, Titanio, Polímeros biocompatibles).</li>
+                <li><strong>El Formato TSV (Tab-Separated Values):</strong> Es un formato de texto estructurado vital en Data Science, donde los tabuladores separan las columnas. Es el puente perfecto entre la IA y Excel.</li>
+                <li><strong>Diseño en Datos (Data UI):</strong> Aplicar contraste, jerarquía y alineación a una hoja de cálculo no es solo "decorar"; es guiar el ojo humano hacia la información crítica (ej. semáforos de efectividad).</li>
+            </ul>
+        </section>
+
+        <!-- BLOQUE: INTERACTUAR EN EL PC (DATA LAB) -->
+        <section class="glass-card rounded-2xl p-8 hover-scale relative">
+            <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl shadow-md">
+                [💻 INTERACTUAR EN EL PC]
+            </div>
+            <h3 class="text-2xl font-bold text-purple-300 mb-4 border-b border-purple-500/30 pb-2">Data Lab: Visualización de Biomateriales</h3>
+            <p class="text-slate-400 mb-6 text-sm">Explora este dashboard interactivo. Haz clic en los botones para filtrar los datos generados por nuestro modelo de simulación.</p>
+            
+            <div class="flex gap-4 justify-center mb-6">
+                <button onclick="updateChart('todos')" class="bg-slate-700 hover:bg-purple-600 text-white px-4 py-2 rounded-lg transition-all duration-300 border border-slate-500">Todos</button>
+                <button onclick="updateChart('altos')" class="bg-slate-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg transition-all duration-300 border border-slate-500">Alta Efectividad (>85%)</button>
+                <button onclick="updateChart('economicos')" class="bg-slate-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-300 border border-slate-500">Más Económicos</button>
+            </div>
+
+            <div class="w-full bg-slate-900/50 rounded-xl p-4 border border-white/5" style="height: 400px;">
+                <canvas id="materialsChart"></canvas>
+            </div>
+        </section>
+
+        <!-- BLOQUE: TRABAJO EN LA SALA -->
+        <section class="glass-card rounded-2xl p-8 hover-scale relative border-l-4 border-l-emerald-500">
+            <div class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl shadow-md">
+                [🖥️ TRABAJO EN LA SALA]
+            </div>
+            <h3 class="text-2xl font-bold text-emerald-300 mb-4 border-b border-emerald-500/30 pb-2">Reto Práctico: Mi Solución con IA & Excel</h3>
+            
+            <div class="space-y-6">
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                    <h4 class="text-lg font-bold text-white mb-2">🤖 Paso 1: Generación de datos con IA</h4>
+                    <p class="text-slate-300 text-sm mb-3">Abre tu IA (Gemini/ChatGPT) y pega EXACTAMENTE este prompt:</p>
+                    <div class="bg-slate-950 p-4 rounded-lg font-mono text-xs text-green-400 overflow-x-auto">
+                        Crea una tabla sobre materiales artificiales aplicados en medicina con exactamente 6 columnas: ID_Material, Nombre_Material, Tipo_Aplicacion, Costo_Produccion_USD, Nivel_Efectividad_%, Principio_Disenio_Recomendado. Incluye 1 fila de encabezados y EXACTAMENTE 10 filas de datos con información realista: ID con formato MAT001 a MAT010; nombres de materiales como hidrogeles, biocerámicos, polímeros biodegradables; Tipo_Aplicacion con valores: diagnóstico, tratamiento, rehabilitación, prótesis; Costo_Produccion_USD entre 50 y 5000; Nivel_Efectividad_% entre 60 y 99; Principio_Disenio_Recomendado con valores: contraste, jerarquía, alineación, proximidad, repetición. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas.
+                    </div>
+                    <p class="text-yellow-200 text-xs mt-3 bg-yellow-900/30 p-2 rounded">💡 <strong>Nota:</strong> Copia el resultado y pégalo en la celda A1 de Excel. Al ser TSV, se separará en columnas automáticamente.</p>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                    <h4 class="text-lg font-bold text-white mb-2">📊 Paso 2: Diseño Visual en Excel</h4>
+                    <ul class="list-decimal list-inside text-sm text-slate-300 space-y-2">
+                        <li><strong>Columna F:</strong> Aplica colores por principio (Contraste=Amarillo, Jerarquía=Azul, etc.).</li>
+                        <li><strong>Columna E (Efectividad):</strong> Formato porcentaje. Letra Roja si es &lt;75%, Verde si es ≥85%.</li>
+                        <li><strong>Columna D (Costo):</strong> Formato Moneda USD, alineación derecha.</li>
+                        <li><strong>Fila 1 (Encabezados):</strong> Negrita, fondo oscuro, texto blanco (Jerarquía Visual).</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                    <h4 class="text-lg font-bold text-white mb-2">⚙️ Paso 3: Análisis de Datos</h4>
+                    <p class="text-slate-300 text-sm mb-2">En H1:H4, usa estas funciones (Ajusta ; o , según tu Excel):</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-slate-900 p-3 rounded border border-slate-700"><code class="text-cyan-400 text-xs">=PROMEDIO(E2:E11)</code><br><span class="text-xs text-slate-400">Efectividad promedio</span></div>
+                        <div class="bg-slate-900 p-3 rounded border border-slate-700"><code class="text-cyan-400 text-xs">=CONTAR.SI(C2:C11;"tratamiento")</code><br><span class="text-xs text-slate-400">Cantidad por tipo</span></div>
+                        <div class="bg-slate-900 p-3 rounded border border-slate-700"><code class="text-cyan-400 text-xs">=BUSCARV("MAT005";A2:F11;4;FALSO)</code><br><span class="text-xs text-slate-400">Buscar costo MAT005</span></div>
+                        <div class="bg-slate-900 p-3 rounded border border-slate-700"><code class="text-cyan-400 text-xs">=SUMAR.SI(C2:C11;"prótesis";D2:D11)</code><br><span class="text-xs text-slate-400">Inversión en prótesis</span></div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 bg-gradient-to-r from-orange-900/40 to-red-900/40 p-5 rounded-xl border border-orange-500/30">
+                        <h4 class="text-lg font-bold text-orange-300 mb-2">💾 Paso Final: Guardar</h4>
+                        <code class="text-white bg-black/50 px-2 py-1 rounded text-sm">10_materiales_medicina_110526_tunombre.xlsx</code>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-r from-indigo-900/40 to-blue-900/40 p-5 rounded-xl border border-indigo-500/30 shadow-[0_0_15px_rgba(79,70,229,0.3)]">
+                        <h4 class="text-lg font-bold text-indigo-300 mb-2">✨ Reto Avanzado</h4>
+                        <p class="text-xs text-slate-300 mb-2">En columna G (Clasificacion), usa condicionales anidados y Semáforos:</p>
+                        <code class="text-cyan-300 text-xs bg-black/40 block p-2 rounded">=SI(E2>=85;"Excelente";SI(E2>=75;"Aceptable";"Requiere_MEJORA"))</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUES FINALES: INVESTIGACIÓN Y TAREA -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="glass-card rounded-2xl p-8 hover-scale relative">
+                <div class="absolute top-0 right-0 bg-yellow-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl shadow-md">
+                    [🔍 INVESTIGACIÓN]
+                </div>
+                <h3 class="text-xl font-bold text-yellow-300 mb-3">Consulta Tecnológica</h3>
+                <p class="text-slate-300 text-sm">Investiga en Google y anota en tu cuaderno de borrador:</p>
+                <div class="mt-4 p-4 bg-slate-800/60 rounded-lg border border-yellow-500/20 italic text-white text-center">
+                    "¿Qué son los 'Polímeros con memoria de forma' y cómo se están utilizando actualmente para crear stents cardiovasculares o suturas inteligentes?"
+                </div>
+            </section>
+
+            <section class="glass-card rounded-2xl p-8 hover-scale relative">
+                <div class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl shadow-md">
+                    [📄 TAREA EN HOJA SUELTA]
+                </div>
+                <h3 class="text-xl font-bold text-red-300 mb-3">Entregable Físico</h3>
+                <p class="text-slate-300 text-sm mb-4">Debes entregar la investigación de la izquierda en una hoja en blanco.</p>
+                <ul class="text-sm text-slate-300 space-y-2">
+                    <li class="flex items-center gap-2">✅ <span>Nombre completo y Grado visible.</span></li>
+                    <li class="flex items-center gap-2">✅ <span>Aplicar jerarquía visual (Títulos grandes, subtítulos, texto legible).</span></li>
+                    <li class="flex items-center gap-2">✅ <span>Entregar al iniciar la próxima clase.</span></li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- GAMIFICACIÓN: MICRO QUIZ -->
+        <section class="glass-card rounded-2xl p-8 relative border-t-4 border-purple-500">
+            <h3 class="text-2xl font-bold text-white mb-6 text-center">🧠 Comprueba tu Lógica</h3>
+            
+            <div class="space-y-6 max-w-2xl mx-auto" id="quizContainer">
+                <!-- Pregunta 1 -->
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-600 transition-colors duration-300" id="q1-box">
+                    <p class="font-semibold mb-3">1. ¿Qué busca la función <code class="text-cyan-400">=BUSCARV</code> en nuestro Data Lab?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <button onclick="checkQuiz(1, false, this)" class="bg-slate-700 hover:bg-slate-600 p-2 rounded text-sm text-left">Suma todos los valores médicos.</button>
+                        <button onclick="checkQuiz(1, true, this)" class="bg-slate-700 hover:bg-slate-600 p-2 rounded text-sm text-left">Encuentra datos específicos cruzando un ID.</button>
+                    </div>
+                </div>
+                <!-- Pregunta 2 -->
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-600 transition-colors duration-300" id="q2-box">
+                    <p class="font-semibold mb-3">2. Si le pides a la IA formato TSV, ¿qué separador usa?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <button onclick="checkQuiz(2, false, this)" class="bg-slate-700 hover:bg-slate-600 p-2 rounded text-sm text-left">Comas y punto y coma.</button>
+                        <button onclick="checkQuiz(2, true, this)" class="bg-slate-700 hover:bg-slate-600 p-2 rounded text-sm text-left">Tabulaciones invisibles.</button>
+                    </div>
+                </div>
+            </div>
+            <div id="quizResult" class="hidden text-center mt-6 text-xl font-bold text-emerald-400 drop-shadow-md">
+                ¡Excelente análisis lógico! 🚀
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER OBLIGATORIO -->
+    <footer class="mt-16 py-8 border-t border-white/10 bg-black/40 backdrop-blur-sm text-center">
+        <p class="text-slate-400 font-medium tracking-wide">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <!-- LOGICA JAVASCRIPT -->
+    <script>
+        // 1. FUNCION OBLIGATORIA: Copiar Enlace
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // 2. CHART.JS LOGIC
+        const ctx = document.getElementById('materialsChart').getContext('2d');
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Poppins', sans-serif";
+
+        const baseData = [
+            { id: 'Hidrogel X', cost: 120, effect: 88, type: 'Tratamiento' },
+            { id: 'Biocerámica', cost: 450, effect: 76, type: 'Rehabilitación' },
+            { id: 'Titanio Pro', cost: 1200, effect: 95, type: 'Prótesis' },
+            { id: 'Polímero Bio', cost: 300, effect: 82, type: 'Tratamiento' },
+            { id: 'Nanomalla', cost: 2500, effect: 98, type: 'Prótesis' }
+        ];
+
+        let materialsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: baseData.map(d => d.id),
+                datasets: [{
+                    label: 'Efectividad (%)',
+                    data: baseData.map(d => d.effect),
+                    backgroundColor: 'rgba(16, 185, 129, 0.6)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Costo (USD)',
+                    data: baseData.map(d => d.cost),
+                    type: 'line',
+                    backgroundColor: 'rgba(168, 85, 247, 0.6)',
+                    borderColor: 'rgba(168, 85, 247, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#fff',
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#cbd5e1',
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        padding: 10
+                    }
+                },
+                scales: {
+                    y: { type: 'linear', display: true, position: 'left', title: {display: true, text: 'Efectividad'} },
+                    y1: { type: 'linear', display: true, position: 'right', grid: {drawOnChartArea: false}, title: {display: true, text: 'Costo USD'} }
+                }
+            }
+        });
+
+        function updateChart(filter) {
+            let filtered = baseData;
+            if (filter === 'altos') filtered = baseData.filter(d => d.effect > 85);
+            if (filter === 'economicos') filtered = baseData.filter(d => d.cost < 500);
+
+            materialsChart.data.labels = filtered.map(d => d.id);
+            materialsChart.data.datasets[0].data = filtered.map(d => d.effect);
+            materialsChart.data.datasets[1].data = filtered.map(d => d.cost);
+            materialsChart.update();
+        }
+
+        // 3. GAMIFICATION LOGIC
+        let answered = {1: false, 2: false};
+        function checkQuiz(qId, isCorrect, btnElement) {
+            if(answered[qId]) return;
+            
+            const box = document.getElementById(`q${qId}-box`);
+            const siblings = btnElement.parentElement.children;
+            
+            for(let btn of siblings) {
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                btn.onclick = null;
+            }
+            
+            btnElement.classList.remove('opacity-50', 'bg-slate-700', 'hover:bg-slate-600');
+            
+            if(isCorrect) {
+                btnElement.classList.add('bg-emerald-600', 'text-white', 'border', 'border-emerald-400');
+                box.classList.add('correct');
+            } else {
+                btnElement.classList.add('bg-red-600', 'text-white', 'border', 'border-red-400');
+                box.classList.add('incorrect', 'shake');
+                
+                // Show correct one
+                for(let btn of siblings) {
+                    if(btn !== btnElement && btn.getAttribute('onclick')?.includes('true')) {
+                        btn.classList.remove('opacity-50', 'bg-slate-700');
+                        btn.classList.add('bg-emerald-600/50', 'border', 'border-emerald-400/50');
+                    }
+                }
+            }
+            
+            answered[qId] = true;
+            
+            if(answered[1] && answered[2]) {
+                setTimeout(() => {
+                    document.getElementById('quizResult').classList.remove('hidden');
+                    document.getElementById('quizResult').classList.add('animate-pulse');
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
