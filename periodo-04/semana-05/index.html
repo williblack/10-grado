@@ -1,1 +1,451 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 5 | ¡Luces, Cámara, Agricultura! 🎬🌱</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Motor de Estilos Avanzados - Glassmorphism y Animaciones */
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #115e59 50%, #064e3b 100%);
+            background-attachment: fixed;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-header {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.4) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hover-scale {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-scale:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(52, 211, 153, 0.5);
+        }
+
+        /* Animación para la flecha de la tarea */
+        @keyframes pointLeft {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+        }
+
+        .animate-point-left {
+            animation: pointLeft 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.5); 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.8); 
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 antialiased text-gray-100">
+
+    <!-- BOTONES DE NAVEGACIÓN OBLIGATORIOS -->
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-end gap-3 mb-6 relative z-50">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow-lg border border-white/10 hover:bg-slate-700 hover:scale-105 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+           Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-purple-600/80 text-white px-4 py-2 rounded-xl shadow-lg border border-purple-500/50 hover:bg-purple-500 hover:scale-105 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+           Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/80 text-white px-4 py-2 rounded-xl shadow-lg border border-emerald-500/50 hover:bg-emerald-500 hover:scale-105 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+           Copiar enlace
+        </button>
+    </div>
+
+    <!-- Toast Copiado -->
+    <div id="toastCopiado" class="fixed top-6 right-6 z-50 hidden bg-black/90 border border-emerald-500 text-emerald-400 px-6 py-3 rounded-2xl shadow-2xl backdrop-blur transform transition-all duration-300 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span class="font-bold">¡Enlace copiado con éxito!</span>
+    </div>
+
+    <!-- SECCIÓN 1: HERO -->
+    <header class="max-w-5xl mx-auto glass-card rounded-3xl overflow-hidden mb-10 relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-teal-500 to-green-500"></div>
+        <div class="glass-header p-8 text-center relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+            <span class="inline-block px-4 py-1 rounded-full bg-emerald-900/50 border border-emerald-400/30 text-emerald-300 font-bold text-sm mb-4 backdrop-blur tracking-widest uppercase">
+                Colegio Santa Mariana de Jesús
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-100 mb-4 drop-shadow-lg">
+                ¡Luces, Cámara, Agricultura! 🎬🌱
+            </h1>
+            <p class="text-xl text-teal-100/90 font-light tracking-wide mb-2">Semana 5 | Grado 10°</p>
+            <p class="text-md text-emerald-400/80 font-medium">Prof. William Fdo Bernal</p>
+        </div>
+        <div class="p-6 md:p-8 border-t border-white/5 bg-black/20">
+            <h3 class="text-xl font-bold text-emerald-400 mb-2 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Objetivo de Aprendizaje
+            </h3>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                Aprender a comunicar ideas técnicas mediante proyectos de video educativos, enfocándonos en las innovaciones de materiales artificiales en la agricultura (hidrogeles, bioplásticos). Analizaremos la producción audiovisual gestionando datos como verdaderos directores de proyecto.
+            </p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DOS COLUMNAS -->
+    <main class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- COLUMNA IZQUIERDA (Teoría y Trabajo) -->
+        <div class="lg:col-span-8 space-y-8">
+            
+            <!-- COPIAR AL CUADERNO -->
+            <section class="glass-card rounded-3xl p-8 hover-scale relative overflow-hidden">
+                <div class="absolute top-4 right-4">
+                    <span class="text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/50 px-3 py-1.5 shadow-lg backdrop-blur flex items-center gap-2">
+                        <span>📝</span> COPIAR AL CUADERNO
+                    </span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 pr-32">
+                    Conexión: De la Medicina a la Agricultura
+                </h2>
+                
+                <div class="space-y-4 text-gray-300">
+                    <div class="bg-blue-900/30 p-4 rounded-xl border border-blue-500/20">
+                        <p class="text-sm text-blue-200"><strong>🔄 Recordando la Semana 4:</strong> La semana pasada vimos cómo la comunicación visual ayuda a entender avances médicos complejos. Hoy aplicaremos esa misma estrategia para explicar los avances en el campo.</p>
+                    </div>
+
+                    <p>Para producir alimentos de manera sostenible, la ciencia ha creado <strong>materiales artificiales</strong> revolucionarios. Para que la sociedad los adopte, necesitamos saber cómo comunicarlos (Guion de Video).</p>
+                    
+                    <ul class="list-disc list-inside space-y-3 mt-4 ml-2">
+                        <li><strong class="text-emerald-400">Hidrogeles:</strong> Funcionan como "esponjas microscópicas" biodegradables en la tierra. Absorben agua en época de lluvia y la liberan lentamente, combatiendo la sequía.</li>
+                        <li><strong class="text-emerald-400">Agroplásticos Inteligentes:</strong> Cubiertas que filtran la luz UV dañina y mantienen la temperatura ideal de los cultivos.</li>
+                        <li><strong class="text-teal-400">El Guion de Comunicación:</strong> Todo avance necesita un gancho (para atrapar), un desarrollo (explicación sencilla en lugar de términos densos) y un llamado a la acción.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TRABAJO EN LA SALA -->
+            <section class="glass-card rounded-3xl p-8 border-l-4 border-l-purple-500 relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="text-xs font-bold rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/50 px-3 py-1.5 shadow-lg backdrop-blur flex items-center gap-2">
+                        <span>🖥️</span> TRABAJO EN LA SALA
+                    </span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white mb-6 pr-40">Reto Práctico: Gestión de Proyectos Audiovisuales con IA y Excel</h2>
+                
+                <div class="space-y-6 relative z-0">
+                    <!-- Paso 1 -->
+                    <div class="bg-black/30 rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-bold text-purple-400 mb-3 flex items-center gap-2">
+                            <span class="bg-purple-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">1</span> 
+                            Generación de datos con IA 🤖
+                        </h3>
+                        <p class="text-gray-300 mb-4 text-sm">Abre tu asistente de IA (ChatGPT, Gemini, Claude) y pega este prompt exacto para simular nuestra base de datos de producción de videos:</p>
+                        
+                        <div class="relative group">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-teal-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                            <div class="relative bg-gray-900 rounded-xl p-4 font-mono text-sm text-green-400 overflow-x-auto border border-gray-700">
+                                "Genera una tabla con exactamente 6 columnas y 10 filas de datos sobre proyectos de video educativos que comunican innovaciones de materiales artificiales en agricultura. Las columnas deben ser: ID_Proyecto (código único como VID001), Material_Artificial (ej: Hidrogel, Bioplástico, Nanopartículas, Membrana Selectiva, Polímero Degradable), Duracion_Min (duración del video en minutos, valores entre 3 y 15), Costo_Produccion_COP (costo en pesos colombianos, valores entre 500000 y 3500000), Alcance_Espectadores (número estimado de espectadores, valores entre 100 y 5000), Etapa_Produccion (categorías: Preproducción, Producción, Postproducción). Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador."
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 flex items-center gap-1">
+                            <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"></path></svg>
+                            Copia el resultado y pégalo en la celda A1 de Excel. Los IDs permiten consultar información específica sin ambigüedad.
+                        </p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="bg-black/30 rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-bold text-teal-400 mb-3 flex items-center gap-2">
+                            <span class="bg-teal-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">2</span> 
+                            Formato Visual en Excel 📊
+                        </h3>
+                        <ul class="text-sm text-gray-300 space-y-2 list-disc ml-5">
+                            <li><strong>Encabezados (Fila 1):</strong> Relleno verde oscuro, letra blanca, Arial Bold 11, centrado total.</li>
+                            <li><strong>IDs (Col A):</strong> Arial 10, Negrita, centrado.</li>
+                            <li><strong>Numéricos (C, D, E):</strong> Alineación derecha. <em>Costo_Produccion_COP</em> en formato Moneda (sin decimales).</li>
+                            <li><strong>Etapa (Col F):</strong> Centrado. ¡Aplica fondo amarillo claro a los que digan "Producción"!</li>
+                            <li>Autoajusta columnas seleccionando todo y usando <code class="bg-gray-800 text-teal-300 px-1 py-0.5 rounded">Alt + O + C + A</code>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="bg-black/30 rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-bold text-blue-400 mb-3 flex items-center gap-2">
+                            <span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">3</span> 
+                            Análisis con Fórmulas Avanzadas ⚙️
+                        </h3>
+                        <p class="text-sm text-gray-400 mb-4">Ingresa estas fórmulas a partir de H2 para analizar tu portafolio audiovisual:</p>
+                        
+                        <div class="grid gap-3 text-sm">
+                            <div class="bg-gray-800/50 p-3 rounded-lg border border-gray-700 flex flex-col md:flex-row gap-3 items-start md:items-center">
+                                <code class="text-green-400 font-bold bg-black/50 px-2 py-1 rounded min-w-[280px]">=PROMEDIO(C2:C11)</code>
+                                <span class="text-gray-300">Duración promedio de videos.</span>
+                            </div>
+                            <div class="bg-gray-800/50 p-3 rounded-lg border border-gray-700 flex flex-col md:flex-row gap-3 items-start md:items-center">
+                                <code class="text-green-400 font-bold bg-black/50 px-2 py-1 rounded min-w-[280px]">=SUMAR.SI(F2:F11;"Producción";D2:D11)</code>
+                                <span class="text-gray-300">Presupuesto activo (Solo en etapa Producción).</span>
+                            </div>
+                            <div class="bg-gray-800/50 p-3 rounded-lg border border-gray-700 flex flex-col md:flex-row gap-3 items-start md:items-center">
+                                <code class="text-green-400 font-bold bg-black/50 px-2 py-1 rounded min-w-[280px]">=BUSCARV("VID005";A2:F11;4;FALSO)</code>
+                                <span class="text-gray-300">Consulta en base de datos el costo del VID005.</span>
+                            </div>
+                            <div class="bg-gray-800/50 p-3 rounded-lg border border-gray-700 flex flex-col md:flex-row gap-3 items-start md:items-center">
+                                <code class="text-green-400 font-bold bg-black/50 px-2 py-1 rounded min-w-[280px]">=CONTAR.SI(E2:E11;">1000")</code>
+                                <span class="text-gray-300">Videos con alto impacto comunicacional (>1000 vistas).</span>
+                            </div>
+                            <div class="bg-gray-800/50 p-3 rounded-lg border border-gray-700 flex flex-col md:flex-row gap-3 items-start md:items-center">
+                                <code class="text-green-400 font-bold bg-black/50 px-2 py-1 rounded min-w-[280px]">=MAX(D2:D11)</code>
+                                <span class="text-gray-300">Costo máximo de producción.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 4 y Reto -->
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 bg-gradient-to-br from-emerald-900/50 to-teal-900/50 rounded-2xl p-5 border border-emerald-500/30">
+                            <h4 class="font-bold text-white mb-2 flex items-center gap-2">💾 Guardar Archivo</h4>
+                            <p class="text-sm text-gray-300 font-mono">10_agrocine_videos_agricultura_180526_nombre.xlsx</p>
+                        </div>
+                        <div class="flex-1 bg-gradient-to-br from-amber-900/50 to-orange-900/50 rounded-2xl p-5 border border-amber-500/30 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+                            <h4 class="font-bold text-amber-400 mb-2 flex items-center gap-2 relative z-10">✨ Reto Avanzado: ROI</h4>
+                            <p class="text-xs text-gray-300 relative z-10">
+                                Crea columna <strong>ROI_Estimado</strong>. Fórmula en G2: <code class="text-yellow-200 bg-black/50 px-1 rounded">=E2/D2*1000000</code>. Aplica formato condicional verde a los que superen el promedio. ¡Encuentra los videos más rentables!
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- COLUMNA DERECHA (Interactividad, Investigación y Tarea) -->
+        <div class="lg:col-span-4 space-y-8">
+            
+            <!-- INTERACTUAR EN EL PC -->
+            <section class="glass-card rounded-3xl p-6 hover-scale relative flex flex-col h-auto">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="text-xs font-bold rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 px-3 py-1.5 shadow-lg backdrop-blur flex items-center gap-2">
+                        <span>💻</span> INTERACTUAR EN EL PC
+                    </span>
+                </div>
+
+                <h2 class="text-xl font-bold text-white mb-4 pr-10">Data Lab: Impacto Agrícola</h2>
+                <p class="text-sm text-gray-400 mb-6">Analiza cómo los materiales artificiales superan a la tierra tradicional (Datos Simulados).</p>
+                
+                <div class="bg-black/40 p-4 rounded-xl border border-white/5 mb-6 flex-grow flex items-center justify-center min-h-[250px]">
+                    <canvas id="agriChart" width="100" height="100"></canvas>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                    <button onclick="updateChart(0)" class="bg-gray-800 hover:bg-gray-700 text-xs text-white py-2 rounded-lg transition-colors border border-gray-600">Suelo Normal</button>
+                    <button onclick="updateChart(1)" class="bg-blue-900 hover:bg-blue-800 text-xs text-blue-200 py-2 rounded-lg transition-colors border border-blue-700">Con Hidrogeles</button>
+                    <button onclick="updateChart(2)" class="col-span-2 bg-emerald-900 hover:bg-emerald-800 text-xs text-emerald-200 py-2 rounded-lg transition-colors border border-emerald-700">Hidrogel + Agroplástico</button>
+                </div>
+            </section>
+
+            <!-- INVESTIGACIÓN -->
+            <section class="glass-card rounded-3xl p-6 border-l-4 border-l-blue-500 relative">
+                <div class="absolute top-4 right-4">
+                    <span class="text-xs font-bold rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/50 px-3 py-1.5 shadow-lg backdrop-blur flex items-center gap-2">
+                        <span>🔍</span> INVESTIGACIÓN
+                    </span>
+                </div>
+                <h2 class="text-xl font-bold text-white mb-4 mt-6">Para el Cuaderno</h2>
+                <div class="bg-blue-900/20 p-4 rounded-xl border border-blue-500/20 shadow-inner">
+                    <p class="text-gray-300 text-sm font-medium">Busca en Google y responde en tu cuaderno:</p>
+                    <p class="text-blue-300 text-base font-bold mt-2 italic border-l-2 border-blue-400 pl-3">"¿Qué impacto ambiental tienen los agroplásticos cuando terminan su vida útil y qué alternativas biodegradables existen actualmente?"</p>
+                </div>
+            </section>
+
+            <!-- TAREA EN HOJA SUELTA (Animación Flecha Izquierda) -->
+            <section class="glass-card rounded-3xl p-6 border border-dashed border-gray-500/50 flex flex-col items-center justify-center text-center bg-black/20">
+                <div class="mb-4">
+                    <span class="text-xs font-bold rounded-full bg-gray-600/50 text-gray-300 border border-gray-500 px-3 py-1.5 flex items-center gap-2">
+                        <span>📄</span> TAREA EN HOJA SUELTA
+                    </span>
+                </div>
+                <div class="text-6xl mb-4 text-emerald-400 animate-point-left">
+                    ⬅️
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Sin Entregables Esta Semana</h3>
+                <p class="text-sm text-gray-400">
+                    Tu única misión teórica es realizar la investigación señalada a la izquierda directamente en tu cuaderno. ¡Concéntrate en la sala!
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- SECCIÓN GAMIFICACIÓN (Quiz Rápido) -->
+    <section class="max-w-5xl mx-auto mt-8 glass-card rounded-3xl p-8 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            Micro-Quiz de Cierre
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="quizContainer">
+            <!-- P1 -->
+            <div class="bg-black/30 p-5 rounded-2xl border border-white/5" id="q1">
+                <p class="font-bold text-teal-300 mb-3 text-sm">1. La función =SUMAR.SI en nuestro ejercicio sirve para:</p>
+                <div class="space-y-2">
+                    <button onclick="checkAnswer('q1', false, this)" class="w-full text-left p-3 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-sm transition-colors text-gray-300 border border-transparent">Sumar todos los costos sin importar la etapa.</button>
+                    <button onclick="checkAnswer('q1', true, this)" class="w-full text-left p-3 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-sm transition-colors text-gray-300 border border-transparent">Sumar los costos SOLO de los videos en Producción.</button>
+                </div>
+            </div>
+            <!-- P2 -->
+            <div class="bg-black/30 p-5 rounded-2xl border border-white/5" id="q2">
+                <p class="font-bold text-teal-300 mb-3 text-sm">2. ¿Cuál es el rol principal de un hidrogel en agricultura?</p>
+                <div class="space-y-2">
+                    <button onclick="checkAnswer('q2', true, this)" class="w-full text-left p-3 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-sm transition-colors text-gray-300 border border-transparent">Absorber y retener agua para liberarla lentamente.</button>
+                    <button onclick="checkAnswer('q2', false, this)" class="w-full text-left p-3 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-sm transition-colors text-gray-300 border border-transparent">Proteger la planta de los rayos UV del sol.</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER OBLIGATORIO -->
+    <footer class="mt-16 py-8 bg-black/60 border-t border-white/10 text-center backdrop-blur-md">
+        <p class="text-emerald-500/80 font-bold tracking-wider text-sm uppercase">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT (Chart.js y Botones) -->
+    <script>
+        // FUNCIÓN OBLIGATORIA DE COPIA DE ENLACES
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    t.classList.add('translate-y-0', 'opacity-100');
+                    setTimeout(() => {
+                        t.classList.add('hidden');
+                        t.classList.remove('translate-y-0', 'opacity-100');
+                    }, 3000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // CHART.JS CONFIGURACIÓN DATA LAB
+        const ctx = document.getElementById('agriChart').getContext('2d');
+        
+        // Datasets [Retención Agua %, Crecimiento %, Costo Mantenimiento]
+        const datasetsInfo = [
+            { label: 'Suelo Tradicional', data: [30, 45, 80], color: 'rgba(156, 163, 175, 0.8)', border: 'rgba(156, 163, 175, 1)' },
+            { label: 'Suelo + Hidrogel', data: [85, 70, 40], color: 'rgba(59, 130, 246, 0.8)', border: 'rgba(59, 130, 246, 1)' },
+            { label: 'Hidrogel + Agroplásticos', data: [90, 95, 55], color: 'rgba(16, 185, 129, 0.8)', border: 'rgba(16, 185, 129, 1)' }
+        ];
+
+        let agriChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Retención Agua (%)', 'Crecimiento Cultivo (%)', 'Costo Agua/Mto'],
+                datasets: [{
+                    label: datasetsInfo[0].label,
+                    data: datasetsInfo[0].data,
+                    backgroundColor: datasetsInfo[0].color,
+                    borderColor: datasetsInfo[0].border,
+                    borderWidth: 2,
+                    pointBackgroundColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: { color: 'rgba(209, 213, 219, 1)', font: { size: 11 } },
+                        ticks: { display: false, min: 0, max: 100 }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: 'white', font: { size: 12 } } }
+                }
+            }
+        });
+
+        function updateChart(index) {
+            agriChart.data.datasets[0].label = datasetsInfo[index].label;
+            agriChart.data.datasets[0].data = datasetsInfo[index].data;
+            agriChart.data.datasets[0].backgroundColor = datasetsInfo[index].color;
+            agriChart.data.datasets[0].borderColor = datasetsInfo[index].border;
+            agriChart.update();
+        }
+
+        // Lógica Micro-Quiz
+        function checkAnswer(questionId, isCorrect, btnElement) {
+            const container = document.getElementById(questionId);
+            const buttons = container.querySelectorAll('button');
+            
+            // Deshabilitar botones
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-700');
+            });
+
+            if (isCorrect) {
+                btnElement.classList.replace('bg-gray-800/80', 'bg-emerald-600/80');
+                btnElement.classList.add('border-emerald-400');
+                container.classList.add('border-emerald-500/50');
+            } else {
+                btnElement.classList.replace('bg-gray-800/80', 'bg-red-600/80');
+                btnElement.classList.add('border-red-400');
+                
+                // Mostrar correcta
+                buttons.forEach(btn => {
+                    if(btn.getAttribute('onclick').includes('true')){
+                        btn.classList.replace('bg-gray-800/80', 'bg-emerald-900/80');
+                        btn.classList.add('border-emerald-500/50');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
