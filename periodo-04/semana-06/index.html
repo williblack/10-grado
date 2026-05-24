@@ -1,1 +1,472 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 6 - Materiales del Futuro y Producción de Video</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glass: "rgba(255, 255, 255, 0.1)",
+                        glassBorder: "rgba(255, 255, 255, 0.2)",
+                    },
+                    animation: {
+                        'point-left': 'pointLeft 1s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pointLeft: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '50%': { transform: 'translateX(-15px)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #3b0764 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6b21a8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9333ea;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 antialiased">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-white/10">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 border border-purple-400/30">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 border border-emerald-400/30">
+           🔗 Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur border border-white/20 z-50 transition-all duration-300">
+        Enlace copiado ✅
+    </div>
+
+    <header class="max-w-5xl mx-auto mb-12 animate-float">
+        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+            <div class="relative z-10">
+                <span class="px-4 py-1 text-sm font-bold bg-purple-600/30 text-purple-200 rounded-full mb-4 inline-block border border-purple-500/30">
+                    Grado 10° | Periodo 4 | Semana 6
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-emerald-400 mb-4 tracking-tight">
+                    Materiales del Futuro y Producción Visual
+                </h1>
+                <p class="text-xl text-slate-300 mb-6 font-light">Colegio Santa Mariana de Jesús</p>
+                
+                <div class="glass-panel rounded-2xl p-6 inline-block max-w-3xl border-l-4 border-l-emerald-500">
+                    <h3 class="text-emerald-400 font-bold mb-2 uppercase tracking-wider text-sm">🎯 Objetivo de Aprendizaje</h3>
+                    <p class="text-slate-200">
+                        Integrar la lógica de producción audiovisual y herramientas de Inteligencia Artificial para el análisis de datos (Excel), enfocándose en cómo los nuevos materiales artificiales transforman la industria moderna.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-8">
+
+        <section class="glass-card rounded-3xl p-8 transition-all duration-500 hover:shadow-purple-900/20 hover:shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-300 text-xs font-bold rounded-full border border-amber-500/30">
+                    📝 COPIAR AL CUADERNO
+                </span>
+                <h2 class="text-2xl font-bold text-white">De la Agricultura a la Industria Avanzada</h2>
+            </div>
+            
+            <div class="text-slate-300 space-y-4 leading-relaxed">
+                <p>
+                    <strong class="text-purple-300">Conexión:</strong> En la <em>Semana 5 (¡Luces, Cámara, Agricultura!)</em> vimos cómo estructurar un mensaje. Hoy, llevamos esa lógica de producción de video a un nivel técnico para documentar la revolución industrial moderna.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div class="glass-panel p-5 rounded-xl border border-slate-700">
+                        <h3 class="text-emerald-400 font-bold mb-2">🎬 Estructura del Guion Técnico</h3>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>Pre-producción:</strong> Planificación, investigación de datos e Inteligencia Artificial para guionizar.</li>
+                            <li><strong>Producción:</strong> Grabación y captura del mensaje técnico de manera sencilla (imágenes/audio).</li>
+                            <li><strong>Post-producción:</strong> Edición y métricas de impacto usando análisis de datos.</li>
+                        </ul>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border border-slate-700">
+                        <h3 class="text-emerald-400 font-bold mb-2">🧪 Materiales Artificiales Modernos</h3>
+                        <p class="text-sm">Creados en laboratorio para superar los límites de la naturaleza:</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm mt-2 text-purple-200">
+                            <li><strong>Grafeno:</strong> Ultra conductor y resistente.</li>
+                            <li><strong>Fibra de Carbono:</strong> Ligereza aeroespacial.</li>
+                            <li><strong>Biomateriales:</strong> Compatibles con el cuerpo humano (medicina).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 transition-all duration-500 hover:shadow-emerald-900/20 hover:shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-xs font-bold rounded-full border border-blue-500/30">
+                    💻 INTERACTUAR EN EL PC
+                </span>
+                <h2 class="text-2xl font-bold text-white">Data Lab: Visualización de Impacto</h2>
+            </div>
+            
+            <p class="text-slate-300 mb-6 text-sm">
+                Interactúa con el dashboard. Analiza cómo los datos estructurados nos permiten tomar decisiones sobre qué material destacar en nuestro video técnico basándonos en su impacto y duración explicativa.
+            </p>
+
+            <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-700">
+                <div class="flex flex-wrap gap-4 mb-6 justify-center">
+                    <button onclick="updateChart('impacto')" class="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white text-sm font-bold shadow-lg hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                        Ver Impacto Industrial (1-5)
+                    </button>
+                    <button onclick="updateChart('duracion')" class="px-6 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg text-white text-sm font-bold shadow-lg hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                        Ver Duración de Escena (Seg)
+                    </button>
+                </div>
+                
+                <div class="relative h-72 w-full">
+                    <canvas id="materialChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 border-l-4 border-l-blue-500 relative overflow-hidden">
+            <div class="absolute top-10 right-10 text-9xl opacity-5">🖥️</div>
+            
+            <div class="flex items-center gap-3 mb-6 relative z-10">
+                <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/30">
+                    🖥️ TRABAJO EN LA SALA
+                </span>
+                <h2 class="text-2xl font-bold text-white">Mi solución con IA</h2>
+            </div>
+
+            <div class="space-y-6 text-slate-200 relative z-10">
+                <div class="glass-panel p-5 rounded-xl">
+                    <h3 class="text-xl font-bold text-purple-400 mb-3">🤖 Paso 1: Generar el guion técnico con IA</h3>
+                    <p class="mb-3 text-sm">Pídele a una IA que cree una tabla con 6 columnas y exactamente 10 filas de escenas sobre materiales artificiales. Copia y pega este prompt exacto:</p>
+                    <div class="bg-black/50 p-4 rounded-lg font-mono text-xs text-emerald-300 border border-slate-700 select-all overflow-x-auto">
+                        "Genera una tabla de 6 columnas (ID_escena, Material_artificial, Sector_industrial, Ventaja_clave, Duracion_seg, Impacto_escala) con 10 filas de datos. ID_escena: código único 'E01' a 'E10'. Material_artificial: nombres como 'Grafeno', 'Kevlar', 'Fibra de carbono', 'Nanotubos', 'Biomateriales', 'Aerogel', 'Metamateriales', 'Plásticos biodegradables', 'Cerámicas avanzadas', 'Aleaciones de titanio'. Sector_industrial: 'Aeroespacial', 'Automotriz', 'Construcción', 'Textil', 'Medicina', 'Energía', 'Electrónica'. Ventaja_clave: frase corta (ej. 'Alta conductividad', 'Resistencia al impacto'). Duracion_seg: número entero entre 10 y 60. Impacto_escala: número entero del 1 al 5 (1=muy bajo, 5=muy alto). Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador."
+                    </div>
+                    <p class="mt-3 text-sm">Copia el resultado y pégalo en la celda A1 de Excel. Verifica que los datos ocupen desde A1 hasta F11 (10 datos + encabezado).<br>
+                    <span class="text-amber-400">⚠️ Si la IA pega todo en una columna, repite el prompt exigiendo TSV puro.</span><br>
+                    <span class="text-blue-300">💡 Concepto: Cada fila representa una escena de tu video. Usarás estos datos para priorizar qué materiales mostrar.</span></p>
+                </div>
+
+                <div class="glass-panel p-5 rounded-xl">
+                    <h3 class="text-xl font-bold text-purple-400 mb-3">📊 Paso 2: Formato profesional para análisis visual</h3>
+                    <ul class="list-decimal list-inside space-y-2 text-sm">
+                        <li>Selecciona el rango A1:F11. Aplica <strong>Negrita</strong> y color de fondo gris claro a la fila 1 (encabezados). Alineación centrada.</li>
+                        <li>Columna D (Ventaja_clave): ajusta el ancho para que se lea completa.</li>
+                        <li>Columna E (Duracion_seg): formato número sin decimales, fondo amarillo pálido.</li>
+                        <li>Columna F (Impacto_escala): formato número entero, fondo verde muy claro.</li>
+                        <li>Agrega bordes finos a todo el rango A1:F11.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-panel p-5 rounded-xl">
+                    <h3 class="text-xl font-bold text-purple-400 mb-3">⚙️ Paso 3: Analizar el guion con funciones de Excel</h3>
+                    <p class="text-sm mb-4 text-slate-300">Aplicarás funciones sobre los datos reales (filas 2 a 11) para decidir el enfoque de tu video.</p>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700">
+                            <strong class="text-emerald-400">a) Contar sector 'Aeroespacial':</strong> En H2 "Total sectores aeroespacial:". En I2 <code class="bg-black/50 px-2 py-1 rounded text-pink-400">=CONTAR.SI(C2:C11;"Aeroespacial")</code>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700">
+                            <strong class="text-emerald-400">b) Duración promedio:</strong> En H4 "Duración promedio (seg):". En I4 <code class="bg-black/50 px-2 py-1 rounded text-pink-400">=PROMEDIO(E2:E11)</code>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700">
+                            <strong class="text-emerald-400">c) Impactos extremos:</strong> En H6 "Máximo impacto:", en I6 <code class="bg-black/50 px-2 py-1 rounded text-pink-400">=MAX(F2:F11)</code>. En H7 "Mínimo impacto:", en I7 <code class="bg-black/50 px-2 py-1 rounded text-pink-400">=MIN(F2:F11)</code>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700">
+                            <strong class="text-emerald-400">d) Sumar duración de alto impacto:</strong> En H9 "Duración total de alto impacto (seg):". En I9 <code class="bg-black/50 px-2 py-1 rounded text-pink-400">=SUMAR.SI(F2:F11;">=4";E2:E11)</code>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded border border-slate-700">
+                            <strong class="text-emerald-400">e) Obtener ventaja clave (BUSCARV):</strong> En K1 "ID_escena a buscar:", en L1 "E03". En M1 <code class="bg-black/50 px-2 py-1 rounded text-pink-400">=BUSCARV(L1;A2:D11;4;FALSO)</code>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs text-amber-300">⚠️ Si aparece #¡NOMBRE? revisa el idioma (español: CONTAR.SI, inglés: COUNTIF). Si aparece #¡N/A! verifica que el ID exista.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-l-amber-500">
+                        <h3 class="text-lg font-bold text-amber-400 mb-2">💾 Paso final: Guardar</h3>
+                        <p class="text-sm font-mono text-slate-300 break-all">10_video_materiales_140425_tu_nombre.xlsx</p>
+                        <p class="text-xs text-slate-400 mt-2">🔒 Confirma que termine en .xlsx, sin espacios ni tildes.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-l-purple-500">
+                        <h3 class="text-lg font-bold text-purple-400 mb-2">✨ Reto avanzado</h3>
+                        <p class="text-xs text-slate-300">Agrega "Costo estimado (COP)" y "Duración real (seg)". Usa <code class="text-pink-400">=SI()</code> para comparar duración real vs planificada: si supera por >5s marca "Ajustar", si no "Ok". Gráfico de barras con impactos por sector.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <section class="glass-card rounded-3xl p-8 border border-pink-500/30">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-xs font-bold rounded-full">
+                        🔍 INVESTIGACIÓN
+                    </span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">El Material del Futuro en tu Ciudad</h3>
+                <p class="text-sm text-slate-300 mb-4">
+                    Investiga en Google sobre un material artificial o compuesto que se esté utilizando actualmente en construcciones o industrias cercanas (por ejemplo, en las construcciones modernas del Valle del Cauca).
+                </p>
+                <ul class="text-sm text-slate-300 list-disc list-inside space-y-2">
+                    <li>Nombre del material.</li>
+                    <li>¿Qué problema resuelve comparado con el material tradicional?</li>
+                    <li>Dibuja en tu cuaderno una aplicación práctica de este material.</li>
+                </ul>
+            </section>
+
+            <section class="glass-card rounded-3xl p-8 bg-gradient-to-br from-indigo-900/40 to-purple-900/40 flex flex-col justify-center items-center text-center relative">
+                <div class="absolute top-1/2 -left-8 transform -translate-y-1/2 animate-point-left hidden md:block">
+                    <span class="text-5xl drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]">⬅️</span>
+                </div>
+                <div class="absolute top-4 left-1/2 transform -translate-x-1/2 -translate-y-full animate-bounce md:hidden block">
+                    <span class="text-5xl drop-shadow-[0_0_15px_rgba(236,72,153,0.8)] rotate-90 inline-block">⬅️</span>
+                </div>
+
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs font-bold rounded-full mb-4 mt-6 md:mt-0">
+                    📄 TAREA EN HOJA SUELTA
+                </span>
+                <h3 class="text-2xl font-bold text-white mb-2">Entregable de la Semana</h3>
+                <p class="text-slate-300 text-sm">
+                    Realiza la investigación indicada en el bloque de la izquierda. Prepárala en una hoja suelta debidamente marcada para entregar al final de la clase.
+                </p>
+            </section>
+        </div>
+
+        <section class="glass-card rounded-3xl p-8">
+            <h2 class="text-2xl font-bold text-white mb-6 text-center">🧠 Reto de Lógica Excel</h2>
+            <div id="quiz-container" class="space-y-4 max-w-2xl mx-auto">
+                <div class="glass-panel p-4 rounded-xl border border-slate-700 transition-colors duration-300" id="q1-box">
+                    <p class="font-bold text-slate-200 mb-3">1. Para buscar la ventaja clave del material con ID "E05" en nuestra tabla, usamos la función:</p>
+                    <div class="flex gap-2">
+                        <button onclick="checkAnswer(1, false, this)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 transition">CONTAR.SI</button>
+                        <button onclick="checkAnswer(1, true, this)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 transition">BUSCARV</button>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-700 transition-colors duration-300" id="q2-box">
+                    <p class="font-bold text-slate-200 mb-3">2. Si queremos saber cuántos segundos suman SOLO las escenas de la industria "Médica", usamos:</p>
+                    <div class="flex gap-2">
+                        <button onclick="checkAnswer(2, true, this)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 transition">SUMAR.SI</button>
+                        <button onclick="checkAnswer(2, false, this)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 transition">PROMEDIO</button>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-700 transition-colors duration-300" id="q3-box">
+                    <p class="font-bold text-slate-200 mb-3">3. La función =MAX() en la columna de impactos (1 al 5) nos devolverá:</p>
+                    <div class="flex gap-2">
+                        <button onclick="checkAnswer(3, false, this)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 transition">El promedio de los impactos</button>
+                        <button onclick="checkAnswer(3, true, this)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 transition">El valor de impacto más alto (ej. 5)</button>
+                    </div>
+                </div>
+            </div>
+            <div id="quiz-result" class="hidden text-center mt-6 text-xl font-bold text-emerald-400 animate-pulse">
+                ¡Excelente análisis lógico! 🚀
+            </div>
+        </section>
+
+        <footer class="mt-12 mb-4 text-center">
+            <div class="inline-block glass-panel px-6 py-3 rounded-full border border-slate-700/50">
+                <p class="text-sm text-slate-400 font-medium tracking-wide">
+                    © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // 1. Función obligatoria: Copiar Enlace
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if (t) {
+                    t.classList.remove('hidden');
+                    setTimeout(() => t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // 2. Data Lab: Chart.js Logic
+        let materialChart;
+        const labels = ['Grafeno', 'Kevlar', 'F. Carbono', 'Nanotubos', 'Biomateriales', 'Aerogel'];
+        
+        const dataSets = {
+            impacto: {
+                label: 'Nivel de Impacto (1 al 5)',
+                data: [5, 4, 5, 4, 5, 3],
+                backgroundColor: 'rgba(167, 139, 250, 0.7)',
+                borderColor: 'rgba(139, 92, 246, 1)',
+            },
+            duracion: {
+                label: 'Duración en Video (Segundos)',
+                data: [45, 20, 35, 30, 50, 15],
+                backgroundColor: 'rgba(52, 211, 153, 0.7)',
+                borderColor: 'rgba(16, 185, 129, 1)',
+            }
+        };
+
+        function initChart() {
+            const ctx = document.getElementById('materialChart').getContext('2d');
+            
+            Chart.defaults.color = '#cbd5e1';
+            Chart.defaults.font.family = "'Inter', sans-serif";
+
+            materialChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [dataSets.impacto]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 800,
+                        easing: 'easeOutQuart'
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 14 },
+                            padding: 12,
+                            cornerRadius: 8,
+                            displayColors: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(type) {
+            if(!materialChart) return;
+            materialChart.data.datasets[0] = dataSets[type];
+            materialChart.update();
+        }
+
+        // Initialize Chart on load
+        window.addEventListener('DOMContentLoaded', initChart);
+
+        // 3. Quiz Logic
+        let correctAnswers = 0;
+        let answeredQuestions = new Set();
+
+        function checkAnswer(qNumber, isCorrect, btnElement) {
+            if (answeredQuestions.has(qNumber)) return;
+            
+            const box = document.getElementById(`q1-box`.replace('1', qNumber));
+            const buttons = box.querySelectorAll('button');
+            
+            // Disable buttons for this question
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+            });
+
+            if (isCorrect) {
+                btnElement.classList.remove('bg-slate-800', 'opacity-50');
+                btnElement.classList.add('bg-emerald-600', 'text-white', 'opacity-100', 'scale-105');
+                box.classList.add('border-emerald-500', 'bg-emerald-900/20');
+                correctAnswers++;
+            } else {
+                btnElement.classList.remove('bg-slate-800', 'opacity-50');
+                btnElement.classList.add('bg-red-600', 'text-white', 'opacity-100');
+                box.classList.add('border-red-500', 'bg-red-900/20');
+                
+                // Show correct
+                buttons.forEach(btn => {
+                    if(btn.getAttribute('onclick').includes('true')) {
+                        btn.classList.remove('bg-slate-800');
+                        btn.classList.add('bg-emerald-600/50', 'border', 'border-emerald-500');
+                    }
+                });
+            }
+
+            answeredQuestions.add(qNumber);
+
+            if (answeredQuestions.size === 3 && correctAnswers >= 2) {
+                setTimeout(() => {
+                    document.getElementById('quiz-result').classList.remove('hidden');
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
