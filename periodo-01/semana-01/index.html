@@ -1,1 +1,568 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 1 - Importancia de la Informática | Prof. William Fdo Bernal</title>
+    
+    <!-- Tailwind CSS (Full Power) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js para el Módulo Interactivo -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #020617, #0f172a, #1e1b4b, #020617);
+            background-size: 300% 300%;
+            animation: gradientMove 20s ease infinite;
+            color: #e2e8f0;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Animación para la flecha de la tarea hacia la izquierda */
+        @keyframes bounce-left {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-25px) scale(1.1); }
+        }
+        .animate-bounce-left {
+            display: inline-block;
+            animation: bounce-left 1.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+
+        /* Ocultar barra de scroll para estética */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+        
+        .quiz-option.selected {
+            background-color: rgba(99, 102, 241, 0.2) !important;
+            border-color: #818cf8 !important;
+            box-shadow: inset 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-4 pb-8 overflow-x-hidden">
+
+    <!-- ========================================== -->
+    <!-- BARRA DE BOTONES (RUTAS OBLIGATORIAS)      -->
+    <!-- ========================================== -->
+    <div class="max-w-5xl mx-auto w-full flex justify-end gap-3 mb-8 px-6 relative z-50">
+        <a href="../../../index.html"
+           class="bg-slate-800/80 text-white px-5 py-2.5 rounded-xl shadow-lg hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur border border-slate-600 font-medium">
+           ⬅ Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-indigo-600/90 text-white px-5 py-2.5 rounded-xl shadow-lg hover:scale-105 hover:bg-indigo-500 transition-all duration-300 backdrop-blur border border-indigo-400 font-medium">
+           ⬅ Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/90 text-white px-5 py-2.5 rounded-xl shadow-lg hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur border border-emerald-400 cursor-pointer font-medium flex items-center gap-2">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <!-- TOAST DE COPIA -->
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden z-50 bg-black/90 text-emerald-400 px-6 py-4 rounded-xl shadow-2xl backdrop-blur border border-emerald-500 font-bold text-lg transition-all duration-300 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        Enlace copiado al portapapeles
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: HERO IMPACTANTE                 -->
+    <!-- ========================================== -->
+    <header class="max-w-5xl mx-auto px-6 mb-14 text-center w-full">
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-800/60 border border-indigo-500/30 text-indigo-300 text-xs font-bold tracking-widest mb-6 uppercase shadow-lg backdrop-blur">
+            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+            Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 mb-6 drop-shadow-2xl leading-tight">
+            La Informática en la <br/> Vida Cotidiana 💻🌍
+        </h1>
+        
+        <div class="glass-card p-8 max-w-3xl mx-auto border-l-4 border-l-indigo-500 text-left relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-indigo-600/20 rounded-full blur-3xl"></div>
+            <h3 class="text-2xl font-bold text-white mb-3 flex items-center gap-3">
+                <span class="bg-indigo-500/20 p-2 rounded-lg text-indigo-400">🎯</span> Objetivo de Aprendizaje
+            </h3>
+            <p class="text-slate-300 text-lg leading-relaxed font-light">
+                Comprender el concepto de informática, diferenciarla del concepto general de tecnología y analizar críticamente su impacto disruptivo (ventajas y riesgos) en la sociedad contemporánea.
+            </p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="max-w-5xl mx-auto w-full px-6 space-y-12">
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 2: COPIAR AL CUADERNO              -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 md:p-10 border-t-4 border-t-blue-500 relative group">
+            <div class="absolute top-0 right-8 -translate-y-1/2">
+                <span class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg shadow-blue-500/50 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    📝 COPIAR AL CUADERNO
+                </span>
+            </div>
+            
+            <div class="text-slate-300 space-y-8 text-lg font-light mt-4">
+                <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/50 text-blue-200 text-sm flex gap-3 items-center">
+                    <span class="text-2xl">🔄</span> 
+                    <p><strong>Conexión:</strong> ¡Bienvenidos a grado 10°! Este año no solo usaremos tecnología, sino que analizaremos cómo domina el mundo en el que vivimos.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl text-white font-semibold mb-4 flex items-center gap-2">
+                        <span class="text-blue-400">1.</span> Tecnología vs. Informática 🤔
+                    </h3>
+                    <p class="mb-4">Aunque a veces las usamos como sinónimos, tienen un alcance distinto:</p>
+                    <ul class="space-y-4 pl-4 border-l-2 border-slate-700">
+                        <li class="pl-4">
+                            <strong class="text-indigo-300">🛠️ Tecnología:</strong> Es la creación de <em>cualquier</em> herramienta, técnica o proceso para resolver un problema humano (desde la invención de la rueda hasta un motor).
+                        </li>
+                        <li class="pl-4">
+                            <strong class="text-purple-300">💻 Informática:</strong> Es una rama muy específica y poderosa de la tecnología. Estudia el tratamiento automático de la <strong>información</strong> mediante computadoras, dispositivos digitales y software. ¡Es el cerebro digital!
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl text-white font-semibold mb-4 flex items-center gap-2">
+                        <span class="text-blue-400">2.</span> La balanza digital: Impacto ⚖️
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20">
+                            <h4 class="text-emerald-400 font-bold mb-3 flex items-center gap-2">✅ Ventajas</h4>
+                            <p class="text-sm">Acceso ultra rápido a información global, automatización de tareas pesadas, telemedicina, educación sin fronteras y conexión instantánea.</p>
+                        </div>
+                        <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
+                            <h4 class="text-rose-400 font-bold mb-3 flex items-center gap-2">⚠️ Riesgos</h4>
+                            <p class="text-sm">Pérdida de privacidad (huella digital), sedentarismo, ciberacoso, dependencia extrema de servidores y exposición a brechas de datos (hackeos).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 3: INTERACTUAR EN EL PC            -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 md:p-10 border-t-4 border-t-indigo-500 relative group">
+            <div class="absolute top-0 right-8 -translate-y-1/2">
+                <span class="bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg shadow-indigo-500/50 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    💻 INTERACTUAR EN EL PC
+                </span>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center mt-4">
+                <div class="flex-1 text-slate-300 font-light">
+                    <h2 class="text-3xl font-bold text-indigo-400 mb-4">Data Lab: La Invasión Informática 📊</h2>
+                    <p class="mb-6">Observa cómo ha evolucionado el "Nivel de Digitalización" en 5 sectores clave de nuestra sociedad, comparando la tecnología análoga del año 2000 frente a la informática e Inteligencia Artificial del 2026.</p>
+                    
+                    <div class="space-y-3">
+                        <button onclick="updateChart(0)" class="w-full text-left bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition flex justify-between items-center group/btn">
+                            <span class="font-medium">👁️ Ver solo Año 2000</span>
+                            <span class="text-slate-500 group-hover/btn:text-white">→</span>
+                        </button>
+                        <button onclick="updateChart(1)" class="w-full text-left bg-indigo-900/40 p-4 rounded-xl border border-indigo-500/30 hover:bg-indigo-800/60 transition flex justify-between items-center group/btn text-indigo-200">
+                            <span class="font-medium">🚀 Ver solo Año 2026 (Actualidad)</span>
+                            <span class="text-indigo-400 group-hover/btn:text-white">→</span>
+                        </button>
+                        <button onclick="updateChart(2)" class="w-full text-left bg-purple-900/40 p-4 rounded-xl border border-purple-500/30 hover:bg-purple-800/60 transition flex justify-between items-center group/btn text-purple-200">
+                            <span class="font-medium">⚖️ Comparar Ambas Épocas</span>
+                            <span class="text-purple-400 group-hover/btn:text-white">→</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex-1 bg-slate-900/80 p-6 rounded-2xl border border-slate-700 shadow-inner w-full max-w-md">
+                    <canvas id="impactChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 4: TRABAJO EN LA SALA              -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 md:p-10 border-t-4 border-t-purple-500 relative group">
+            <div class="absolute top-0 right-8 -translate-y-1/2">
+                <span class="bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg shadow-purple-500/50 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    🖥️ TRABAJO EN LA SALA
+                </span>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-purple-400 mb-6 mt-4">Reto: Ingeniería de Prompts & Mapa Mental 🧠</h2>
+            
+            <div class="space-y-6 text-slate-300 font-light">
+                <p class="text-lg mb-8">Vamos a utilizar la IA como asistente de investigación para estructurar un mapa mental sobre la influencia de la informática, y luego lo diseñaremos en Canva.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <!-- Paso 1 -->
+                    <div class="flex gap-5 items-start bg-slate-800/30 p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/60 transition-all group/step">
+                        <div class="bg-purple-500/20 text-purple-400 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-2xl shrink-0 border border-purple-500/30 group-hover/step:bg-purple-500 group-hover/step:text-white transition-all shadow-[0_0_15px_rgba(168,85,247,0.2)]">1</div>
+                        <div class="w-full">
+                            <h3 class="text-xl font-semibold text-white mb-2">Ingeniería del Prompt (Tu asistente IA)</h3>
+                            <p class="mb-4">Abre tu IA favorita (Gemini, ChatGPT o Copilot) y pega exactamente este requerimiento:</p>
+                            
+                            <div class="relative group/code">
+                                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg blur opacity-20 group-hover/code:opacity-40 transition duration-1000 group-hover/code:duration-200"></div>
+                                <div class="relative bg-black/80 p-5 rounded-lg border border-slate-700 font-mono text-sm text-purple-300 leading-relaxed">
+                                    "Actúa como un analista tecnológico. Necesito estructurar un mapa mental sobre la influencia de la Informática en la sociedad. Elige UNO de estos ámbitos: Educación, Salud, Comercio, Entretenimiento o Comunicación.<br><br>
+                                    Entrégame el esquema organizado así:<br>
+                                    1. Nodo Central: Nombre del ámbito.<br>
+                                    2. Herramientas: 2 ejemplos concretos de software o informática usados allí.<br>
+                                    3. Impacto Positivo: 2 grandes ventajas comprobables.<br>
+                                    4. Peligros: 2 riesgos reales actuales.<br>
+                                    Sé breve y directo, ideal para copiar y pegar en Canva."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="flex gap-5 items-start bg-slate-800/30 p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/60 transition-all group/step">
+                        <div class="bg-purple-500/20 text-purple-400 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-2xl shrink-0 border border-purple-500/30 group-hover/step:bg-purple-500 group-hover/step:text-white transition-all shadow-[0_0_15px_rgba(168,85,247,0.2)]">2</div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">Diseño y Diagramación en Canva</h3>
+                            <p>Abre <strong class="text-cyan-400">Canva</strong>, busca una plantilla de "Mapa Mental" o "Mapa Conceptual". Usa los datos exactos que te dio la IA para llenar los nodos. Personaliza los colores, íconos y descarga la imagen en formato JPG o PNG.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 5: INVESTIGACIÓN & HOJA SUELTA     -->
+        <!-- ========================================== -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- INVESTIGACIÓN -->
+            <section class="glass-card p-8 border-t-4 border-t-emerald-500 relative">
+                <div class="absolute top-0 right-8 -translate-y-1/2">
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg shadow-emerald-500/50">
+                        🔍 INVESTIGACIÓN
+                    </span>
+                </div>
+                <h2 class="text-2xl font-bold text-emerald-400 mb-6 mt-4">Consulta Crítica</h2>
+                <div class="bg-slate-900/60 p-6 rounded-xl border border-emerald-500/20 h-full flex flex-col justify-center">
+                    <p class="text-slate-300 text-lg mb-4 font-light">Basado en el entorno actual de tu ciudad (Buga), investiga y escribe en tu cuaderno:</p>
+                    <ul class="space-y-3 text-white font-medium bg-black/40 p-5 rounded-lg border-l-4 border-emerald-500">
+                        <li class="flex items-center gap-3"><span class="text-emerald-400">✅</span> 3 ventajas locales de la informática.</li>
+                        <li class="flex items-center gap-3"><span class="text-rose-400">⚠️</span> 3 riesgos o problemas informáticos en la comunidad.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TAREA HOJA SUELTA (TEXTO EXACTO CON FLECHA A LA IZQUIERDA) -->
+            <section class="glass-card p-8 border-t-4 border-t-yellow-500 relative overflow-visible flex flex-col">
+                <div class="absolute top-0 right-8 -translate-y-1/2">
+                    <span class="bg-yellow-600 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg shadow-yellow-500/50">
+                        📄 TAREA EN HOJA SUELTA
+                    </span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-yellow-400 mb-6 mt-4">El Apagón Digital</h2>
+                
+                <div class="flex-1 flex flex-col sm:flex-row items-center gap-6 bg-slate-900/80 p-6 rounded-xl border border-yellow-500/30 shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl"></div>
+                    
+                    <!-- FLECHA ANIMADA HACIA LA IZQUIERDA -->
+                    <div class="text-6xl animate-bounce-left drop-shadow-[0_0_20px_rgba(234,179,8,0.6)] shrink-0 z-10">
+                        ⬅️
+                    </div>
+
+                    <div class="text-slate-200 font-light z-10">
+                        <p class="text-lg leading-relaxed">
+                            Describe brevemente en <strong class="text-yellow-400 font-bold">5 renglones:</strong> <br><br>
+                            <span class="italic text-white">"¿Cómo crees que sería un día normal de tu vida sin computadores, sin Internet y sin teléfonos inteligentes?"</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 6: GAMIFICACIÓN                    -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 md:p-12 border-t-4 border-t-cyan-500 relative overflow-hidden">
+            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-8 text-center drop-shadow-lg">
+                🎮 Micro-Quiz: ¿Sobrevivirás al Mundo Digital?
+            </h2>
+            
+            <div id="quiz-container" class="max-w-3xl mx-auto relative z-10">
+                
+                <!-- Pregunta 1 -->
+                <div class="quiz-question mb-6 transition-all duration-300" id="q1">
+                    <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <p class="text-xl font-semibold text-white mb-6">1. Mientras que la "Tecnología" abarca crear cualquier herramienta (incluso un martillo), la "Informática" se enfoca estrictamente en...</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <button class="quiz-option bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all text-left text-lg group" onclick="selectAnswer(1, this, false)">
+                                <span class="inline-block w-8 font-bold text-slate-500 group-hover:text-cyan-400">A.</span> La creación de aparatos eléctricos para el hogar.
+                            </button>
+                            <button class="quiz-option bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all text-left text-lg group" onclick="selectAnswer(1, this, true)">
+                                <span class="inline-block w-8 font-bold text-slate-500 group-hover:text-cyan-400">B.</span> El tratamiento automático de la información mediante computadores y software.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="quiz-question mb-6 hidden transition-all duration-300" id="q2">
+                    <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <p class="text-xl font-semibold text-white mb-6">2. Según lo aprendido en la sección de "Riesgos", ¿cuál de los siguientes es un peligro real del uso excesivo de herramientas informáticas?</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <button class="quiz-option bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all text-left text-lg group" onclick="selectAnswer(2, this, true)">
+                                <span class="inline-block w-8 font-bold text-slate-500 group-hover:text-cyan-400">A.</span> La pérdida de privacidad, el ciberacoso y la exposición de datos personales.
+                            </button>
+                            <button class="quiz-option bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all text-left text-lg group" onclick="selectAnswer(2, this, false)">
+                                <span class="inline-block w-8 font-bold text-slate-500 group-hover:text-cyan-400">B.</span> La imposibilidad de comunicarse con personas en otros países.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="quiz-question mb-6 hidden transition-all duration-300" id="q3">
+                    <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <p class="text-xl font-semibold text-white mb-6">3. Si vas a utilizar Inteligencia Artificial para crear tu mapa mental en la sala, la "Ingeniería de Prompts" consiste en...</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <button class="quiz-option bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all text-left text-lg group" onclick="selectAnswer(3, this, false)">
+                                <span class="inline-block w-8 font-bold text-slate-500 group-hover:text-cyan-400">A.</span> Instalar un programa complicado en el computador para que funcione.
+                            </button>
+                            <button class="quiz-option bg-slate-800 p-4 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all text-left text-lg group" onclick="selectAnswer(3, this, true)">
+                                <span class="inline-block w-8 font-bold text-slate-500 group-hover:text-cyan-400">B.</span> Darle instrucciones (texto) extremadamente claras, precisas y estructuradas a la IA.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <button id="next-btn" class="hidden bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-10 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(8,145,178,0.4)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(8,145,178,0.6)] text-lg" onclick="nextQuestion()">Siguiente Pregunta →</button>
+                    
+                    <div id="quiz-result" class="hidden text-2xl font-bold mt-6 p-8 rounded-2xl border shadow-2xl backdrop-blur-md"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER REGLA DE ORO                        -->
+    <!-- ========================================== -->
+    <footer class="mt-20 py-10 bg-black/90 border-t border-slate-800 text-center backdrop-blur-xl w-full shadow-[0_-5px_30px_rgba(0,0,0,0.8)]">
+        <p class="text-slate-500 font-semibold tracking-widest uppercase text-sm flex items-center justify-center gap-3">
+            <span>© 2026</span> 
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span> 
+            <span>Prof. William Fdo Bernal - Área de Tecnología e Informática</span>
+        </p>
+    </footer>
+
+    <!-- LÓGICA JS INTEGRADA -->
+    <script>
+        // ==========================================
+        // 1. REGLA OBLIGATORIA: Copiar Enlace
+        // ==========================================
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const toast = document.getElementById('toastCopiado');
+                if (toast) {
+                    toast.classList.remove('hidden');
+                    toast.animate([
+                        { opacity: 0, transform: 'translateY(-20px)' },
+                        { opacity: 1, transform: 'translateY(0)' }
+                    ], { duration: 400, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' });
+                    
+                    setTimeout(() => {
+                        toast.animate([
+                            { opacity: 1, transform: 'translateY(0)' },
+                            { opacity: 0, transform: 'translateY(-20px)' }
+                        ], { duration: 400, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }).onfinish = () => toast.classList.add('hidden');
+                    }, 3000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // ==========================================
+        // 2. MÓDULO INTERACTIVO: Chart.js (Radar)
+        // ==========================================
+        const ctx = document.getElementById('impactChart').getContext('2d');
+        
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Outfit', sans-serif";
+        
+        const data2000 = [20, 30, 40, 50, 40];
+        const data2026 = [90, 85, 95, 100, 95];
+        
+        const chart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Educación', 'Salud', 'Comercio', 'Entretenimiento', 'Comunicación'],
+                datasets: [
+                    {
+                        label: 'Año 2000 (Análogo)',
+                        data: data2000,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        borderColor: 'rgba(99, 102, 241, 1)',
+                        pointBackgroundColor: 'rgba(99, 102, 241, 1)',
+                        borderWidth: 2,
+                    },
+                    {
+                        label: 'Año 2026 (IA + Nube)',
+                        data: data2026,
+                        backgroundColor: 'rgba(168, 85, 247, 0.4)',
+                        borderColor: 'rgba(168, 85, 247, 1)',
+                        pointBackgroundColor: 'rgba(168, 85, 247, 1)',
+                        borderWidth: 2,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: {
+                            color: '#e2e8f0',
+                            font: { size: 13, weight: 'bold' }
+                        },
+                        ticks: { display: false, min: 0, max: 100 }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#cbd5e1', padding: 20, font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        function updateChart(view) {
+            if (view === 0) {
+                chart.data.datasets[0].hidden = false;
+                chart.data.datasets[1].hidden = true;
+            } else if (view === 1) {
+                chart.data.datasets[0].hidden = true;
+                chart.data.datasets[1].hidden = false;
+            } else {
+                chart.data.datasets[0].hidden = false;
+                chart.data.datasets[1].hidden = false;
+            }
+            chart.update();
+        }
+
+        // Iniciar mostrando ambos
+        updateChart(2);
+
+        // ==========================================
+        // 3. GAMIFICACIÓN: Lógica del Micro-Quiz
+        // ==========================================
+        let currentQuestion = 1;
+        let score = 0;
+        let answeredCurrent = false;
+
+        function selectAnswer(qNum, btn, isCorrect) {
+            if (answeredCurrent) return;
+            
+            answeredCurrent = true;
+            const siblings = btn.parentElement.children;
+            for(let el of siblings) {
+                el.classList.remove('selected', 'border-emerald-500', 'border-red-500');
+                el.style.pointerEvents = 'none'; // Deshabilitar clics adicionales
+            }
+
+            btn.classList.add('selected');
+
+            if (isCorrect) {
+                score++;
+                btn.style.backgroundColor = 'rgba(16, 185, 129, 0.2)'; 
+                btn.style.borderColor = '#34d399';
+                btn.style.boxShadow = 'inset 0 0 20px rgba(16,185,129,0.2)';
+                btn.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}], 300);
+            } else {
+                btn.style.backgroundColor = 'rgba(225, 29, 72, 0.2)'; 
+                btn.style.borderColor = '#fb7185';
+                btn.style.boxShadow = 'inset 0 0 20px rgba(225,29,72,0.2)';
+                btn.animate([{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}], 300);
+            }
+
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.classList.remove('hidden');
+            nextBtn.animate([{opacity: 0, transform: 'translateY(10px)'}, {opacity: 1, transform: 'translateY(0)'}], 300);
+        }
+
+        function nextQuestion() {
+            document.getElementById(`q${currentQuestion}`).classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            answeredCurrent = false;
+            
+            currentQuestion++;
+            
+            if (currentQuestion <= 3) {
+                const nextQ = document.getElementById(`q${currentQuestion}`);
+                nextQ.classList.remove('hidden');
+                nextQ.animate([{opacity: 0, transform: 'scale(0.95)'}, {opacity: 1, transform: 'scale(1)'}], 400);
+            } else {
+                mostrarResultado();
+            }
+        }
+
+        function mostrarResultado() {
+            const resDiv = document.getElementById('quiz-result');
+            resDiv.classList.remove('hidden');
+            
+            if (score === 3) {
+                resDiv.innerHTML = "¡Excelente! 🏆 Tienes pensamiento crítico informático. Estás listo para el grado 10°.";
+                resDiv.className = "text-2xl font-bold mt-6 p-8 rounded-2xl border shadow-2xl backdrop-blur-md text-emerald-400 bg-emerald-900/30 border-emerald-500/50";
+            } else if (score === 2) {
+                resDiv.innerHTML = "¡Muy bien! 🥈 Analizas bien el entorno, solo un pequeño repaso te hará experto.";
+                resDiv.className = "text-2xl font-bold mt-6 p-8 rounded-2xl border shadow-2xl backdrop-blur-md text-yellow-400 bg-yellow-900/30 border-yellow-500/50";
+            } else {
+                resDiv.innerHTML = "¡Buen intento! 💪 La tecnología es compleja, vuelve a leer el apunte del cuaderno e inténtalo de nuevo.";
+                resDiv.className = "text-2xl font-bold mt-6 p-8 rounded-2xl border shadow-2xl backdrop-blur-md text-blue-400 bg-blue-900/30 border-blue-500/50";
+            }
+            
+            resDiv.animate([{opacity: 0, transform: 'translateY(20px)'}, {opacity: 1, transform: 'translateY(0)'}], 600);
+        }
+    </script>
+</body>
+</html>
