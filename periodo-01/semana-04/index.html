@@ -1,1 +1,474 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 4 - Ciclo de vida de un producto tecnológico | Prof. William Fdo Bernal</title>
+    
+    <!-- Tailwind CSS (Full Power) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js para el Módulo Interactivo -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #090d16, #1e1b4b, #090d16);
+            background-size: 200% 200%;
+            animation: gradientMove 15s ease infinite;
+            color: #e2e8f0;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Animación para la flecha de la tarea hacia la izquierda */
+        @keyframes bounce-left {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+        }
+        .animate-bounce-left {
+            display: inline-block;
+            animation: bounce-left 1.5s infinite ease-in-out;
+        }
+
+        /* Ocultar barra de scroll para estética */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 10px; }
+        
+        .quiz-option.selected {
+            background-color: rgba(99, 102, 241, 0.8) !important;
+            border-color: #a5b4fc !important;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-4 pb-8 overflow-x-hidden">
+
+    <!-- ========================================== -->
+    <!-- BARRA DE BOTONES (RUTAS OBLIGATORIAS)      -->
+    <!-- ========================================== -->
+    <div class="max-w-5xl mx-auto w-full flex justify-end gap-3 mb-8 px-6 relative z-50">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur border border-slate-600">
+           ⬅ Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-purple-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur border border-purple-400">
+           ⬅ Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur border border-emerald-400 cursor-pointer">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <!-- TOAST DE COPIA -->
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden z-50 bg-black/90 text-emerald-400 px-6 py-3 rounded-xl shadow-2xl backdrop-blur border border-emerald-500 font-bold text-lg transition-all duration-300">
+        Enlace copiado ✅
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: HERO IMPACTANTE                 -->
+    <!-- ========================================== -->
+    <header class="max-w-5xl mx-auto px-6 mb-12 text-center w-full">
+        <div class="inline-block px-4 py-1 rounded-full bg-slate-800/60 border border-slate-500 text-indigo-300 text-sm font-bold tracking-widest mb-4 uppercase shadow-lg backdrop-blur">
+            Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 mb-6 drop-shadow-lg filter drop-shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+            Ciclo de Vida de un Producto Tecnológico 📦📈
+        </h1>
+        
+        <div class="glass-card p-6 max-w-3xl mx-auto border-l-4 border-l-indigo-400 text-left">
+            <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                <span>🎯</span> Objetivo de Aprendizaje
+            </h3>
+            <p class="text-slate-200 text-lg leading-relaxed">
+                Comprender las etapas del ciclo de vida de los productos tecnológicos, analizar por qué pierden vigencia en el mercado actual y aplicar estrategias analíticas de prolongación o relanzamiento.
+            </p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="max-w-5xl mx-auto w-full px-6 space-y-10">
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 2: COPIAR AL CUADERNO              -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-indigo-500 relative overflow-hidden group">
+            <div class="absolute top-4 right-4">
+                <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-indigo-500/50">
+                    📝 COPIAR AL CUADERNO
+                </span>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4">Evolución, Apogeo y Caducidad Tecnológica 🔄</h2>
+            <div class="text-slate-300 space-y-4 text-lg">
+                <p class="italic text-yellow-300 mb-4">"Conectando con la clase anterior: Ya estudiamos la clasificación de los productos tecnológicos y sus materiales. Hoy analizaremos el trayecto temporal que recorren desde su creación hasta su obsolescencia."</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-white mb-2 text-indigo-300">1. Las Fases del Ciclo de Vida 📊</h3>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li>🚀 <strong class="text-white">Introducción:</strong> Lanzamiento inicial, costos altos y baja adopción en el mercado.</li>
+                            <li>📈 <strong class="text-white">Crecimiento:</strong> Aumento exponencial de ventas y popularidad masiva.</li>
+                            <li>⭐ <strong class="text-white">Madurez:</strong> Estabilización de ventas, máxima competencia y precios estables.</li>
+                            <li>📉 <strong class="text-white">Declive:</strong> Descenso en la demanda debido a innovaciones sustitutas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-white mb-2 text-indigo-300">2. Estrategias de Renovación 💡</h3>
+                        <p class="text-sm mb-3">Para evitar que un producto muera en el declive, las empresas aplican:</p>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li>🛠️ <strong class="text-white">Prolongación de la Madurez:</strong> Actualizaciones de software, nuevas características o variantes estéticas.</li>
+                            <li>🔄 <strong class="text-white">Relanzamiento:</strong> Reingeniería total del producto o reinterpretación nostálgica adaptada a los estándares contemporáneos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 3: INTERACTUAR EN EL PC            -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-purple-500 relative group">
+            <div class="absolute top-4 right-4">
+                <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-purple-500/50">
+                    💻 INTERACTUAR EN EL PC
+                </span>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-purple-400 mb-2">Data Lab: Curva de Comportamiento Comercial 📈</h2>
+            <p class="text-slate-300 mb-6 text-lg">Explora la relación entre el tiempo en el mercado y el volumen de ventas a lo largo de las 4 etapas clásicas del ciclo de vida tecnológico.</p>
+
+            <div class="bg-black/40 p-4 rounded-xl border border-white/10 w-full h-80 relative shadow-inner">
+                <canvas id="lifecycleChart"></canvas>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 4: TRABAJO EN LA SALA              -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-pink-500 relative group">
+            <div class="absolute top-4 right-4">
+                <span class="bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-pink-500/50">
+                    🖥️ TRABAJO EN LA SALA
+                </span>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-pink-400 mb-4">Reto en Sala: Análisis de Datos con IA y Excel 🤖</h2>
+            
+            <div class="space-y-6 text-slate-200">
+                <p class="text-lg">Ejecuta los siguientes pasos profesionales para procesar datos de productos tecnológicos y estructurar conclusiones con fórmulas analíticas.</p>
+
+                <div class="flex gap-4 items-start bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
+                    <div class="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shrink-0">1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Paso 1: Generación de Dataset (IA)</h3>
+                        <p class="text-sm mb-2">Copia y pega este prompt exacto en tu asistente de Inteligencia Artificial para obtener la estructura TSV:</p>
+                        <div class="bg-black/60 p-4 rounded text-pink-300 font-mono text-xs shadow-inner border border-slate-700">
+                            "Genera una tabla TSV para estudiantes de 10° sobre el ciclo de vida de productos tecnológicos. Usa exactamente 6 columnas con estos encabezados: ID Producto, Categoría, Etapa, Precio_lanzamiento_USD, Unidades_vendidas, Meses_en_mercado. Crea exactamente 10 filas de datos realistas de productos tecnológicos de los últimos 15 años. Incluye obligatoriamente un producto con ID Producto = TEC004. En Categoría usa solo estas opciones: Smartphone, Laptop, Tablet, Consola, Wearable, Audio. En Etapa usa solo estas opciones: Introducción, Crecimiento, Madurez, Declive, Relanzamiento. Precio_lanzamiento_USD entre 80 y 2500. Unidades_vendidas entre 5000 y 900000. Meses_en_mercado entre 6 y 180. Fechas no requeridas. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
+                    <div class="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shrink-0">2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Paso 2: Formato y Análisis en Excel</h3>
+                        <p class="text-sm">Pega los datos en A1, presiona <code class="bg-black/50 px-2 py-0.5 rounded text-pink-300">Ctrl + T</code> para convertir en tabla, aplica formato condicional por etapas y utiliza funciones avanzadas como <code class="bg-black/50 px-2 py-0.5 rounded text-pink-300">=CONTAR.SI()</code>, <code class="bg-black/50 px-2 py-0.5 rounded text-pink-300">=PROMEDIO()</code> y <code class="bg-black/50 px-2 py-0.5 rounded text-pink-300">=SUMAR.SI()</code> para auditar el estado del mercado.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
+                    <div class="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shrink-0">3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Paso 3: Reto Avanzado</h3>
+                        <p class="text-sm">Agrega una columna G llamada <code class="text-pink-300">Acción_recomendada</code> con la fórmula: <code class="bg-black/50 px-2 py-0.5 rounded text-pink-300">=SI(OR(C2="Declive";F2>120);"Relanzar o retirar";"Mantener o innovar")</code> y documenta dos ejemplos reales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 5: INVESTIGACIÓN & HOJA SUELTA     -->
+        <!-- ========================================== -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- INVESTIGACIÓN -->
+            <section class="glass-card p-6 border-t-4 border-t-cyan-500 relative">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
+                        🔍 INVESTIGACIÓN
+                    </span>
+                </div>
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4 mt-6">Análisis de Arquitectura Documental</h2>
+                <div class="bg-slate-800/50 p-5 rounded-lg border border-cyan-500/30 h-full flex flex-col justify-between">
+                    <div>
+                        <p class="text-slate-200 text-base mb-3">Reflexiona y argumenta técnicamente:</p>
+                        <p class="text-lg font-bold text-white bg-black/40 p-4 rounded border-l-4 border-cyan-500 shadow-inner">
+                            "Imagina que tienes un documento de 50 páginas. ¿Por qué es mejor usar 'Estilos' en lugar de aplicarle 'Formato manual' a cada uno de los 20 títulos que tiene el trabajo?"
+                        </p>
+                    </div>
+                    <p class="mt-4 text-xs text-cyan-300">Responde de manera estructurada en tu cuaderno de apuntes.</p>
+                </div>
+            </section>
+
+            <!-- TAREA HOJA SUELTA (TEXTO EXACTO CON FLECHA A LA IZQUIERDA) -->
+            <section class="glass-card p-6 border-t-4 border-t-yellow-500 relative overflow-visible flex items-center">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
+                        📄 TAREA EN HOJA SUELTA
+                    </span>
+                </div>
+                
+                <div class="w-full flex items-center gap-4 bg-slate-900/70 p-5 rounded-xl border border-yellow-500/50 shadow-lg mt-8">
+                    
+                    <div class="flex-1 text-slate-200 text-sm space-y-4 font-medium">
+                        <p class="font-bold text-white border-b border-slate-600 pb-2 text-lg text-yellow-400">Entregable Gráfico:</p>
+                        
+                        <p class="text-base leading-relaxed">
+                            ¡A dibujar! Dibuja cómo se vería el <strong>"esqueleto"</strong> (la estructura) de un documento ordenado usando rectángulos de diferentes tamaños para representar el Título principal, los Títulos 1, los Títulos 2 y los párrafos de Texto normal.
+                        </p>
+                    </div>
+
+                    <!-- FLECHA ANIMADA HACIA LA IZQUIERDA -->
+                    <div class="text-6xl animate-bounce-left text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.8)] shrink-0">
+                        ⬅️
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 6: GAMIFICACIÓN                    -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-emerald-500">
+            <h2 class="text-3xl font-bold text-emerald-400 mb-6 text-center">🎮 Micro-Quiz: Auditor del Ciclo Tecnológico</h2>
+            <div id="quiz-container" class="max-w-2xl mx-auto">
+                
+                <!-- Pregunta 1 -->
+                <div class="quiz-question mb-6 transition-all duration-300" id="q1">
+                    <p class="text-xl font-bold text-white mb-4">1. ¿En qué etapa del ciclo de vida un producto tecnológico alcanza su máxima estabilidad y saturación en el mercado?</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(1, this, false)">A. Introducción</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(1, this, true)">B. Madurez</button>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="quiz-question mb-6 hidden transition-all duration-300" id="q2">
+                    <p class="text-xl font-bold text-white mb-4">2. ¿Qué fórmula de Excel permite contar cuántos productos se encuentran exactamente en estado de "Madurez" en el rango C2:C11?</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(2, this, true)">A. =CONTAR.SI(C2:C11; "Madurez")</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(2, this, false)">B. =SUMA(C2:C11)</button>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="quiz-question mb-6 hidden transition-all duration-300" id="q3">
+                    <p class="text-xl font-bold text-white mb-4">3. ¿Cuál es el propósito principal de aplicar una estrategia de "Relanzamiento" a un producto tecnológico?</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(3, this, false)">A. Elevar los costos de fabricación de forma innecesaria.</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(3, this, true)">B. Rescatar un producto en declive adaptándolo a las nuevas exigencias del mercado.</button>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button id="next-btn" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-full font-bold shadow-[0_0_15px_rgba(16,185,129,0.5)] transition-all hover:scale-105" onclick="nextQuestion()">Siguiente Pregunta</button>
+                    <div id="quiz-result" class="hidden text-2xl font-bold text-sky-400 mt-4 p-6 bg-sky-900/30 rounded-xl border border-sky-500 shadow-lg"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER REGLA DE ORO                        -->
+    <!-- ========================================== -->
+    <footer class="mt-16 py-8 bg-black/80 border-t border-slate-800 text-center backdrop-blur-md w-full shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+        <p class="text-slate-400 font-semibold tracking-widest uppercase text-sm">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <!-- LÓGICA JS INTEGRADA -->
+    <script>
+        // ==========================================
+        // 1. REGLA OBLIGATORIA: Copiar Enlace
+        // ==========================================
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const toast = document.getElementById('toastCopiado');
+                if (toast) {
+                    toast.classList.remove('hidden');
+                    toast.animate([
+                        { opacity: 0, transform: 'translateY(-20px)' },
+                        { opacity: 1, transform: 'translateY(0)' }
+                    ], { duration: 300, fill: 'forwards' });
+                    
+                    setTimeout(() => {
+                        toast.animate([
+                            { opacity: 1, transform: 'translateY(0)' },
+                            { opacity: 0, transform: 'translateY(-20px)' }
+                        ], { duration: 300, fill: 'forwards' }).onfinish = () => toast.classList.add('hidden');
+                    }, 2500);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // ==========================================
+        // 2. MÓDULO INTERACTIVO: Data Lab (Chart.js)
+        // ==========================================
+        const ctx = document.getElementById('lifecycleChart').getContext('2d');
+        
+        const fases = ['Introducción', 'Crecimiento', 'Madurez', 'Declive / Relanzamiento'];
+        const volumenVentas = [15, 65, 95, 30];
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: fases,
+                datasets: [
+                    {
+                        label: 'Volumen de Ventas / Aceptación Comercial',
+                        data: volumenVentas,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        borderColor: 'rgba(99, 102, 241, 1)',
+                        borderWidth: 4,
+                        pointBackgroundColor: '#a5b4fc',
+                        pointRadius: 6,
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                color: '#e2e8f0',
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Nivel de Demanda y Ventas (%)', color: '#c7d2fe' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8', font: { size: 13 } }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0', font: { size: 14 } } },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleFont: { size: 16 },
+                        bodyFont: { size: 14 }
+                    }
+                }
+            }
+        });
+
+        // ==========================================
+        // 3. GAMIFICACIÓN: Lógica del Micro-Quiz
+        // ==========================================
+        let currentQuestion = 1;
+        let score = 0;
+        let answeredCurrent = false;
+
+        function selectAnswer(qNum, btn, isCorrect) {
+            if (answeredCurrent) return;
+            
+            answeredCurrent = true;
+            const siblings = btn.parentElement.children;
+            for(let el of siblings) {
+                el.classList.remove('selected', 'border-emerald-500', 'border-red-500');
+            }
+
+            btn.classList.add('selected');
+
+            if (isCorrect) {
+                score++;
+                btn.style.backgroundColor = 'rgba(16, 185, 129, 0.4)'; 
+                btn.style.borderColor = '#34d399';
+                btn.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}], 300);
+            } else {
+                btn.style.backgroundColor = 'rgba(239, 68, 68, 0.4)'; 
+                btn.style.borderColor = '#f87171';
+                btn.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}], 300);
+            }
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            document.getElementById(`q${currentQuestion}`).classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            answeredCurrent = false;
+            
+            currentQuestion++;
+            
+            if (currentQuestion <= 3) {
+                document.getElementById(`q${currentQuestion}`).classList.remove('hidden');
+            } else {
+                mostrarResultado();
+            }
+        }
+
+        function mostrarResultado() {
+            const resDiv = document.getElementById('quiz-result');
+            resDiv.classList.remove('hidden');
+            
+            if (score === 3) {
+                resDiv.innerHTML = "¡Excelente! 🏆 Eres un Arquitecto Tecnológico Experto. Dominas el ciclo de vida y el análisis de datos.";
+            } else if (score === 2) {
+                resDiv.innerHTML = "¡Muy bien! 🥈 Tienes claros los conceptos fundamentales de la sesión.";
+                resDiv.classList.replace('text-sky-400', 'text-yellow-400');
+                resDiv.classList.replace('bg-sky-900/30', 'bg-yellow-900/30');
+                resDiv.classList.replace('border-sky-500', 'border-yellow-500');
+            } else {
+                resDiv.innerHTML = "¡Buen intento! 💪 Repasa los apuntes sobre las fases del ciclo de vida y las funciones de Excel.";
+                resDiv.classList.replace('text-sky-400', 'text-orange-400');
+                resDiv.classList.replace('bg-sky-900/30', 'bg-orange-900/30');
+                resDiv.classList.replace('border-sky-500', 'border-orange-500');
+            }
+        }
+    </script>
+</body>
+</html>
