@@ -1,1 +1,564 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos tecnológicos, técnicas y materiales 🛠️📦 | Grado 10°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 10,
+  edad: 15,
+  periodo: 1,
+  semana: 3,
+  tema: "Productos tecnológicos, técnicas y materiales 🛠️📦",
+  temaAnterior: "Evolución de los sistemas tecnológicos 🚀⚙️",
+  video: "",
+  estilo: "volcan",
+  emoji: "🛠️📦",
+  objetivo: "Analizar un producto cotidiano e identificar la necesidad que satisface, sus materiales y posibles técnicas de fabricación, para proponer una mejora justificada.",
+  competencia: "Relaciona necesidades, materiales y técnicas mediante el análisis de productos tecnológicos, diferenciando observaciones de suposiciones y valorando criterios de funcionalidad, seguridad y sostenibilidad.",
+  preguntaGancho: "Si una maleta de tela y una de metal pueden guardar objetos, ¿por qué no resultan igualmente apropiadas para venir al colegio?",
+  agenda: [
+    {
+      min: 5,
+      titulo: "Observar y conectar",
+      texto: "Analizamos un objeto del salón y relacionamos sus componentes con la evolución de los sistemas tecnológicos."
+    },
+    {
+      min: 12,
+      titulo: "Conceptos en el cuaderno",
+      texto: "Copiamos los conceptos principales de los cuatro bloques. Las ampliaciones sirven como lectura de apoyo y explicación oral."
+    },
+    {
+      min: 5,
+      titulo: "Exploración interactiva",
+      texto: "Resolvemos el clasificador en grupo. Las tarjetas y el explorador quedan disponibles como apoyo para la ficha."
+    },
+    {
+      min: 13,
+      titulo: "Ficha de análisis tecnológico",
+      texto: "Cada estudiante analiza un objeto cercano y desarrolla los cinco campos de la ficha en su cuaderno."
+    },
+    {
+      min: 6,
+      titulo: "Quiz y verificación",
+      texto: "Respondemos el quiz y revisamos las explicaciones para corregir ideas."
+    },
+    {
+      min: 4,
+      titulo: "Socialización y cierre",
+      texto: "Dos estudiantes comparten su propuesta de mejora. Cada estudiante responde «¿Qué aprendí hoy?»; las demás preguntas de la hoja sirven como apoyo durante el reto."
+    }
+  ],
+  cuaderno: {
+    conexion: "En la clase anterior estudiamos la evolución de los sistemas tecnológicos. Ahora observaremos los productos que forman parte de esos sistemas: qué necesidad atienden, de qué están hechos y qué técnicas permiten fabricarlos. Cambiar un material o una técnica puede transformar el funcionamiento de un producto.",
+    bloques: [
+      {
+        icono: "🔬",
+        titulo: "1. La anatomía de la tecnología",
+        puntos: [
+          {
+            icono: "🔨",
+            termino: "Artefacto",
+            texto: "Objeto físico creado por las personas para cumplir una función, como un martillo, un celular o un lápiz."
+          },
+          {
+            icono: "🔄",
+            termino: "Proceso",
+            texto: "Conjunto de pasos organizados para obtener un resultado, como fabricar y ensamblar las partes de un celular."
+          },
+          {
+            icono: "🌐",
+            termino: "Sistema",
+            texto: "Conjunto de elementos relacionados que trabajan para cumplir una función, como una red de telecomunicaciones."
+          },
+          {
+            icono: "📦",
+            termino: "Producto tecnológico",
+            texto: "Resultado de una actividad tecnológica que responde a una necesidad; puede ser un artefacto, un servicio o un proceso desarrollado."
+          }
+        ],
+        ampliacion: "Piensa en una bicicleta utilizada para desplazarse por Buga. La bicicleta es un artefacto porque es un objeto físico diseñado con una finalidad. Su fabricación requiere un proceso que incluye producir piezas, unirlas y comprobar su funcionamiento. Además, podemos analizarla como un sistema en el que frenos, ruedas, cadena y pedales interactúan. También es un producto tecnológico porque responde a una necesidad de transporte. **Estos conceptos se relacionan y no siempre representan categorías excluyentes.** La diferencia depende de lo que estudiamos: el objeto, los pasos para obtenerlo, las relaciones entre sus componentes o la solución que ofrece."
+      },
+      {
+        icono: "🧠",
+        titulo: "2. La técnica: el saber hacer",
+        puntos: [
+          {
+            icono: "🛠️",
+            termino: "Técnica",
+            texto: "Conjunto de procedimientos, habilidades y conocimientos utilizados para realizar una tarea o transformar materiales."
+          },
+          {
+            icono: "🧵",
+            termino: "Ejemplos",
+            texto: "Coser una tela, tallar madera, moldear plástico y soldar metales son técnicas empleadas en diferentes productos."
+          },
+          {
+            icono: "💻",
+            termino: "Técnicas digitales",
+            texto: "Programar permite crear instrucciones para productos digitales o para controlar dispositivos físicos."
+          },
+          {
+            icono: "🔎",
+            termino: "Técnica y proceso",
+            texto: "Una técnica explica cómo se realiza una operación; un proceso organiza varias operaciones para obtener un resultado."
+          }
+        ],
+        ampliacion: "Para fabricar una maleta escolar no basta con disponer de tela. Es necesario medir las piezas, cortarlas, unirlas mediante costura y colocar cierres y correas. La costura es una técnica; la secuencia completa de fabricación constituye un proceso. Un mismo producto puede requerir varias técnicas y herramientas. **Elegir una técnica exige considerar el material, la función y las condiciones de trabajo.** Por ejemplo, una unión adecuada para una tela flexible puede resultar inapropiada para una pieza metálica. En campos como el diseño industrial y la ingeniería, estas decisiones se justifican mediante pruebas, conocimientos técnicos y criterios de seguridad."
+      },
+      {
+        icono: "🧱",
+        titulo: "3. Los materiales y su clasificación",
+        puntos: [
+          {
+            icono: "📋",
+            termino: "Materiales",
+            texto: "Son las sustancias utilizadas para fabricar productos. Se seleccionan según propiedades como resistencia, flexibilidad, peso o conductividad."
+          },
+          {
+            icono: "🌿",
+            termino: "Naturales",
+            texto: "Proceden de la naturaleza, como la madera, el algodón y la lana. Pueden recibir tratamientos antes de utilizarse."
+          },
+          {
+            icono: "🏭",
+            termino: "Transformados",
+            texto: "Para esta actividad, agrupamos aquí materiales procesados como papel, vidrio y acero."
+          },
+          {
+            icono: "🧪",
+            termino: "Sintéticos",
+            texto: "Se obtienen mediante síntesis química, como el nailon, el poliéster y muchos plásticos."
+          },
+          {
+            icono: "⚖️",
+            termino: "Criterio de clasificación",
+            texto: "Esta clasificación es didáctica: los sintéticos también implican transformación. En el ejercicio los ubicaremos en su categoría específica."
+          }
+        ],
+        ampliacion: "Observa una camiseta: puede estar hecha de algodón, poliéster o una mezcla de ambos. Aunque se parezcan a simple vista, su composición puede influir en el secado, la comodidad y el cuidado. Por eso conviene revisar la etiqueta antes de afirmar de qué está hecha. **La apariencia no permite identificar con certeza todos los materiales.** En esta clase distinguiremos naturales, transformados y sintéticos para facilitar el análisis, reconociendo que las categorías pueden relacionarse. El cuero, por ejemplo, tiene origen animal, pero requiere tratamientos como el curtido; su clasificación exige aclarar si hablamos del origen o del procesamiento."
+      },
+      {
+        icono: "🧩",
+        titulo: "4. De la necesidad al producto",
+        puntos: [
+          {
+            icono: "➕",
+            termino: "Relación básica",
+            texto: "Necesidad humana + materiales + técnica de fabricación = producto tecnológico. Es un esquema simplificado para analizar objetos físicos."
+          },
+          {
+            icono: "🧥",
+            termino: "Ejemplo",
+            texto: "Necesidad de protegerse del frío + lana o poliéster + técnicas de corte y costura = una chaqueta."
+          },
+          {
+            icono: "💡",
+            termino: "Mejora justificada",
+            texto: "Propone un cambio e indica qué beneficio aporta y qué limitación podría generar en costo, peso, comodidad o mantenimiento."
+          },
+          {
+            icono: "♻️",
+            termino: "Pensamiento crítico",
+            texto: "Un material natural no garantiza menor impacto ambiental. También importan la fabricación, la duración, la reparación y el destino del producto."
+          }
+        ],
+        ampliacion: "Imagina que quieres mejorar una maleta cuya correa se rompe con frecuencia. Cambiar toda la tela por un material más grueso podría aumentar su resistencia, pero también su peso y costo. Otra alternativa sería reforzar solamente las uniones que soportan mayor carga. **Una mejora tecnológica debe responder a un problema concreto y considerar sus consecuencias.** No basta con escribir que el producto será ecológico o moderno: debes explicar cómo cambia su funcionamiento. Si consultas una inteligencia artificial, sus sugerencias son hipótesis para revisar, no pruebas sobre el objeto. Evita compartir datos personales y contrasta las respuestas con etiquetas o información del fabricante."
+      }
+    ]
+  },
+  glosario: [
+    {
+      termino: "Materia prima",
+      definicion: "Material de partida utilizado en un proceso de producción."
+    },
+    {
+      termino: "Propiedad",
+      definicion: "Característica de un material que ayuda a determinar sus posibles usos."
+    },
+    {
+      termino: "Moldeado",
+      definicion: "Técnica que da forma a un material utilizando un molde."
+    },
+    {
+      termino: "Ensamblaje",
+      definicion: "Unión de componentes para formar un producto."
+    },
+    {
+      termino: "Conductividad eléctrica",
+      definicion: "Capacidad de un material para permitir el paso de corriente eléctrica."
+    },
+    {
+      termino: "Vida útil",
+      definicion: "Tiempo durante el cual un producto puede cumplir adecuadamente su función en determinadas condiciones de uso."
+    },
+    {
+      termino: "Reparabilidad",
+      definicion: "Facilidad con la que un producto puede repararse para recuperar su funcionamiento."
+    },
+    {
+      termino: "Inferencia",
+      definicion: "Conclusión razonada a partir de indicios que puede requerir verificación."
+    }
+  ],
+  sabiasQue: [
+    "El acero es una aleación de hierro y carbono; su composición y tratamiento permiten obtener propiedades diferentes.",
+    "El papel se fabrica con fibras, generalmente de celulosa, que pueden proceder de madera o de papel recuperado.",
+    "Un envase de vidrio y uno de plástico pueden cumplir una función similar, aunque sus propiedades y procesos de fabricación sean diferentes."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Conceptos que puedes reconocer a tu alrededor",
+      items: [
+        {
+          icono: "🚲",
+          frente: "Una bicicleta: ¿artefacto o sistema?",
+          reverso: "Puede analizarse de ambas formas: como objeto físico y como conjunto de componentes que interactúan para permitir el desplazamiento."
+        },
+        {
+          icono: "🍲",
+          frente: "Una receta ayuda a comprender un proceso",
+          reverso: "Una receta organiza pasos para obtener un resultado. De manera semejante, un proceso de fabricación ordena operaciones y controles."
+        },
+        {
+          icono: "✂️",
+          frente: "Cortar no equivale a fabricar toda la maleta",
+          reverso: "El corte es una operación que utiliza una técnica. Fabricar la maleta requiere además medir, coser, ensamblar y revisar."
+        },
+        {
+          icono: "👟",
+          frente: "Un zapato funciona como un equipo",
+          reverso: "La suela, los cordones y la cubierta cumplen funciones distintas. Sus materiales deben responder a esas funciones."
+        },
+        {
+          icono: "🕵️",
+          frente: "Identificar materiales se parece a investigar",
+          reverso: "Observas indicios y consultas etiquetas. Si no puedes confirmar una composición, debes presentarla como posibilidad."
+        },
+        {
+          icono: "⚖️",
+          frente: "Diseñar es equilibrar decisiones",
+          reverso: "Un material más resistente puede aumentar el peso o el costo. La mejor elección depende de la necesidad y de las condiciones de uso."
+        }
+      ]
+    },
+    explorador: {
+      titulo: "Laboratorio de productos cotidianos",
+      items: [
+        {
+          icono: "🖊️",
+          nombre: "Esfero",
+          secciones: [
+            {
+              titulo: "Necesidad y componentes",
+              items: [
+                "Permite escribir mediante el depósito de tinta sobre una superficie.",
+                "Según el modelo, puede contener un cuerpo plástico y una punta metálica.",
+                "La composición exacta requiere información del fabricante; no se identifica solamente por el color."
+              ]
+            },
+            {
+              titulo: "Fabricación y mejora",
+              items: [
+                "El cuerpo plástico puede producirse por moldeo y después ensamblarse con los demás componentes.",
+                "Una mejora posible es permitir el cambio del depósito de tinta.",
+                "Analiza si se consiguen repuestos y si el cuerpo soporta varios ciclos de uso."
+              ]
+            }
+          ]
+        },
+        {
+          icono: "🎒",
+          nombre: "Maleta",
+          secciones: [
+            {
+              titulo: "Necesidad y materiales",
+              items: [
+                "Facilita transportar y organizar útiles escolares.",
+                "Puede combinar tejidos de poliéster o nailon con piezas metálicas y componentes plásticos.",
+                "Consulta la etiqueta para evitar confundir una tela sintética con algodón."
+              ]
+            },
+            {
+              titulo: "Fabricación y mejora",
+              items: [
+                "Su fabricación puede incluir corte, costura y ensamblaje de cierres y correas.",
+                "Reforzar las uniones de las correas puede atender un problema de rotura.",
+                "Explica cómo verificarías la resistencia sin realizar pruebas que dañen la maleta."
+              ]
+            }
+          ]
+        },
+        {
+          icono: "👓",
+          nombre: "Gafas",
+          secciones: [
+            {
+              titulo: "Necesidad y materiales",
+              items: [
+                "Según su diseño, permiten corregir la visión o brindar protección.",
+                "Las monturas pueden incluir metales o plásticos; los lentes pueden ser de vidrio o de materiales plásticos.",
+                "La transparencia no demuestra que un lente sea de vidrio."
+              ]
+            },
+            {
+              titulo: "Fabricación y mejora",
+              items: [
+                "La producción puede requerir moldeado, corte, pulido y ensamblaje, según el componente.",
+                "Una mejora puede facilitar el ajuste o reemplazo de una pieza de la montura.",
+                "Cualquier propuesta debe conservar la función óptica y la seguridad del producto."
+              ]
+            }
+          ]
+        },
+        {
+          icono: "📱",
+          nombre: "Celular",
+          secciones: [
+            {
+              titulo: "Producto dentro de un sistema",
+              items: [
+                "Es un artefacto que permite comunicarse y procesar información.",
+                "Integra materiales como vidrio, metales y plásticos, según el modelo.",
+                "Para algunas funciones depende de sistemas externos, como redes de telecomunicaciones."
+              ]
+            },
+            {
+              titulo: "Fabricación y análisis responsable",
+              items: [
+                "Su fabricación combina múltiples procesos, como producción de circuitos y ensamblaje de componentes.",
+                "Facilitar el reemplazo de componentes puede favorecer la reparación.",
+                "Analiza el dispositivo sin abrirlo, extraer baterías ni manipular conexiones eléctricas."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasifica materiales: usa el criterio didáctico de la clase",
+      categorias: [
+        "Naturales",
+        "Transformados",
+        "Sintéticos"
+      ],
+      items: [
+        {
+          texto: "Madera maciza: material de origen vegetal",
+          categoria: 0
+        },
+        {
+          texto: "Fibra de algodón: obtenida de una planta",
+          categoria: 0
+        },
+        {
+          texto: "Lana: fibra de origen animal",
+          categoria: 0
+        },
+        {
+          texto: "Papel: producido a partir de fibras de celulosa",
+          categoria: 1
+        },
+        {
+          texto: "Vidrio común: fabricado mediante transformación de materias primas minerales",
+          categoria: 1
+        },
+        {
+          texto: "Acero: aleación de hierro y carbono",
+          categoria: 1
+        },
+        {
+          texto: "Nailon: polímero obtenido por síntesis química",
+          categoria: 2
+        },
+        {
+          texto: "Poliéster de una tela: polímero sintético",
+          categoria: 2
+        },
+        {
+          texto: "Polietileno: plástico obtenido por síntesis química",
+          categoria: 2
+        }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Ficha de análisis tecnológico",
+    descripcion: "Elige un objeto cotidiano que tengas a la mano, como un esfero, una maleta, un reloj, un celular o unas gafas. Completa en tu cuaderno una ficha con cinco campos: producto elegido, necesidad que soluciona, materiales principales, técnica de fabricación y propuesta de mejora. La IA es un apoyo opcional después de tu análisis inicial.",
+    pasos: [
+      "Elige un objeto y obsérvalo sin desarmarlo. Escribe el campo 1: nombre del producto elegido.",
+      "Completa el campo 2: explica qué necesidad soluciona y en qué situación se utiliza.",
+      "Completa el campo 3: identifica al menos dos materiales, señala en qué parte aparecen y clasifícalos como naturales, transformados o sintéticos. Si no confirmas alguno, escribe «posiblemente».",
+      "Completa el campo 4: deduce una técnica de fabricación y explica qué indicio la sugiere, como una costura o la unión de piezas.",
+      "Completa el campo 5: propone una mejora concreta, explica su beneficio y menciona una posible limitación.",
+      "Verifica una afirmación con una etiqueta o información del fabricante. Si el docente autoriza el uso de IA, utiliza el prompt como apoyo y distingue las sugerencias de los datos confirmados.",
+      "Revisa los cinco campos y comparte tu conclusión: qué cambiarías, por qué y qué necesitarías comprobar."
+    ],
+    prompt: "Estoy en grado 10 y analizo un objeto cotidiano. Producto: [escribe el objeto]. Necesidad: [escribe la necesidad]. Materiales observados o posibles: [escribe los materiales y las partes]. Técnica que propongo: [escribe tu deducción]. Mejora propuesta: [escribe tu idea]. Revisa la coherencia de mi análisis sin completar la ficha por mí. Señala qué afirmaciones requieren verificación, plantea dos preguntas que me ayuden a mejorar y menciona una limitación de mi propuesta. No afirmes que conoces la composición exacta del objeto ni inventes fuentes. Usa la clasificación didáctica de naturales, transformados y sintéticos, aclarando los posibles solapamientos.",
+    herramientas: [
+      {
+        nombre: "ChatGPT: consulta opcional autorizada por el docente",
+        url: "https://chatgpt.com/"
+      }
+    ],
+    requisitos: [
+      "Completé los cinco campos de la ficha en el cuaderno.",
+      "Relacioné el producto con una necesidad concreta.",
+      "Identifiqué al menos dos materiales, su ubicación y su clasificación.",
+      "Expliqué una técnica probable y distinguí observaciones de suposiciones.",
+      "Propuse una mejora con un beneficio y una posible limitación.",
+      "Indiqué qué pude verificar y qué sigue pendiente; si utilicé IA, reconocí su apoyo."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "Un estudiante analiza los frenos, las ruedas y la cadena de una bicicleta y explica cómo interactúan. ¿Qué enfoque está utilizando?",
+      opciones: [
+        "La bicicleta como materia prima.",
+        "La bicicleta como sistema.",
+        "La bicicleta como técnica.",
+        "La bicicleta como material sintético."
+      ],
+      correcta: 1,
+      explicacion: "El enfoque de sistema estudia los elementos y las relaciones que permiten cumplir una función."
+    },
+    {
+      pregunta: "¿Cuál opción diferencia correctamente una técnica de un proceso?",
+      opciones: [
+        "La técnica es el producto terminado y el proceso es su material.",
+        "La técnica solo se aplica a mano y el proceso solo utiliza máquinas.",
+        "La técnica describe cómo realizar una operación y el proceso organiza las operaciones.",
+        "La técnica es la necesidad y el proceso es la herramienta."
+      ],
+      correcta: 2,
+      explicacion: "Un proceso puede integrar diferentes técnicas para obtener un resultado."
+    },
+    {
+      pregunta: "Según la clasificación didáctica de esta clase, ¿cuál secuencia corresponde a natural, transformado y sintético?",
+      opciones: [
+        "Algodón, acero y nailon.",
+        "Vidrio, lana y papel.",
+        "Poliéster, madera y acero.",
+        "Papel, nailon y algodón."
+      ],
+      correcta: 0,
+      explicacion: "El algodón tiene origen natural, el acero se ubica entre los transformados y el nailon entre los sintéticos."
+    },
+    {
+      pregunta: "Una maleta tiene una correa que se rompe en la unión. ¿Cuál propuesta responde de forma más directa al problema?",
+      opciones: [
+        "Cambiar su color para mejorar su apariencia.",
+        "Añadir un bolsillo decorativo en la parte delantera.",
+        "Hacer toda la maleta de metal sin evaluar su peso.",
+        "Reforzar la unión y evaluar la resistencia, la comodidad y el costo."
+      ],
+      correcta: 3,
+      explicacion: "La mejora debe atender la falla identificada y considerar sus efectos sobre el uso del producto."
+    },
+    {
+      pregunta: "Una IA afirma que tus gafas tienen lentes de vidrio, pero no conoce el modelo. ¿Qué debes hacer?",
+      opciones: [
+        "Copiar la afirmación porque utiliza lenguaje técnico.",
+        "Tratarla como una posibilidad y consultar información del fabricante.",
+        "Confirmarla únicamente porque los lentes son transparentes.",
+        "Pedir la misma respuesta otra vez y asumir que la repetición es una prueba."
+      ],
+      correcta: 1,
+      explicacion: "Una respuesta de IA no confirma la composición de un objeto que no ha sido identificado."
+    },
+    {
+      pregunta: "¿Cuál afirmación sobre sostenibilidad está mejor justificada?",
+      opciones: [
+        "Todo material natural tiene menor impacto ambiental.",
+        "Todo producto reciclable será reciclado después de utilizarse.",
+        "Conviene evaluar fabricación, duración, reparación y destino del producto.",
+        "El producto de menor precio siempre consume menos recursos."
+      ],
+      correcta: 2,
+      explicacion: "El impacto ambiental depende de varias etapas y condiciones, no solo del origen del material."
+    ],
+    {
+      pregunta: "¿Qué explica mejor el esquema necesidad + materiales + técnica = producto?",
+      opciones: [
+        "Relaciona elementos básicos del diseño de objetos, aunque simplifica un proceso más amplio.",
+        "Garantiza que cualquier combinación produce un objeto útil.",
+        "Demuestra que el costo y la seguridad no influyen en el diseño.",
+        "Describe de forma completa todos los servicios y productos digitales."
+      ],
+      correcta: 0,
+      explicacion: "El esquema ayuda a analizar objetos físicos, pero no incluye todas las decisiones del desarrollo tecnológico."
+    ],
+    {
+      pregunta: "Observas una línea de puntadas en una maleta. ¿Cuál conclusión es más rigurosa?",
+      opciones: [
+        "La tela necesariamente es algodón.",
+        "La maleta fue fabricada por completo de forma manual.",
+        "La maleta soporta cualquier peso sin romperse.",
+        "Las puntadas sugieren una unión mediante costura, pero no identifican la composición de la tela."
+      ],
+      correcta: 3,
+      explicacion: "Una evidencia puede respaldar una técnica probable sin demostrar otras características del producto."
+    }
+  ],
+  investigacion: {
+    titulo: "Esta semana no hay investigación",
+    instruccion: "No se asigna investigación adicional en el cuaderno.",
+    preguntas: [],
+    fuentes: []
+  },
+  tarea: {
+    titulo: "Esta semana no hay tarea entregable",
+    instruccion: "No se asigna tarea en hoja suelta. La ficha se desarrolla en el cuaderno durante la clase.",
+    renglones: 0,
+    indicacion: "No debes preparar ni entregar una hoja suelta.",
+    criterios: [],
+    entrega: "No aplica."
+  },
+  hoja: {
+    preguntas: [
+      {
+        id: "r1",
+        texto: "¿Cómo se relaciona el objeto elegido con un sistema tecnológico? Identifica al menos dos elementos que interactúan.",
+        lineas: 3
+      },
+      {
+        id: "r2",
+        texto: "Escribe dos materiales de tu objeto, su clasificación y una propiedad que explique su uso. Señala si su identificación está confirmada o es probable.",
+        lineas: 4
+      },
+      {
+        id: "r3",
+        texto: "¿Qué técnica de fabricación identificaste o dedujiste? Explica qué evidencia observaste.",
+        lineas: 3
+      },
+      {
+        id: "r4",
+        texto: "¿Qué mejora propones para tu objeto? Explica un beneficio y una posible limitación.",
+        lineas: 4
+      },
+      {
+        id: "r5",
+        texto: "Si una IA recomendara cambiar un material por otro «más ecológico», ¿qué información necesitarías para evaluar esa recomendación?",
+        lineas: 3
+      },
+      {
+        id: "r6",
+        texto: "¿Qué aprendí hoy sobre la relación entre necesidades, materiales y técnicas? Incluye un ejemplo.",
+        lineas: 3
+      }
+    ]
+  },
+  notasDocente: [
+    "Para mantener los 45 minutos, indique que se copian los puntos del cuaderno; las ampliaciones son apoyo de lectura y explicación. Use tarjetas y explorador como recursos de consulta.",
+    "Explique que la clasificación de materiales es didáctica y que los sintéticos también son transformados. Evite presentar las categorías como una clasificación científica universal.",
+    "Priorice la ficha de cinco campos. Las preguntas r1 a r5 pueden utilizarse como apoyos orales o digitales durante el reto, sin exigir transcribir y responder una segunda ficha completa.",
+    "El uso de IA es opcional y depende de la autorización institucional. No solicite cuentas nuevas ni datos personales; sin acceso, los estudiantes pueden contrastar etiquetas y reconocer lo que no pudieron verificar."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
