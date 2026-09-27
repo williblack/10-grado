@@ -1,1 +1,271 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguridad Informática y Protección de Datos | Grado 10°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 10,
+  edad: 15,
+  periodo: 1,
+  semana: 5,
+  tema: "Seguridad Informática y Protección de Datos",
+  temaAnterior: "Ciclo de Vida de un Producto Tecnológico",
+  video: "",
+  estilo: "coral",
+  emoji: "🔒",
+  objetivo: "Comprender la importancia de proteger la información personal en entornos digitales, identificar riesgos de ciberseguridad y aplicar medidas técnicas de prevención como contraseñas seguras, copias de respaldo y procesamiento estructurado de datos con IA y Microsoft Excel.",
+  competencia: "Aplica principios de ciberseguridad y protección de datos mediante el análisis crítico de riesgos digitales y el procesamiento estructurado de información en hojas de cálculo.",
+  preguntaGancho: "¿Sabías que tu huella digital y tus datos sensibles en internet pueden ser vulnerados en segundos si no aplicas hábitos básicos de ciberseguridad?",
+  agenda: [
+    { min: 5, titulo: "Sondeo e Inducción", texto: "Pregunta inicial y reflexión grupal sobre la exposición de información personal en la red." },
+    { min: 15, titulo: "Fundamentación Teórica", texto: "Explicación en cuaderno sobre seguridad informática, datos sensibles, amenazas e higiene digital." },
+    { min: 15, titulo: "Reto Práctico con IA y Excel", texto: "Generación de matriz de riesgos con IA e integración estructurada en Microsoft Excel con formato profesional." },
+    { min: 10, titulo: "Cierre y Evaluación", texto: "Desarrollo de guía de preguntas en sistema, investigación y pautas para el Decálogo de Seguridad." }
+  ],
+  cuaderno: {
+    conexion: "Así como en el **Ciclo de Vida de un Producto Tecnológico** evaluamos la fase de disposición y reciclaje para evitar la contaminación física, en la **Seguridad Informática** debemos gestionar el ciclo de vida de nuestra información para evitar la contaminación o filtración de datos en entornos digitales.",
+    bloques: [
+      {
+        icono: "🛡️",
+        titulo: "1. Concepto de Seguridad Informática y Clasificación de Datos",
+        puntos: [
+          { icono: "💻", termino: "Seguridad Informática", texto: "Conjunto de medidas, herramientas y protocolos utilizados para proteger la confidencialidad, integridad y disponibilidad de la información." },
+          { icono: "👤", termino: "Datos Personales", texto: "Información general que permite identificar a una persona (nombre completo, correo electrónico de contacto, número telefónico)." },
+          { icono: "🚨", termino: "Datos Sensibles", texto: "Información privada cuya divulgación indebida puede causar discriminación o riesgos graves a la seguridad física o financiera (huellas dactilares, contraseñas, historia médica, datos bancarios)." }
+        ],
+        ampliacion: "En la sociedad digital actual, tus datos representan el activo más codiciado tanto por empresas legítimas como por ciberdelincuentes. Divulgar **datos sensibles** como tu ubicación en tiempo real o tus documentos de identidad expone directamente tu seguridad física e integridad financiera. Aprender a clasificar qué compartes es la primera línea de defensa personal."
+      },
+      {
+        icono: "⚠️",
+        titulo: "2. Principales Riesgos y Ciberamenazas",
+        puntos: [
+          { icono: "🎣", termino: "Phishing (Engaño)", texto: "Técnica de ingeniería social mediante correos o mensajes falsos que se hacen pasar por entidades oficiales para robar credenciales." },
+          { icono: "🦠", termino: "Malware (Software Malicioso)", texto: "Programas diseñados para infiltrarse, alterar, borrar información o espiar las actividades en un dispositivo (virus, troyanos, ransomware)." },
+          { icono: "🎭", termino: "Suplantación de Identidad", texto: "Uso no autorizado de la información o imágenes de un usuario para crear perfiles falsos y cometer fraudes a su nombre." }
+        ],
+        ampliacion: "La ingeniería social no ataca principalmente las vulnerabilidades del software, sino el **factor humano**. La mayoría de los ciberataques exitosos ocurren porque el usuario hace clic en enlaces sospechosos o descarga archivos de fuentes no verificadas. La sospecha razonable ante mensajes alarmantes o promociones irreales es fundamental para neutralizar estos ataques."
+      },
+      {
+        icono: "🔑",
+        titulo: "3. Pilares de Protección e Higiene Digital",
+        puntos: [
+          { icono: "🔐", termino: "Contraseñas Seguras", texto: "Claves de mínimo 12 caracteres que combinan letras mayúsculas, minúsculas, números y símbolos especiales (#, $, %, !)." },
+          { icono: "👁️", termino: "Privacidad en Redes", texto: "Configuración consciente del perfil en modo privado y restricción en la publicación de contenido personal o geolocalizado." },
+          { icono: "💾", termino: "Copias de Seguridad (Backup)", texto: "Duplicados periódicos de archivos guardados en la nube o discos externos para prevenir la pérdida definitiva ante virus o fallos." }
+        ],
+        ampliacion: "Adoptar hábitos de **higiene digital** reduce drásticamente las probabilidades de ser vulnerado. Usar una contraseña robusta e implementar la **autenticación de dos factores (2FA)** frena más del 99% de los intentos automatizados de hackeo de cuentas en plataformas educativas y personales."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Phishing", definicion: "Ingeniería social orientada al engaño para la captura ilegal de credenciales de acceso." },
+    { termino: "Malware", definicion: "Código informático malicioso creado para infiltrarse, alterar o dañar un sistema informático." },
+    { termino: "Ransomware", definicion: "Tipo de malware que secuestra archivos cifrándolos y exige un pago económico para liberarlos." },
+    { termino: "Backup", definicion: "Copia de respaldo que garantiza la disponibilidad de la información ante pérdidas o incidentes." },
+    { termino: "2FA", definicion: "Mecanismo de seguridad que exige dos pruebas distintas para verificar la identidad de un usuario." }
+  ],
+  sabiasQue: [
+    "Más del 80% de las brechas de seguridad informática en el mundo ocurren debido a contraseñas débiles o reutilizadas en múltiples servicios.",
+    "En Colombia, los delitos informáticos están tipificados en la Ley 1273 de 2009, la cual sanciona con cárcel la violación de datos personales y la suplantación de sitios web.",
+    "El primer virus informático de la historia se llamó 'Creeper', creado en 1971 como un experimento que mostraba en pantalla: 'Soy la enredadera, ¡atrápame si puedes!'."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Conceptos Fundamentales de Ciberseguridad",
+      items: [
+        { icono: "🎣", frente: "¿Qué es el Phishing?", reverso: "Un engaño digital donde el atacante suplanta la imagen de un banco o plataforma conocida para robar tus claves de acceso." },
+        { icono: "🔐", frente: "¿Qué define una Contraseña Segura?", reverso: "Mínimo 12 caracteres, mezcla de mayúsculas, minúsculas, números y símbolos, sin incluir datos personales o secuencias simples." },
+        { icono: "🛡️", frente: "¿Qué es un Dato Sensible?", reverso: "Información como huellas biométricas, claves o datos bancarios cuya divulgación puede causar graves perjuicios." },
+        { icono: "💾", frente: "¿Para qué sirve un Backup?", reverso: "Para recuperar tu información intacta en caso de ataque informático por virus, daño físico del equipo o robo." }
+      ]
+    },
+    explorador: {
+      titulo: "Estrategias de Protección Digital",
+      items: [
+        {
+          icono: "🔑",
+          nombre: "Gestión de Credenciales",
+          secciones: [
+            { titulo: "Buenas Prácticas", items: ["Utilizar un gestor de contraseñas confiable", "Activar la verificación en dos pasos (2FA)", "Usar una clave distinta para cada plataforma"] },
+            { titulo: "Errores Comunes", items: ["Usar fechas de cumpleaños o '123456'", "Guardar contraseñas en notas de texto del celular", "Compartir claves de acceso con compañeros o amigos"] }
+          ]
+        },
+        {
+          icono: "📱",
+          nombre: "Navegación y Redes",
+          secciones: [
+            { titulo: "Navegación Segura", items: ["Verificar que el sitio web empiece por HTTPS", "Evitar el uso de redes Wi-Fi públicas para transacciones", "Mantener el sistema operativo actualizado"] },
+            { titulo: "Privacidad Activa", items: ["Mantener perfiles de redes sociales en modo privado", "Desactivar la geolocalización automática en fotos", "No compartir imágenes de carnés, tiquetes ni documentos"] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasificación de Información Digital",
+      categorias: ["Dato Personal General", "Dato Sensible Privado", "Información Pública"],
+      items: [
+        { texto: "Nombre completo del estudiante", categoria: 0 },
+        { texto: "Huella dactilar registrada en el sistema", categoria: 1 },
+        { texto: "Horario oficial de atención del colegio", categoria: 2 },
+        { texto: "Correo electrónico institucional", categoria: 0 },
+        { texto: "Clave de acceso a la plataforma de notas", categoria: 1 },
+        { texto: "Fotografía del documento de identidad", categoria: 1 },
+        { texto: "Ubicación en tiempo real de la vivienda", categoria: 1 },
+        { texto: "Nombre de la institución educativa", categoria: 2 }
+      ]
+    },
+    grafica: {
+      titulo: "Autoevaluación de Hábitos de Seguridad Digital",
+      instruccion: "Registra en cuántas de tus cuentas personales (Correo, Instagram, WhatsApp, Juegos) aplicas actualmente estas medidas de ciberseguridad (de 0 a 5 cuentas).",
+      unidad: "cuentas",
+      max: 5,
+      etiquetas: ["Clave > 12 caract.", "2FA Activado", "Perfil Privado", "Sin Clave Reutilizada"],
+      referencia: {
+        nombre: "Sugerencia del profe",
+        valores: [5, 4, 5, 4]
+      }
+    }
+  },
+  reto: {
+    titulo: "Generación de Matriz de Riesgos con IA y Formateo en Excel",
+    descripcion: "Utilizarás una herramienta de Inteligencia Artificial para generar una tabla estructurada sobre ciberseguridad, trasplantarla a Microsoft Excel respetando filas/columnas y darle formato profesional.",
+    pasos: [
+      "Abre la herramienta de Inteligencia Artificial disponible en sala (Gemini, ChatGPT o Copilot).",
+      "Copia y pega el prompt asignado para solicitar la tabla estructurada de ciberseguridad.",
+      "Selecciona y copia toda la tabla generada por la IA utilizando el comando (Ctrl + C).",
+      "Abre un libro en blanco en Microsoft Excel y selecciona la celda A1.",
+      "Pega la información copiada utilizando el comando (Ctrl + V).",
+      "Ajusta el ancho de las columnas haciendo doble clic en la separación entre las letras superiores para evitar textos cortados.",
+      "Aplica un relleno de color a la fila de encabezados (Fila 1), resalta el texto en negrita y aplica 'Todos los bordes' a la tabla.",
+      "Guarda el archivo en tu equipo con el nombre exacto: Reto_Seguridad_Nombre_10.xlsx."
+    ],
+    prompt: "Genera una tabla de 5 filas y 4 columnas sobre seguridad informática con los siguientes encabezados exactos: Concepto | Definición Corta | Riesgo Asociado | Medida de Prevención. Incluye los conceptos: Phishing, Malware, Contraseña Débil, Wi-Fi Pública, Suplantación de Identidad. Entrega únicamente la tabla en formato de texto estructurado.",
+    herramientas: [
+      { nombre: "Gemini IA", url: "https://gemini.google.com" },
+      { nombre: "ChatGPT", url: "https://chatgpt.com" }
+    ],
+    requisitos: [
+      "Tabla pegada correctamente respetando columnas separadas en Excel.",
+      "Fila de encabezados con formato visual (Negrita y color de relleno).",
+      "Bordes aplicados a todas las celdas de la tabla.",
+      "Columnas autoajustadas sin textos cortados ni ocultos.",
+      "Archivo guardado como Reto_Seguridad_Nombre_10.xlsx."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Cuál de los siguientes elementos corresponde a un DATO SENSIBLE cuya divulgación representa un riesgo alto?",
+      opciones: [
+        "Correo electrónico de contacto general",
+        "Huella dactilar o contraseña bancaria",
+        "Nombre de la institución educativa",
+        "Ciudad de residencia"
+      ],
+      correcta: 1,
+      explicacion: "Los datos sensibles identifican de manera privada o biométrica a una persona y su divulgación expone su seguridad física o económica."
+    },
+    {
+      pregunta: "El ataque mediante el cual un ciberdelincuente suplanta la interfaz de un banco o red social para robar credenciales se denomina:",
+      opciones: [
+        "Ransomware",
+        "Phishing",
+        "Backup",
+        "Firewall"
+      ],
+      correcta: 1,
+      explicacion: "El Phishing se basa en técnicas de engaño e ingeniería social para capturar claves de usuarios desprevenidos."
+    },
+    {
+      pregunta: "¿Qué característica técnica define a una contraseña robusta o segura?",
+      opciones: [
+        "Tener la fecha de nacimiento para recordarla fácilmente",
+        "Poseer mínimo 12 caracteres combinando mayúsculas, minúsculas, números y símbolos",
+        "Utilizar la misma palabra corta en todas las plataformas digitales",
+        "Incluir únicamente números de forma consecutiva"
+      ],
+      correcta: 1,
+      explicacion: "La longitud y la diversidad de caracteres aumentan la complejidad matemática frente a ataques por fuerza bruta."
+    },
+    {
+      pregunta: "¿Por qué conectarse a una red Wi-Fi pública abierta representa un riesgo de ciberseguridad?",
+      opciones: [
+        "Porque agota la batería del teléfono celular el doble de rápido",
+        "Porque el tráfico de datos transmitido puede ser interceptado por un atacante en la misma red",
+        "Porque borra automáticamente los archivos almacenados en la memoria",
+        "Porque impide abrir aplicaciones de navegación tradicional"
+      ],
+      correcta: 1,
+      explicacion: "En redes públicas no cifradas, los ciberdelincuentes pueden capturar datos mediante técnicas de intermediario (Man-in-the-Middle)."
+    },
+    {
+      pregunta: "¿Cuál es el propósito principal de realizar copias de seguridad (Backup) periódicas?",
+      opciones: [
+        "Liberar espacio en la memoria RAM del equipo",
+        "Aumentar la velocidad de descarga de archivos en internet",
+        "Garantizar la disponibilidad de los archivos ante fallos del sistema o ataques maliciosos",
+        "Reducir el consumo de energía en dispositivos portátiles"
+      ],
+      correcta: 2,
+      explicacion: "Un backup respalda la disponibilidad e integridad de los datos garantizando su restauración tras un incidente."
+    },
+    {
+      pregunta: "La Autenticación de Dos Pasos (2FA) fortalece la seguridad digital porque:",
+      opciones: [
+        "Requiere dos usuarios diferentes para poder abrir la misma cuenta",
+        "Exige dos pruebas independientes de identidad antes de otorgar acceso a la cuenta",
+        "Duplica la velocidad del procesamiento de inicio de sesión",
+        "Crea automáticamente dos contraseñas idénticas para la plataforma"
+      ],
+      correcta: 1,
+      explicacion: "El 2FA agrega una capa de verificación adicional (clave + código temporal), haciendo inútil el robo exclusivo de la contraseña."
+    }
+  ],
+  investigacion: {
+    titulo: "Investigación sobre Autenticación y Ciberataques Reales",
+    instruccion: "Responde de forma breve en tu cuaderno las siguientes dos preguntas:",
+    preguntas: [
+      "¿Qué es la Autenticación de Dos Pasos (2FA) o Verificación en Dos Pasos y por qué se debe activar en redes sociales y correos electrónicos?",
+      "Investiga un caso real o reciente de ciberataque o filtración de datos masiva ocurrido en el mundo o en Colombia, y resume en un párrafo de máximo 5 renglones qué sucedió y qué datos resultaron comprometidos."
+    ],
+    fuentes: [
+      "Centro de Cibercapacidades e Incidencias (INCIBE)",
+      "Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC)",
+      "Noticias especializadas en tecnología e informática"
+    ]
+  },
+  tarea: {
+    titulo: "Decálogo de Seguridad Digital y Protección de Datos",
+    instruccion: "En una hoja de papel (bien presentada, membretada con tus datos personales), diseña a mano tu Decálogo de Seguridad Digital con 10 reglas de oro para proteger tu información personal como estudiante de bachillerato. Agrega un título en negrita, explicación de 2 renglones máximo, bordes e íconos o dibujos representativos al lado de cada regla.",
+    renglones: 10,
+    indicacion: "Escríbela a mano en la hoja suelta entregable.",
+    criterios: [
+      "Encabezado completo y título central estructurado (10 pts)",
+      "Las 10 reglas claras con título y explicación breve (60 pts)",
+      "Ortografía, caligrafía y redacción impecables (10 pts)",
+      "Bordes e íconos/dibujos representativos por regla (20 pts)"
+    ],
+    entrega: "Próxima clase de Tecnología"
+  },
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "A partir de lo aprendido, ¿por qué los datos sensibles requieren un nivel de protección muy superior al de los datos personales generales?", lineas: 3 },
+      { id: "r2", texto: "Analiza el prompt utilizado en la actividad con IA. ¿Qué ventajas tiene dar instrucciones explícitas sobre el número de filas y columnas cuando deseamos exportar datos a Excel?", lineas: 3 },
+      { id: "r3", texto: "Escribe un ejemplo de contraseña insegura de uso común y transforma esa misma clave en una contraseña robusta siguiendo las reglas de la clase.", lineas: 3 },
+      { id: "r4", texto: "¿Qué compromisos concretos asumirás a partir de hoy para proteger tu privacidad en redes sociales y entornos virtuales?", lineas: 3 },
+      { id: "r5", texto: "¿Qué aprendí hoy en la clase de Seguridad Informática y Protección de Datos?", lineas: 3 }
+    ]
+  },
+  notasDocente: [
+    "Monitorear la correcta copia del prompt hacia la herramienta de IA para asegurar que la tabla conserve los delimitadores adecuados al pegar en Excel.",
+    "Recordar a los estudiantes no compartir ni ingresar sus contraseñas verdaderas como ejemplos durante las actividades prácticas en sala.",
+    "Verificar que el nombre del archivo de Excel guardado cumpla exactamente la nomenclatura solicitada para facilitar la evaluación."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
