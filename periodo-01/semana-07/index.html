@@ -1,1 +1,269 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ransomware y Autenticación 2FA | Grado 10°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+grado: 10,
+edad: 15,
+periodo: 1,
+semana: 7,
+tema: "Ransomware y Autenticación 2FA",
+temaAnterior: "Virus Informáticos y Otros Tipos de Malware",
+video: "",
+estilo: "coral",
+emoji: "🔒🛡️",
+objetivo: "Comprender el funcionamiento del ransomware y valorar la autenticación de dos factores (2FA) como medida esencial para proteger la identidad y los datos digitales personales e institucionales.",
+competencia: "Evalúa riesgos de seguridad informática y aplica protocolos de autenticación robustos para proteger activos digitales, demostrando pensamiento crítico frente a amenazas cibernéticas modernas.",
+preguntaGancho: "¿Qué harías si al encender tu computador ves un mensaje que dice que todos tus archivos están cifrados y debes pagar 500 dólares en Bitcoin para recuperarlos?",
+agenda: [
+{ min: 5, titulo: "Activación", texto: "Pregunta gancho y conexión con los virus informáticos estudiados la semana anterior." },
+{ min: 15, titulo: "El Ransomware", texto: "Explicación del secuestro de datos, vectores de ataque y análisis de los casos WannaCry y Ryuk." },
+{ min: 15, titulo: "Autenticación 2FA", texto: "Concepto de los tres factores de autenticación (sé, tengo, soy) y diseño de una ruta de acceso segura." },
+{ min: 10, titulo: "Reto en Sala", texto: "Creación de la matriz de seguridad en Excel y análisis de riesgos con apoyo de IA." }
+],
+cuaderno: {
+conexion: "La semana anterior estudiamos virus y malware tradicional, que buscan robar datos o dañar el sistema operativo. El ransomware es una evolución directa de esto: no solo infecta, sino que secuestra la información exigiendo un rescate económico para liberarla.",
+bloques: [
+{
+icono: "💀",
+titulo: "1. El Ransomware: Secuestro Digital",
+puntos: [
+{ icono: "🎯", termino: "Definición", texto: "Software malicioso que cifra (bloquea) los archivos del usuario y exige un pago (rescate) para devolver el acceso." },
+{ icono: "🎣", termino: "Propagación", texto: "Phishing (correos falsos), descargas de software pirata, o memorias USB infectadas en redes públicas." }
+],
+ampliacion: "Imagina que alguien cambia la cerradura de tu casa mientras no estás y te vende la única llave a un precio exorbitante. En el mundo digital, esto es el ransomware. La idea clave es que **el backup (copia de seguridad) es la única defensa infalible**, ya que si tienes tus datos a salvo en otro lugar, el secuestro pierde su poder."
+},
+{
+icono: "🌍",
+titulo: "2. Casos de Estudio: WannaCry y Ryuk",
+puntos: [
+{ icono: "🏥", termino: "WannaCry (2017)", texto: "Ataque global que afectó a más de 200.000 computadoras, incluyendo hospitales y redes de trenes, explotando una vulnerabilidad de Windows." },
+{ icono: "🏢", termino: "Ryuk (2019+)", texto: "Ataques dirigidos y manuales contra grandes corporaciones y municipios, exigiendo rescates de millones de dólares." }
+],
+ampliacion: "Mientras WannaCry se propagaba automáticamente como un gusano por redes vulnerables, Ryuk es más selectivo: los hackers entran, estudian la red durante semanas y luego lanzan el ataque. Esto demuestra que **los ataques modernos son automatizados, globales y altamente lucrativos** para el crimen organizado."
+},
+{
+icono: "🛡️",
+titulo: "3. Autenticación de Dos Factores (2FA)",
+puntos: [
+{ icono: "🧠", termino: "Factor 1: Algo que sé", texto: "Contraseñas, PINs o respuestas a preguntas secretas." },
+{ icono: "📱", termino: "Factor 2: Algo que tengo", texto: "Tu celular (código SMS o App autenticadora), un token físico o una tarjeta de coordenadas." },
+{ icono: "👆", termino: "Factor 3: Algo que soy", texto: "Biometría: huella dactilar, reconocimiento facial o escáner de iris." }
+],
+ampliacion: "Si tu cuenta es una caja fuerte, la contraseña es la llave. Si alguien roba tu llave, puede entrar. El 2FA agrega una alarma que te avisa o bloquea el intento, porque el ladrón no tiene tu celular o tu huella. La regla de oro es: **nunca compartas un código 2FA, ni siquiera si quien lo pide dice ser 'soporte técnico'**."
+}
+]
+},
+glosario: [
+{ termino: "Ransomware", definicion: "Tipo de malware que cifra los datos de la víctima y exige un pago para restaurar el acceso." },
+{ termino: "2FA (Two-Factor Authentication)", definicion: "Método de seguridad que requiere dos formas diferentes de identificación para conceder acceso a una cuenta." },
+{ termino: "Phishing", definicion: "Técnica de ingeniería social que usa correos o mensajes falsos para engañar a la víctima y robar credenciales." },
+{ termino: "Backup 3-2-1", definicion: "Regla de respaldo: 3 copias de los datos, en 2 medios diferentes, con 1 copia fuera del sitio (ej. en la nube)." },
+{ termino: "Cifrado", definicion: "Proceso de codificar información para que solo pueda ser leída por alguien que tenga la clave de descifrado." }
+],
+sabiasQue: [
+"El ataque WannaCry de 2017 afectó a más de 200.000 computadoras en 150 países, paralizando temporalmente el Servicio Nacional de Salud del Reino Unido.",
+"Según informes de ciberseguridad, más del 80% de las filtraciones de cuentas se pueden prevenir simplemente activando la autenticación en dos pasos (2FA).",
+"El FBI y las agencias de ciberseguridad recomiendan NO pagar el rescate, ya que no garantiza la recuperación de los datos y financia actividades criminales."
+],
+modulos: {
+tarjetas: {
+titulo: "Analogías de Seguridad Digital",
+items: [
+{ icono: "🧠", frente: "Contraseña", reverso: "'Algo que sé'. Es como el nombre de tu mascota; solo tú deberías saberlo." },
+{ icono: "📱", frente: "Celular con App", reverso: "'Algo que tengo'. Es como llevar la llave física de tu casa en tu bolsillo." },
+{ icono: "👆", frente: "Huella dactilar", reverso: "'Algo que soy'. Tu biometría es única e intransferible, como tu firma." },
+{ icono: "🎣", frente: "Phishing", reverso: "El anzuelo digital. Correos que parecen de tu banco, pero buscan que muerdas el enlace." },
+{ icono: "💾", frente: "Backup 3-2-1", reverso: "Tu red de seguridad. Si todo falla, tus datos siguen vivos en otro lugar." }
+]
+},
+explorador: {
+titulo: "Análisis de Amenazas y Defensas",
+items: [
+{
+icono: "📚",
+nombre: "Caso WannaCry",
+secciones: [
+{ titulo: "Año", items: ["2017"] },
+{ titulo: "Objetivo", items: ["Hospitales, empresas y redes gubernamentales"] },
+{ titulo: "Vulnerabilidad", items: ["Explotó la falla 'EternalBlue' en el protocolo SMB de Windows"] }
+]
+},
+{
+icono: "📚",
+nombre: "Caso Ryuk",
+secciones: [
+{ titulo: "Año", items: ["2019 en adelante"] },
+{ titulo: "Objetivo", items: ["Grandes corporaciones, municipios y sector salud en EE. UU."] },
+{ titulo: "Método", items: ["Infección manual tras obtener acceso inicial a la red"] }
+]
+},
+{
+icono: "📚",
+nombre: "App Autenticadora",
+secciones: [
+{ titulo: "Qué es", items: ["Aplicaciones como Google Authenticator o Authy que generan códigos cada 30 segundos"] },
+{ titulo: "Ventaja", items: ["Mucho más segura que el SMS, ya que es resistente a ataques de 'SIM Swapping' o interceptación de red"] }
+]
+}
+]
+},
+clasificador: {
+titulo: "Clasifica: ¿Factor o Amenaza?",
+categorias: ["Factor de Autenticación", "Amenaza Cibernética"],
+items: [
+{ texto: "Contraseña", categoria: 0 },
+{ texto: "Huella dactilar", categoria: 0 },
+{ texto: "Código SMS", categoria: 0 },
+{ texto: "Ransomware", categoria: 1 },
+{ texto: "Phishing", categoria: 1 },
+{ texto: "Token físico", categoria: 0 },
+{ texto: "WannaCry", categoria: 1 },
+{ texto: "Escáner de iris", categoria: 0 },
+{ texto: "Ryuk", categoria: 1 },
+{ texto: "PIN de desbloqueo", categoria: 0 }
+]
+},
+linea: {
+titulo: "Evolución del Secuestro Digital",
+hitos: [
+{ anio: "1989", titulo: "AIDS Trojan", texto: "Primer ransomware conocido, se distribuía mediante disquetes por correo postal." },
+{ anio: "2013", titulo: "CryptoLocker", texto: "Populariza el cifrado de archivos y la exigencia de pago en Bitcoin." },
+{ anio: "2017", titulo: "WannaCry", texto: "Paraliza infraestructuras globales usando la vulnerabilidad EternalBlue." },
+{ anio: "2019", titulo: "Ataques Ryuk", texto: "El ransomware se dirige específicamente a municipios y hospitales, exigiendo millones." },
+{ anio: "2021", titulo: "Colonial Pipeline", texto: "Una de las mayores empresas de combustible de EE. UU. paga 4.4 millones de dólares tras un ataque." },
+{ anio: "2023", titulo: "Era de la IA", texto: "La inteligencia artificial comienza a usarse para crear correos de phishing indetectables y automatizar ataques." }
+]
+}
+},
+reto: {
+titulo: "Matriz de Riesgos y Seguridad en Excel",
+descripcion: "Objetivo: Crear una matriz de seguridad en Excel para analizar riesgos.\n\nInstrucciones:\n1. Abre una hoja nueva de Excel o Google Sheets.\n2. Copia la siguiente tabla y pégala en la celda A1:\n\nCategoría de Cuenta | Ejemplo de Servicio | Tipo de Dato Protegido | Nivel de Riesgo (1-5) | Factor 1 (Algo que sé) | Factor 2 Recomendado\nFinanciera | Nequi / Daviplata | Dinero y Ahorros | 5 (Crítico) | Clave de 4 dígitos | Huella Dactilar + Notificación Push\nRedes Sociales | Instagram / TikTok | Identidad y Fotos | 4 (Alto) | Contraseña | Código SMS o App Autenticadora\nCorreo Electrónico | Gmail / Outlook | Recuperación de cuentas | 5 (Crítico) | Contraseña compleja | Código de respaldo impreso\nVideojuegos | Steam / Fortnite | Skins y Progreso | 3 (Medio) | Contraseña | Correo electrónico vinculado\nStreaming | Netflix / Spotify | Entretenimiento | 1 (Bajo) | Contraseña simple | No necesario (o PIN perfil)\n\n3. Usa la función 'Filtros' de Excel (Datos > Filtros) para ordenar la columna 'Nivel de Riesgo' de mayor a menor.",
+pasos: [
+"Abre una hoja de cálculo nueva en Excel o Google Sheets.",
+"Copia y pega la tabla proporcionada en la descripción en la celda A1.",
+"Activa la función 'Filtros' y ordena la columna 'Nivel de Riesgo' de mayor a menor.",
+"Abre una herramienta de IA (como Copilot, Gemini o ChatGPT).",
+"Copia y pega el prompt sugerido para obtener ejemplos de ingeniería social.",
+"Agrega esos 3 ejemplos como nuevas filas al final de tu tabla en Excel.",
+"Guarda el archivo con la nomenclatura: 10_SeguridadInformatica_Fecha_TuNombre.xlsx"
+],
+prompt: "Actúa como un experto en ciberseguridad. Dame 3 ejemplos actuales y concretos de ataques de ingeniería social dirigidos a estudiantes o empresas, explicando brevemente cómo operan y cómo prevenirlos. Entrégame el resultado en formato de tabla con columnas: Tipo de Ataque, Cómo Opera, Prevención.",
+herramientas: [
+{ nombre: "Excel Online", url: "https://www.microsoft.com/es-es/microsoft-365/excel" },
+{ nombre: "Google Sheets", url: "https://www.google.com/sheets/about/" }
+],
+requisitos: [
+"La tabla tiene las 6 columnas especificadas correctamente.",
+"Los filtros están activados y la columna de riesgo está ordenada.",
+"Se agregaron 3 filas nuevas con información verificada y generada por IA.",
+"El archivo tiene el nombre correcto según la nomenclatura del curso."
+]
+},
+quiz: [
+{
+pregunta: "¿Cuál es la principal característica que diferencia al ransomware de un virus informático tradicional?",
+opciones: [
+"El ransomware solo borra archivos, mientras que el virus los roba.",
+"El ransomware no requiere interacción del usuario para infectar.",
+"El ransomware cifra los datos y exige un rescate económico para liberarlos.",
+"El ransomware solo afecta a teléfonos móviles, no a computadoras."
+],
+correcta: 2,
+explicacion: "El ransomware se define por el 'secuestro' de la información mediante cifrado y la posterior extorsión económica."
+},
+{
+pregunta: "En el contexto de la autenticación, ¿a qué categoría pertenece un código enviado por SMS a tu celular?",
+opciones: [
+"Algo que sé.",
+"Algo que tengo.",
+"Algo que soy.",
+"Algo que hago."
+],
+correcta: 1,
+explicacion: "El celular es un objeto físico en tu posesión, por lo tanto, representa el factor 'Algo que tengo'."
+},
+{
+pregunta: "¿Por qué se considera que una App Autenticadora es más segura que recibir códigos por SMS?",
+opciones: [
+"Porque los SMS son vulnerables a ataques de SIM Swapping o interceptación de red.",
+"Porque las apps autenticadoras no requieren conexión a internet nunca.",
+"Porque los códigos SMS caducan en 10 segundos y los de app en 1 minuto.",
+"Porque las apps autenticadoras envían los códigos por correo electrónico."
+],
+correcta: 0,
+explicacion: "Los SMS pueden ser interceptados si un atacante clona tu tarjeta SIM (SIM Swapping), mientras que la app genera el código localmente en tu dispositivo."
+},
+{
+pregunta: "¿Qué vulnerabilidad explotó principalmente el ransomware WannaCry en 2017?",
+opciones: [
+"Una falla en los navegadores web como Chrome o Firefox.",
+"Contraseñas predeterminadas en routers domésticos.",
+"Archivos adjuntos en correos de redes sociales.",
+"Una falla en el protocolo de red SMB de sistemas Windows."
+],
+correcta: 3,
+explicacion: "WannaCry utilizó la herramienta 'EternalBlue', que explotaba una vulnerabilidad en el protocolo SMB (Server Message Block) de Windows."
+},
+{
+pregunta: "Según las mejores prácticas de ciberseguridad, ¿cuál es la acción más efectiva para recuperarse de un ataque de ransomware sin pagar el rescate?",
+opciones: [
+"Desconectar inmediatamente el cable de red y reiniciar el equipo.",
+"Contar con copias de seguridad (backups) actualizadas y almacenadas por separado.",
+"Instalar un antivirus después de que el ataque ya ocurrió.",
+"Cambiar todas las contraseñas de inmediato."
+],
+correcta: 1,
+explicacion: "Si tienes un backup limpio y reciente, puedes formatear el equipo y restaurar tus datos sin ceder ante la extorsión."
+},
+{
+pregunta: "Si recibes un código de verificación 2FA en tu celular sin haber intentado iniciar sesión en ninguna cuenta, ¿qué debes hacer?",
+opciones: [
+"Ingresar el código rápidamente para ver a qué cuenta pertenece.",
+"Ignorar el código, no compartirlo con nadie y cambiar tu contraseña inmediatamente.",
+"Responder al mensaje preguntando quién lo envió.",
+"Reenviar el código a un amigo para que lo verifique por ti."
+],
+correcta: 1,
+explicacion: "Recibir un código no solicitado significa que alguien tiene tu contraseña y está intentando entrar. Ignorarlo y cambiar la contraseña es la acción segura."
+}
+],
+investigacion: {
+titulo: "Profundización en Respaldo y Autenticación",
+instruccion: "Investiga y responde en tu cuaderno con tus propias palabras:",
+preguntas: [
+"Explica la regla de backup '3-2-1' y por qué es la única garantía real de recuperación ante un ataque de ransomware.",
+"¿Cuál es la diferencia técnica y de seguridad entre recibir un código 2FA por SMS y usar una App Autenticadora (como Google Authenticator o Authy)? ¿Cuál recomiendas y por qué?"
+],
+fuentes: [
+"Documentación oficial de Google sobre la Verificación en dos pasos.",
+"Informes del INCIBE (Instituto Nacional de Ciberseguridad) sobre prevención de Ransomware."
+]
+},
+hoja: {
+preguntas: [
+{ id: "r1", texto: "¿Por qué crees que las empresas grandes son el objetivo principal de ransomware como Ryuk, en lugar de usuarios individuales?", lineas: 3 },
+{ id: "r2", texto: "Describe una situación cotidiana en la que hayas tenido que usar dos factores de autenticación. ¿Fue cómodo o tedioso? Justifica tu respuesta.", lineas: 3 },
+{ id: "r3", texto: "Si un compañero te pide tu código 2FA porque dice que 'el sistema se lo está pidiendo para ayudarte a recuperar tu cuenta', ¿cuál es la respuesta ética y segura que debes darle?", lineas: 2 },
+{ id: "r4", texto: "¿Qué aprendí hoy sobre la protección de mi identidad digital que puedo aplicar inmediatamente en mis cuentas personales?", lineas: 3 }
+]
+},
+notasDocente: [
+"Recalcar enfáticamente que NUNCA deben compartir un código 2FA, ni siquiera si quien lo pide dice ser 'soporte técnico' de la plataforma. Ninguna empresa legítima lo pedirá.",
+"Durante el reto en Excel, supervisar que los estudiantes no peguen información sensible real (como sus propias contraseñas o números de documento) en la tabla o en el prompt de la IA.",
+"Usar la analogía de la 'caja fuerte' para el 2FA: la contraseña es la llave, pero el 2FA es la alarma que suena si alguien más intenta usar una copia de la llave."
+]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
+Copiar
+Preguntar a Qwen
+Explicar
+Traducir(es-ES)
