@@ -1,1 +1,234 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virus Informáticos y Otros Tipos de Malware | Grado 10°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 10,
+  edad: 15,
+  periodo: 1,
+  semana: 6,
+  tema: "Virus Informáticos y Otros Tipos de Malware",
+  temaAnterior: "Seguridad Informática y Protección de Datos",
+  video: "",
+  estilo: "coral",
+  emoji: "🦠🛡️",
+  objetivo: "Identificar las principales amenazas informáticas, diferenciar los tipos de malware y aplicar medidas de prevención analizando escenarios con IA y Excel.",
+  competencia: "Pensamiento crítico, gestión de la seguridad digital y manejo avanzado de hojas de cálculo.",
+  preguntaGancho: "¿Alguna vez tu computador o celular se ha puesto extremadamente lento de la nada, o sabías que los atacantes hoy en día pueden 'secuestrar' tus fotos y pedir rescate?",
+  agenda: [
+    { min: 5, titulo: "Diagnóstico inicial", texto: "Recuperación de conocimientos previos sobre seguridad digital y vulnerabilidades." },
+    { min: 15, titulo: "Conceptos Clave", texto: "Explicación del concepto de malware, tipología y vectores de ataque comunes." },
+    { min: 20, titulo: "Reto en Sala (IA + Excel)", texto: "Generación de matriz de riesgos con IA, importación y formato condicional en Excel." },
+    { min: 5, titulo: "Cierre y Evaluación", texto: "Reflexión final, pautas de prevención y quiz de comprobación." }
+  ],
+  cuaderno: {
+    conexion: "En la clase anterior comprendimos que la información es nuestro activo más valioso. Hoy conoceremos a los 'enemigos' invisibles que buscan robarla, corromperla o secuestrarla: el software malicioso.",
+    bloques: [
+      {
+        icono: "💻",
+        titulo: "1. ¿Qué es el Malware?",
+        puntos: [
+          { icono: "⚠️", termino: "Definición", texto: "Proviene de 'Malicious Software'. Es todo código o programa diseñado para infiltrarse en un sistema sin el consentimiento del usuario." },
+          { icono: "🎯", termino: "Propósito", texto: "Robar datos financieros, espiar, dañar la infraestructura de una empresa o exigir dinero." }
+        ],
+        ampliacion: "En la actualidad, los ciberdelincuentes no crean malware solo por 'diversión' o para molestar como en los años 90. Hoy en día es una industria multimillonaria; organizaciones criminales desarrollan ataques sofisticados para vulnerar bancos, hospitales o empresas en Colombia y el mundo, lucrándose de nuestra información."
+      },
+      {
+        icono: "🦠",
+        titulo: "2. Clasificación del Malware",
+        puntos: [
+          { icono: "💉", termino: "Virus", texto: "Requiere que el usuario lo ejecute. Se adhiere a programas legítimos y altera el funcionamiento." },
+          { icono: "🐛", termino: "Gusano (Worm)", texto: "Se replica automáticamente a través de la red sin necesidad de un archivo anfitrión ni acción humana." },
+          { icono: "🐴", termino: "Troyano", texto: "Se camufla como software legítimo (un juego, un PDF). Al abrirse, instala una 'puerta trasera' (backdoor)." },
+          { icono: "👁️", termino: "Spyware", texto: "Opera en silencio registrando pulsaciones de teclado (keylogger), contraseñas y hábitos." }
+        ],
+        ampliacion: "Comprender la diferencia es vital. Si tienes un **Gusano**, tu red entera (todos los computadores conectados al mismo Wi-Fi) está en riesgo inmediato. Si es un **Troyano**, la amenaza dependió del engaño: el atacante te convenció de abrir la puerta mediante ingeniería social."
+      },
+      {
+        icono: "🛡️",
+        titulo: "3. Medios de Propagación y Prevención",
+        puntos: [
+          { icono: "🔗", termino: "Vectores de infección", texto: "USBs públicas, descargas piratas, redes Wi-Fi abiertas y Phishing (enlaces falsos por correo/WhatsApp)." },
+          { icono: "🔄", termino: "Actualizaciones", texto: "Los parches de seguridad del Sistema Operativo cierran las brechas que los atacantes usan para entrar." },
+          { icono: "🛑", termino: "Antivirus y Sentido Común", texto: "Usar software de protección y dudar de cualquier oferta 'demasiado buena para ser verdad'." }
+        ],
+        ampliacion: "La mejor herramienta de ciberseguridad no es un software costoso, sino el **pensamiento crítico**. Ningún antivirus te salvará si tú mismo decides desactivarlo para instalar un juego pirata, o si introduces voluntariamente tu contraseña en una página web falsa que simula ser tu banco."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Malware", definicion: "Software malicioso diseñado para causar daño, robar datos o alterar sistemas." },
+    { termino: "Phishing", definicion: "Técnica de engaño (ingeniería social) donde el atacante se hace pasar por una entidad de confianza para robar credenciales." },
+    { termino: "Backdoor", definicion: "Puerta trasera; método oculto para eludir la autenticación normal y acceder remotamente a un equipo." },
+    { termino: "Ransomware", definicion: "Tipo de malware que secuestra (encripta) los archivos del usuario y exige un rescate económico para liberarlos." }
+  ],
+  sabiasQue: [
+    "El primer programa considerado un 'virus' se llamaba Creeper (1971). No era dañino, solo mostraba en pantalla: 'Soy la enredadera, atrápame si puedes'.",
+    "Hoy en día existe el modelo de negocio 'Ransomware as a Service' (RaaS), donde cibercriminales alquilan malware en la Dark Web a otros delincuentes, como si fuera una suscripción de Netflix.",
+    "El 90% de los ciberataques exitosos inician con un error humano, generalmente alguien haciendo clic en un enlace de Phishing."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Analogías de Amenazas",
+      items: [
+        { icono: "🦠", frente: "Virus Informático", reverso: "Es como un virus biológico: necesita una célula (archivo) para vivir e infectar, y te enfermas (se ejecuta) cuando tienes contacto con él." },
+        { icono: "🐛", frente: "Gusano (Worm)", reverso: "Es como una plaga automática: entra por la red de acueducto (Internet) y se multiplica solo por todas las tuberías (dispositivos) sin que nadie lo invite." },
+        { icono: "🐴", frente: "Troyano", reverso: "Es el cuento del Caballo de Troya: parece un regalo (juego gratis o app útil), pero por dentro trae a los enemigos (hackers) listos para atacar desde adentro." },
+        { icono: "🕵️", frente: "Spyware", reverso: "Es como un espía invisible detrás de ti anotando en una libreta cada tecla que presionas, tu banco y tus fotos." }
+      ]
+    },
+    clasificador: {
+      titulo: "Auditoría de Acciones: ¿Segura o Insegura?",
+      categorias: ["Acción Segura 🛡️", "Riesgo / Insegura ⚠️"],
+      items: [
+        { texto: "Ignorar la actualización de Windows porque tarda mucho.", categoria: 1 },
+        { texto: "Conectar en el portátil del colegio una USB que te encontraste en la calle.", categoria: 1 },
+        { texto: "Activar la verificación en dos pasos (2FA) en tus correos y redes sociales.", categoria: 0 },
+        { texto: "Descargar un programa 'crackeado' para no pagar la licencia.", categoria: 1 },
+        { texto: "Hacer un Backup (copia de seguridad) semanal en un disco duro externo o en la nube.", categoria: 0 },
+        { texto: "Usar la red Wi-Fi pública de un centro comercial para hacer transacciones bancarias.", categoria: 1 },
+        { texto: "Pasar el antivirus a cualquier memoria USB antes de abrir sus archivos.", categoria: 0 },
+        { texto: "Creer en el mensaje de WhatsApp que dice que te ganaste un iPhone 15 por ser el visitante 1000.", categoria: 1 }
+      ]
+    },
+    linea: {
+      titulo: "Evolución del Malware Histórico",
+      hitos: [
+        { anio: "1971", titulo: "Creeper", texto: "Considerado el primer virus experimental. No era malicioso, solo un reto técnico en ARPANET." },
+        { anio: "1988", titulo: "Gusano Morris", texto: "El primer gusano de red. Por un error de código, infectó el 10% de los computadores de Internet de la época, colapsándolos." },
+        { anio: "2000", titulo: "ILOVEYOU", texto: "Un troyano enviado por correo electrónico que infectó a 50 millones de computadores, causando daños por miles de millones de dólares." },
+        { anio: "2017", titulo: "WannaCry", texto: "Un ataque de ransomware global que paralizó hospitales, ministerios y multinacionales pidiendo pagos en Bitcoin." }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Matriz de Riesgo con IA y Excel",
+    descripcion: "Genera una matriz estructurada sobre amenazas de malware utilizando Inteligencia Artificial, expórtala a Excel y configúrala para analizar niveles de riesgo mediante formato condicional.",
+    herramientas: [
+      { nombre: "ChatGPT", url: "https://chatgpt.com" },
+      { nombre: "Gemini", url: "https://gemini.google.com" },
+      { nombre: "Claude", url: "https://claude.ai" }
+    ],
+    pasos: [
+      "Abre tu herramienta de Inteligencia Artificial favorita (ChatGPT, Gemini, etc.).",
+      "Copia el texto del 'Prompt' sugerido y pégalo en el chat de la IA.",
+      "Espera que la IA genere la tabla. Luego, selecciona la tabla completa y presiona Ctrl + C.",
+      "Abre Microsoft Excel, ubícate exactamente en la celda A1 y pega los datos (Ctrl + V).",
+      "Ajusta el ancho de las columnas haciendo doble clic en el límite entre las letras (A, B, C, D).",
+      "Selecciona los encabezados (Fila 1), aplica fondo azul oscuro, texto blanco y ponlo en Negrita.",
+      "Selecciona toda la columna 'Nivel de Riesgo'. Ve a 'Formato Condicional' > 'Reglas para resaltar celdas' > 'Texto que contiene' y escribe la palabra 'Alto' para que se pinte de rojo.",
+      "Guarda el archivo en tu carpeta de Informática con el nombre especificado."
+    ],
+    prompt: "Actúa como un experto en ciberseguridad. Genera una tabla de 5 filas y 4 columnas sobre 'Amenazas de Malware en la Vida Cotidiana'. Las columnas deben ser exactamente: Tipo de Amenaza, Ejemplo de la Vida Real, Nivel de Riesgo (Bajo/Medio/Alto) y Acción Inmediata de Prevención. Muestra la respuesta en formato de tabla limpia para copiar directamente a Excel sin perder columnas ni filas.",
+    requisitos: [
+      "La tabla en Excel debe empezar en la celda A1 y tener exactamente 4 columnas y 5 filas (más los encabezados).",
+      "Los encabezados tienen contraste correcto (Fondo azul, letra blanca, negrita).",
+      "La herramienta de 'Formato Condicional' está aplicada (si escribes 'Alto' en otra celda de esa columna, debe pintarse sola).",
+      "El archivo está guardado como Grado_Apellido_Nombre_Malware.xlsx"
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "El término 'Malware' proviene de la combinación de palabras en inglés que significa:",
+      opciones: [
+        "Malfunction Hardware (Hardware defectuoso)",
+        "Malicious Software (Software malicioso)",
+        "Macro Webware (Webware macroscópico)",
+        "Multiple Algorithms (Algoritmos múltiples)"
+      ],
+      correcta: 1,
+      explicacion: "Malware es la abreviatura de Malicious Software, un término general para cualquier programa diseñado con intenciones dañinas."
+    },
+    {
+      pregunta: "¿Cuál es la principal diferencia entre un Virus y un Gusano informático?",
+      opciones: [
+        "El virus roba datos y el gusano solo borra archivos.",
+        "El gusano necesita que el usuario lo ejecute, el virus es automático.",
+        "El gusano se propaga automáticamente por la red; el virus requiere un archivo anfitrión y ser ejecutado por el usuario.",
+        "No hay diferencia, son dos nombres para exactamente el mismo problema."
+      ],
+      correcta: 2,
+      explicacion: "El gusano (worm) tiene la capacidad de autoreplicarse e infectar redes enteras sin necesidad de que el usuario dé clic en un archivo."
+    },
+    {
+      pregunta: "Descargas un juego de Internet que parece funcionar perfectamente, pero sin que lo sepas, ha abierto una conexión secreta para que un hacker controle tu cámara web. Esto es un ejemplo clásico de:",
+      opciones: [
+        "Troyano",
+        "Ransomware",
+        "Gusano",
+        "Phishing"
+      ],
+      correcta: 0,
+      explicacion: "El Troyano se camufla como software legítimo para engañarte e instalar 'puertas traseras' en tu dispositivo."
+    },
+    {
+      pregunta: "Un programa malicioso registra secretamente todo lo que escribes en tu teclado (incluyendo tus contraseñas) y lo envía a un servidor remoto. Este software se clasifica como:",
+      opciones: [
+        "Antivirus",
+        "Gusano",
+        "Spyware (Keylogger)",
+        "Adware"
+      ],
+      correcta: 2,
+      explicacion: "El spyware tiene como objetivo el espionaje. La variante 'Keylogger' registra específicamente las pulsaciones del teclado."
+    },
+    {
+      pregunta: "¿Por qué mantener el Sistema Operativo actualizado es una de las principales medidas de prevención?",
+      opciones: [
+        "Porque cambia los colores y el diseño para que el virus no lo reconozca.",
+        "Porque las actualizaciones corrigen fallos de seguridad (vulnerabilidades) que el malware utiliza para ingresar.",
+        "Porque hace que el computador vaya más lento y el virus no pueda ejecutarse.",
+        "Porque elimina automáticamente cualquier archivo sospechoso en el disco duro."
+      ],
+      correcta: 1,
+      explicacion: "Las actualizaciones o parches tapan los 'agujeros de seguridad' (vulnerabilidades de software) antes de que los atacantes puedan explotarlos."
+    },
+    {
+      pregunta: "Recibes un correo de tu 'banco' diciendo que tu cuenta fue bloqueada y debes hacer clic en un enlace urgentemente para ingresar tu clave. ¿Qué amenaza es esta?",
+      opciones: [
+        "Ransomware",
+        "Troyano",
+        "Phishing (Ingeniería social)",
+        "Falsa alarma inofensiva"
+      ],
+      correcta: 2,
+      explicacion: "El Phishing busca engañarte suplantando una identidad de confianza para que tú mismo entregues tus credenciales."
+    }
+  ],
+  investigacion: {
+    titulo: "Amenazas de Alto Calibre",
+    instruccion: "Investiga en portales de tecnología o ciberseguridad y responde en tu cuaderno (máximo 3 renglones por pregunta):",
+    preguntas: [
+      "1. ¿Qué es el Ransomware y por qué se considera hoy en día más peligroso que un virus tradicional?",
+      "2. Investiga brevemente qué fue el ataque 'WannaCry' en 2017: ¿A quiénes afectó y qué pedían los atacantes a cambio de liberar los sistemas?"
+    ],
+    fuentes: [
+      "Blog de ESET o Kaspersky",
+      "Noticias sobre Ciberseguridad (Xataka, Genbeta)",
+      "Búsqueda en Google: 'WannaCry ataque global resumen'"
+    ]
+  },
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "Desde tu perspectiva, ¿cuál es el hábito digital más peligroso o descuidado que tienen los jóvenes de tu edad frente a la seguridad?", lineas: 3 },
+      { id: "r2", texto: "Explica con tus propias palabras por qué la 'ingeniería social' (engañar a la persona) es más fácil que hackear un sistema directamente.", lineas: 3 },
+      { id: "r3", texto: "¿Qué utilidad profesional o académica le ves a aprender a usar el 'Formato Condicional' en Microsoft Excel como lo hicimos hoy?", lineas: 3 },
+      { id: "r4", texto: "Si te nombraran administrador de la red Wi-Fi del Colegio Santa Mariana de Jesús, ¿cuál sería tu regla número uno de seguridad?", lineas: 3 },
+      { id: "r5", texto: "Menciona un consejo de ciberseguridad que aprendiste hoy y que deberías enseñarle a tus padres o abuelos esta noche.", lineas: 2 }
+    ]
+  },
+  notasDocente: [
+    "Supervisar el uso de la IA: Asegurarse de que los estudiantes copien el prompt completo para que la salida sea una tabla estructurada y no un texto suelto.",
+    "Validación de Excel: Algunos estudiantes tienden a pintar la celda de rojo manualmente; verificar paso a paso que usen el botón de 'Formato Condicional'.",
+    "Contexto local: Enriquecer la clase mencionando ciberataques reales y recientes en Colombia (como el ataque masivo a EPS o IFX Networks) para mostrarles que el Ransomware no es un mito de películas."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
