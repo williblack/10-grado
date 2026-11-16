@@ -8,137 +8,302 @@
 <body>
 <script>
 const CLASE = {
+  // ========== ✏️ DATOS RÁPIDOS (lo único que podrías querer cambiar) ==========
   grado: 10,
   edad: 15,
   periodo: 2,
   semana: 1,
   tema: "El Proceso Tecnológico: Concepto y sus 6 Fases",
   temaAnterior: "¿Qué es un Plan de Negocio y para qué sirve?",
-  video: "",
+  video: "",            // ← enlace de YouTube, Vimeo, Drive o Canva (opcional)
   estilo: "circuito",
-  emoji: "⚙️",
-  objetivo: "Comprender el concepto de proceso tecnológico y aplicar de forma estructurada sus seis fases en la resolución de problemas cotidianos, integrando herramientas de Inteligencia Artificial y hojas de cálculo.",
-  competencia: "Analizo y aplico las etapas del método de proyectos tecnológicos para diseñar soluciones eficientes, viables y documentadas frente a necesidades reales de mi entorno escolar y comunitario.",
-  preguntaGancho: "¿Por qué la mayoría de los prototipos y emprendimientos fracasan antes de salir al mercado si saltan directamente de la idea a la fabricación sin un método estructurado?",
-  agenda: [
-    { min: 5, titulo: "Activación y conexión", texto: "Planteamiento de la pregunta gancho y vínculo entre la viabilidad de un Plan de Negocio y la ejecución técnica del producto." },
-    { min: 15, titulo: "Fundamentación teórica", texto: "Explicación magistral de la definición, utilidad y las seis fases del proceso tecnológico con registro sintético en el cuaderno." },
-    { min: 15, titulo: "Reto en sala: IA + Excel", texto: "Ingeniería de prompts para estructurar las 6 fases de un producto cotidiano y tabulación profesional en Microsoft Excel." },
-    { min: 10, titulo: "Evaluación y cierre", texto: "Desarrollo del quiz interactivo de análisis de casos y diligenciamiento de la hoja de reflexión en el equipo." }
+
+  // ========== 🤖 CONTENIDO GENERADO POR LA IA (no hace falta tocarlo) ==========
+  "emoji": "⚙️",
+  "objetivo": "Comprender el concepto de proceso tecnológico y aplicar de forma estructurada sus seis fases en la resolución de problemas cotidianos, integrando herramientas de Inteligencia Artificial y hojas de cálculo.",
+  "competencia": "Analizo y aplico las etapas del método de proyectos tecnológicos para diseñar soluciones eficientes, viables y documentadas frente a necesidades reales de mi entorno escolar y comunitario.",
+  "preguntaGancho": "¿Por qué la mayoría de los prototipos y emprendimientos fracasan antes de salir al mercado si saltan directamente de la idea a la fabricación sin un método estructurado?",
+  "agenda": [
+    {
+      "min": 5,
+      "titulo": "Activación y conexión",
+      "texto": "Planteamiento de la pregunta gancho y vínculo entre la viabilidad de un Plan de Negocio y la ejecución técnica del producto."
+    },
+    {
+      "min": 15,
+      "titulo": "Fundamentación teórica",
+      "texto": "Explicación magistral de la definición, utilidad y las seis fases del proceso tecnológico con registro sintético en el cuaderno."
+    },
+    {
+      "min": 15,
+      "titulo": "Reto en sala: IA + Excel",
+      "texto": "Ingeniería de prompts para estructurar las 6 fases de un producto cotidiano y tabulación profesional en Microsoft Excel."
+    },
+    {
+      "min": 10,
+      "titulo": "Evaluación y cierre",
+      "texto": "Desarrollo del quiz interactivo de análisis de casos y diligenciamiento de la hoja de reflexión en el equipo."
+    }
   ],
-  cuaderno: {
-    conexion: "La semana pasada estudiamos el Plan de Negocio, que define la estrategia comercial y financiera de una empresa. Hoy damos el paso técnico: el Proceso Tecnológico es el método de ingeniería que permite materializar la propuesta de valor de ese negocio en un producto o servicio real, funcional y optimizado.",
-    bloques: [
+  "cuaderno": {
+    "conexion": "La semana pasada estudiamos el Plan de Negocio, que define la estrategia comercial y financiera de una empresa. Hoy damos el paso técnico: el Proceso Tecnológico es el método de ingeniería que permite materializar la propuesta de valor de ese negocio en un producto o servicio real, funcional y optimizado.",
+    "bloques": [
       {
-        icono: "🧭",
-        titulo: "1. Concepto y Utilidad del Proceso Tecnológico",
-        puntos: [
-          { icono: "⚙️", termino: "Definición", texto: "Es el camino ordenado, lógico y sistemático que sigue el ser humano para crear un objeto, sistema o solución que resuelva un problema o satisfaga una necesidad." },
-          { icono: "🛡️", termino: "Utilidad estratégica", texto: "Evita la improvisación, reduce la pérdida de tiempo, dinero y materiales, y garantiza que la solución final sea segura, ergonómica y funcional." }
+        "icono": "🧭",
+        "titulo": "1. Concepto y Utilidad del Proceso Tecnológico",
+        "puntos": [
+          {
+            "icono": "⚙️",
+            "termino": "Definición",
+            "texto": "Es el camino ordenado, lógico y sistemático que sigue el ser humano para crear un objeto, sistema o solución que resuelva un problema o satisfaga una necesidad."
+          },
+          {
+            "icono": "🛡️",
+            "termino": "Utilidad estratégica",
+            "texto": "Evita la improvisación, reduce la pérdida de tiempo, dinero y materiales, y garantiza que la solución final sea segura, ergonómica y funcional."
+          }
         ],
-        ampliacion: "En la industria y la ingeniería moderna, ningún producto exitoso nace del azar. Si una empresa en el Valle del Cauca desea fabricar empaques biodegradables a partir del bagazo de caña de azúcar, necesita una **metodología secuencial que minimice el desperdicio de recursos** y valide cada avance antes de invertir en maquinaria costosa."
+        "ampliacion": "En la industria y la ingeniería moderna, ningún producto exitoso nace del azar. Si una empresa en el Valle del Cauca desea fabricar empaques biodegradables a partir del bagazo de caña de azúcar, necesita una **metodología secuencial que minimice el desperdicio de recursos** y valide cada avance antes de invertir en maquinaria costosa."
       },
       {
-        icono: "🔍",
-        titulo: "2. Fases de Análisis y Planificación (Fases 1 a 3)",
-        puntos: [
-          { icono: "🎯", termino: "1. Identificación del problema", texto: "Punto de partida donde se analiza qué falla, qué hace falta o qué se puede mejorar en el entorno, definiendo claramente las condiciones del reto." },
-          { icono: "📚", termino: "2. Búsqueda de información", texto: "Investigación previa en fuentes técnicas, patentes, internet, costos y soluciones existentes para adoptar buenas prácticas y evitar errores conocidos." },
-          { icono: "📐", termino: "3. Diseño", texto: "Fase creativa y técnica donde se dibujan bocetos, planos con medidas exactas (acotación), se seleccionan materiales y se reparten tareas." }
+        "icono": "🔍",
+        "titulo": "2. Fases de Análisis y Planificación (Fases 1 a 3)",
+        "puntos": [
+          {
+            "icono": "🎯",
+            "termino": "1. Identificación del problema",
+            "texto": "Punto de partida donde se analiza qué falla, qué hace falta o qué se puede mejorar en el entorno, definiendo claramente las condiciones del reto."
+          },
+          {
+            "icono": "📚",
+            "termino": "2. Búsqueda de información",
+            "texto": "Investigación previa en fuentes técnicas, patentes, internet, costos y soluciones existentes para adoptar buenas prácticas y evitar errores conocidos."
+          },
+          {
+            "icono": "📐",
+            "termino": "3. Diseño",
+            "texto": "Fase creativa y técnica donde se dibujan bocetos, planos con medidas exactas (acotación), se seleccionan materiales y se reparten tareas."
+          }
         ],
-        ampliacion: "Estas tres primeras etapas ocurren antes de cortar o ensamblar una sola pieza. Un error en la **definición de los requerimientos o en el cálculo de medidas del plano** resulta económico de corregir en papel o software CAD, pero extremadamente costoso si se descubre cuando el producto ya está fabricado."
+        "ampliacion": "Estas tres primeras etapas ocurren antes de cortar o ensamblar una sola pieza. Un error en la **definición de los requerimientos o en el cálculo de medidas del plano** resulta económico de corregir en papel o software CAD, pero extremadamente costoso si se descubre cuando el producto ya está fabricado."
       },
       {
-        icono: "🛠️",
-        titulo: "3. Fases de Ejecución, Control y Entrega (Fases 4 a 6)",
-        puntos: [
-          { icono: "🔨", termino: "4. Construcción", texto: "Ejecución física o digital del plano: medir, cortar, programar, ensamblar y unir piezas aplicando estrictas normas de seguridad industrial." },
-          { icono: "✅", termino: "5. Evaluación", texto: "Pruebas de rendimiento y calidad para verificar si el objeto resuelve el problema inicial. Si falla, se detecta el error y se regresa al diseño." },
-          { icono: "📢", termino: "6. Comunicación", texto: "Divulgación del proyecto mediante manuales de usuario, fichas técnicas, presentaciones ejecutivas o estrategias de marketing." }
+        "icono": "🛠️",
+        "titulo": "3. Fases de Ejecución, Control y Entrega (Fases 4 a 6)",
+        "puntos": [
+          {
+            "icono": "🔨",
+            "termino": "4. Construcción",
+            "texto": "Ejecución física o digital del plano: medir, cortar, programar, ensamblar y unir piezas aplicando estrictas normas de seguridad industrial."
+          },
+          {
+            "icono": "✅",
+            "termino": "5. Evaluación",
+            "texto": "Pruebas de rendimiento y calidad para verificar si el objeto resuelve el problema inicial. Si falla, se detecta el error y se regresa al diseño."
+          },
+          {
+            "icono": "📢",
+            "termino": "6. Comunicación",
+            "texto": "Divulgación del proyecto mediante manuales de usuario, fichas técnicas, presentaciones ejecutivas o estrategias de marketing."
+          }
         ],
-        ampliacion: "La evaluación convierte al proceso tecnológico en un ciclo iterativo de mejora continua y no en una línea rígida. Cuando un prototipo no supera las **pruebas de resistencia o usabilidad**, el equipo técnico retrocede para ajustar el diseño, asegurando que solo lleguen al usuario final soluciones confiables y bien documentadas."
+        "ampliacion": "La evaluación convierte al proceso tecnológico en un ciclo iterativo de mejora continua y no en una línea rígida. Cuando un prototipo no supera las **pruebas de resistencia o usabilidad**, el equipo técnico retrocede para ajustar el diseño, asegurando que solo lleguen al usuario final soluciones confiables y bien documentadas."
       }
     ]
   },
-  glosario: [
-    { termino: "Proceso Tecnológico", definicion: "Secuencia lógica de seis etapas utilizada para transformar una necesidad humana en una solución técnica tangible." },
-    { termino: "Iteración", definicion: "Acción de repetir un ciclo de diseño y evaluación para corregir fallas y perfeccionar un prototipo." },
-    { termino: "Boceto", definicion: "Dibujo rápido a mano alzada que expresa las primeras ideas visuales de un diseño sin medidas exactas." },
-    { termino: "Acotación", definicion: "Conjunto de líneas, cifras y símbolos que indican las dimensiones reales de un objeto en un plano técnico." },
-    { termino: "Ficha Técnica", definicion: "Documento formal de la fase de comunicación que resume materiales, dimensiones, funcionamiento y normas de uso." }
+  "glosario": [
+    {
+      "termino": "Proceso Tecnológico",
+      "definicion": "Secuencia lógica de seis etapas utilizada para transformar una necesidad humana en una solución técnica tangible."
+    },
+    {
+      "termino": "Iteración",
+      "definicion": "Acción de repetir un ciclo de diseño y evaluación para corregir fallas y perfeccionar un prototipo."
+    },
+    {
+      "termino": "Boceto",
+      "definicion": "Dibujo rápido a mano alzada que expresa las primeras ideas visuales de un diseño sin medidas exactas."
+    },
+    {
+      "termino": "Acotación",
+      "definicion": "Conjunto de líneas, cifras y símbolos que indican las dimensiones reales de un objeto en un plano técnico."
+    },
+    {
+      "termino": "Ficha Técnica",
+      "definicion": "Documento formal de la fase de comunicación que resume materiales, dimensiones, funcionamiento y normas de uso."
+    }
   ],
-  sabiasQue: [
+  "sabiasQue": [
     "El ciclo iterativo del proceso tecnológico es la base del método Design Thinking y de las metodologías ágiles (Scrum) usadas hoy por empresas de software como Google y Spotify.",
     "En Colombia, la Superintendencia de Industria y Comercio (SIC) exige una memoria descriptiva y planos técnicos detallados (Fase 3 y 6) para otorgar una patente de invención."
   ],
-  modulos: {
-    tarjetas: {
-      titulo: "Analogías Profesionales de las 6 Fases",
-      items: [
-        { icono: "🎯", frente: "Fase 1: Identificación del problema", reverso: "Es como el diagnóstico médico antes de recetar: si no identificas la causa real del dolor, cualquier tratamiento será inútil." },
-        { icono: "📚", frente: "Fase 2: Búsqueda de información", reverso: "Es el estado del arte universitario: revisar qué ya descubrieron otros investigadores para no reinventar la rueda." },
-        { icono: "📐", frente: "Fase 3: Diseño", reverso: "Son los planos arquitectónicos de un edificio: definen resistencia, presupuesto y estética antes de mezclar el primer bulto de cemento." },
-        { icono: "🔨", frente: "Fase 4: Construcción", reverso: "Es la línea de ensamblaje siguiendo el manual técnico: precisión, disciplina y uso obligatorio de elementos de protección." },
-        { icono: "✅", frente: "Fase 5: Evaluación", reverso: "Son las pruebas de choque (crash test) de un automóvil nuevo: se lleva al límite para detectar fallas antes de venderlo." },
-        { icono: "📢", frente: "Fase 6: Comunicación", reverso: "Es el lanzamiento ejecutivo (keynote) y el manual del producto: explicar con claridad cómo se usa y por qué aporta valor." }
+  "modulos": {
+    "tarjetas": {
+      "titulo": "Analogías Profesionales de las 6 Fases",
+      "items": [
+        {
+          "icono": "🎯",
+          "frente": "Fase 1: Identificación del problema",
+          "reverso": "Es como el diagnóstico médico antes de recetar: si no identificas la causa real del dolor, cualquier tratamiento será inútil."
+        },
+        {
+          "icono": "📚",
+          "frente": "Fase 2: Búsqueda de información",
+          "reverso": "Es el estado del arte universitario: revisar qué ya descubrieron otros investigadores para no reinventar la rueda."
+        },
+        {
+          "icono": "📐",
+          "frente": "Fase 3: Diseño",
+          "reverso": "Son los planos arquitectónicos de un edificio: definen resistencia, presupuesto y estética antes de mezclar el primer bulto de cemento."
+        },
+        {
+          "icono": "🔨",
+          "frente": "Fase 4: Construcción",
+          "reverso": "Es la línea de ensamblaje siguiendo el manual técnico: precisión, disciplina y uso obligatorio de elementos de protección."
+        },
+        {
+          "icono": "✅",
+          "frente": "Fase 5: Evaluación",
+          "reverso": "Son las pruebas de choque (crash test) de un automóvil nuevo: se lleva al límite para detectar fallas antes de venderlo."
+        },
+        {
+          "icono": "📢",
+          "frente": "Fase 6: Comunicación",
+          "reverso": "Es el lanzamiento ejecutivo (keynote) y el manual del producto: explicar con claridad cómo se usa y por qué aporta valor."
+        }
       ]
     },
-    explorador: {
-      titulo: "Desglose Técnico por Etapa de Ingeniería",
-      items: [
+    "explorador": {
+      "titulo": "Desglose Técnico por Etapa de Ingeniería",
+      "items": [
         {
-          icono: "🔎",
-          nombre: "Análisis y Búsqueda (F1 - F2)",
-          secciones: [
-            { titulo: "Preguntas clave del ingeniero", items: ["¿Cuál es el problema exacto y quiénes son los usuarios afectados?", "¿Qué restricciones de presupuesto, tiempo y materiales existen?", "¿Qué soluciones existen actualmente en el mercado y qué fallas tienen?"] },
-            { titulo: "Entregables técnicos", items: ["Planteamiento del problema y lista de requerimientos.", "Tabla comparativa de antecedentes y cotización preliminar de insumos."] }
+          "icono": "🔎",
+          "nombre": "Análisis y Búsqueda (F1 - F2)",
+          "secciones": [
+            {
+              "titulo": "Preguntas clave del ingeniero",
+              "items": [
+                "¿Cuál es el problema exacto y quiénes son los usuarios afectados?",
+                "¿Qué restricciones de presupuesto, tiempo y materiales existen?",
+                "¿Qué soluciones existen actualmente en el mercado y qué fallas tienen?"
+              ]
+            },
+            {
+              "titulo": "Entregables técnicos",
+              "items": [
+                "Planteamiento del problema y lista de requerimientos.",
+                "Tabla comparativa de antecedentes y cotización preliminar de insumos."
+              ]
+            }
           ]
         },
         {
-          icono: "📐",
-          nombre: "Diseño y Planificación (F3)",
-          secciones: [
-            { titulo: "Herramientas habituales", items: ["Bocetos a mano alzada para lluvia de ideas.", "Planos acotados en software CAD (AutoCAD, Tinkercad, Fusion 360).", "Hoja de ruta o diagrama de Gantt para distribuir tiempos."] },
-            { titulo: "Criterios de decisión", items: ["Ergonomía, resistencia estructural, impacto ambiental y costo de producción."] }
+          "icono": "📐",
+          "nombre": "Diseño y Planificación (F3)",
+          "secciones": [
+            {
+              "titulo": "Herramientas habituales",
+              "items": [
+                "Bocetos a mano alzada para lluvia de ideas.",
+                "Planos acotados en software CAD (AutoCAD, Tinkercad, Fusion 360).",
+                "Hoja de ruta o diagrama de Gantt para distribuir tiempos."
+              ]
+            },
+            {
+              "titulo": "Criterios de decisión",
+              "items": [
+                "Ergonomía, resistencia estructural, impacto ambiental y costo de producción."
+              ]
+            }
           ]
         },
         {
-          icono: "⚙️",
-          nombre: "Ejecución y Control (F4 - F5)",
-          secciones: [
-            { titulo: "Protocolo de taller o laboratorio", items: ["Preparación de herramientas y verificación de normas de seguridad.", "Fabricación por piezas y ensamblaje progresivo."] },
-            { titulo: "Pruebas de validación", items: ["Pruebas de carga, estabilidad, durabilidad y facilidad de uso.", "Si el resultado es negativo, se documenta el fallo y se retorna a la Fase 3."] }
+          "icono": "⚙️",
+          "nombre": "Ejecución y Control (F4 - F5)",
+          "secciones": [
+            {
+              "titulo": "Protocolo de taller o laboratorio",
+              "items": [
+                "Preparación de herramientas y verificación de normas de seguridad.",
+                "Fabricación por piezas y ensamblaje progresivo."
+              ]
+            },
+            {
+              "titulo": "Pruebas de validación",
+              "items": [
+                "Pruebas de carga, estabilidad, durabilidad y facilidad de uso.",
+                "Si el resultado es negativo, se documenta el fallo y se retorna a la Fase 3."
+              ]
+            }
           ]
         },
         {
-          icono: "📊",
-          nombre: "Divulgación Profesional (F6)",
-          secciones: [
-            { titulo: "Documentación obligatoria", items: ["Memoria técnica del proyecto con planos finales y presupuesto real.", "Manual de instrucciones y mantenimiento preventivo para el usuario."] },
-            { titulo: "Presentación comercial", items: ["Pitch de ventas o exposición técnica demostrando la solución del problema inicial."] }
+          "icono": "📊",
+          "nombre": "Divulgación Profesional (F6)",
+          "secciones": [
+            {
+              "titulo": "Documentación obligatoria",
+              "items": [
+                "Memoria técnica del proyecto con planos finales y presupuesto real.",
+                "Manual de instrucciones y mantenimiento preventivo para el usuario."
+              ]
+            },
+            {
+              "titulo": "Presentación comercial",
+              "items": [
+                "Pitch de ventas o exposición técnica demostrando la solución del problema inicial."
+              ]
+            }
           ]
         }
       ]
     },
-    clasificador: {
-      titulo: "Clasifica cada acción en su etapa correspondiente",
-      categorias: ["Planificación (Fases 1, 2 y 3)", "Ejecución y Cierre (Fases 4, 5 y 6)"],
-      items: [
-        { texto: "Entrevistar a estudiantes para detectar incomodidades en los pupitres del aula", categoria: 0 },
-        { texto: "Consultar precios de láminas de acrílico y perfiles de aluminio en ferreterías", categoria: 0 },
-        { texto: "Dibujar vistas de planta, alzado y perfil con medidas en milímetros", categoria: 0 },
-        { texto: "Cortar y lijar las piezas siguiendo las normas de seguridad en el taller", categoria: 1 },
-        { texto: "Someter el prototipo a un peso de 15 kg durante 24 horas para medir deformación", categoria: 1 },
-        { texto: "Redactar el manual de ensamblaje y ficha técnica para el cliente final", categoria: 1 },
-        { texto: "Comparar tres modelos comerciales existentes para analizar sus defectos", categoria: 0 },
-        { texto: "Ajustar el ángulo de inclinación tras detectar cansancio visual en la prueba piloto", categoria: 1 }
+    "clasificador": {
+      "titulo": "Clasifica cada acción en su etapa correspondiente",
+      "categorias": [
+        "Planificación (Fases 1, 2 y 3)",
+        "Ejecución y Cierre (Fases 4, 5 y 6)"
+      ],
+      "items": [
+        {
+          "texto": "Entrevistar a estudiantes para detectar incomodidades en los pupitres del aula",
+          "categoria": 0
+        },
+        {
+          "texto": "Consultar precios de láminas de acrílico y perfiles de aluminio en ferreterías",
+          "categoria": 0
+        },
+        {
+          "texto": "Dibujar vistas de planta, alzado y perfil con medidas en milímetros",
+          "categoria": 0
+        },
+        {
+          "texto": "Cortar y lijar las piezas siguiendo las normas de seguridad en el taller",
+          "categoria": 1
+        },
+        {
+          "texto": "Someter el prototipo a un peso de 15 kg durante 24 horas para medir deformación",
+          "categoria": 1
+        },
+        {
+          "texto": "Redactar el manual de ensamblaje y ficha técnica para el cliente final",
+          "categoria": 1
+        },
+        {
+          "texto": "Comparar tres modelos comerciales existentes para analizar sus defectos",
+          "categoria": 0
+        },
+        {
+          "texto": "Ajustar el ángulo de inclinación tras detectar cansancio visual en la prueba piloto",
+          "categoria": 1
+        }
       ]
     }
   },
-  reto: {
-    titulo: "Reto en Sala: Estructuración de Proyectos con IA y Excel",
-    descripcion: "Utilizarás un modelo de Inteligencia Artificial Generativa mediante ingeniería de prompts para descomponer un caso práctico de diseño industrial en las 6 fases del proceso tecnológico, trasladando la matriz resultante a Microsoft Excel con formato técnico.",
-    pasos: [
+  "reto": {
+    "titulo": "Reto en Sala: Estructuración de Proyectos con IA y Excel",
+    "descripcion": "Utilizarás un modelo de Inteligencia Artificial Generativa mediante ingeniería de prompts para descomponer un caso práctico de diseño industrial en las 6 fases del proceso tecnológico, trasladando la matriz resultante a Microsoft Excel con formato técnico.",
+    "pasos": [
       "Abre Microsoft Excel en tu equipo de la sala y guarda un libro nuevo con el nombre ProcesoTecnologico_ApellidoNombre.xlsx.",
       "Ingresa a una herramienta de IA Generativa (Gemini, ChatGPT o Copilot) e inicia un chat nuevo.",
       "Copia el prompt estructurado de abajo, pégalo en la IA y ejecuta la consulta para obtener una tabla limpia de 4 columnas.",
@@ -146,97 +311,126 @@ const CLASE = {
       "Haz clic en la celda A1 de Excel y pega usando Coincidir con el formato de destino (Ctrl + Shift + V) para conservar las 4 columnas y 6 filas de datos sin combinar celdas.",
       "Aplica formato profesional: autoajusta ancho de columnas, activa Ajustar texto, aplica bordes completos, resalta encabezados y crea debajo un diagrama SmartArt de tipo Proceso con las 6 fases."
     ],
-    prompt: "Actúa como un ingeniero de diseño de producto. Toma el caso práctico de «diseñar y fabricar un soporte ergonómico, plegable y económico para computador portátil dirigido a estudiantes de bachillerato» y clasifica las acciones técnicas necesarias dentro de las 6 fases del proceso tecnológico. Entrégame la respuesta ÚNICAMENTE en una tabla Markdown con exactamente 4 columnas: Fase | Acción técnica a realizar | Herramienta o recurso necesario | Entregable esperado de la fase. No agregues saludos, introducciones ni texto fuera de la tabla.",
-    herramientas: [
-      { nombre: "Google Gemini", url: "https://gemini.google.com" },
-      { nombre: "Microsoft Copilot", url: "https://copilot.microsoft.com" },
-      { nombre: "ChatGPT", url: "https://chatgpt.com" }
+    "prompt": "Actúa como un ingeniero de diseño de producto. Toma el caso práctico de «diseñar y fabricar un soporte ergonómico, plegable y económico para computador portátil dirigido a estudiantes de bachillerato» y clasifica las acciones técnicas necesarias dentro de las 6 fases del proceso tecnológico. Entrégame la respuesta ÚNICAMENTE en una tabla Markdown con exactamente 4 columnas: Fase | Acción técnica a realizar | Herramienta o recurso necesario | Entregable esperado de la fase. No agregues saludos, introducciones ni texto fuera de la tabla.",
+    "herramientas": [
+      {
+        "nombre": "Google Gemini",
+        "url": "https://gemini.google.com"
+      },
+      {
+        "nombre": "Microsoft Copilot",
+        "url": "https://copilot.microsoft.com"
+      },
+      {
+        "nombre": "ChatGPT",
+        "url": "https://chatgpt.com"
+      }
     ],
-    requisitos: [
+    "requisitos": [
       "El archivo de Excel respeta estrictamente 4 columnas (A hasta D) y 7 filas (1 encabezado + 6 fases) sin texto suelto afuera.",
       "Los encabezados tienen relleno de color oscuro, texto en negrita y alineación centrada.",
       "Todas las celdas tienen bordes visibles y el texto es completamente legible sin cortes.",
       "Debajo de la tabla se incluye un gráfico SmartArt de proceso que sintetiza el flujo de las 6 fases."
     ]
   },
-  quiz: [
+  "quiz": [
     {
-      pregunta: "¿Cuál es la relación principal entre un Plan de Negocio y el Proceso Tecnológico?",
-      opciones: [
+      "pregunta": "¿Cuál es la relación principal entre un Plan de Negocio y el Proceso Tecnológico?",
+      "opciones": [
         "El Plan de Negocio reemplaza la fase de diseño técnico para ahorrar dinero.",
         "El Plan de Negocio define la viabilidad comercial y el Proceso Tecnológico ejecuta metodológicamente la creación del producto.",
         "Ambos son documentos legales exclusivos para registrar marcas ante el gobierno.",
         "El Proceso Tecnológico se aplica únicamente después de que la empresa ya está vendiendo."
       ],
-      correcta: 1,
-      explicacion: "Mientras el Plan de Negocio estructura el modelo económico, el Proceso Tecnológico aporta el método de ingeniería para fabricar la solución."
+      "correcta": 1,
+      "explicacion": "Mientras el Plan de Negocio estructura el modelo económico, el Proceso Tecnológico aporta el método de ingeniería para fabricar la solución."
     },
     {
-      pregunta: "Un equipo de grado 10° comienza a cortar madera para un prototipo sin haber hecho planos ni cotizado materiales. ¿Qué consecuencia técnica es más probable?",
-      opciones: [
+      "pregunta": "Un equipo de grado 10° comienza a cortar madera para un prototipo sin haber hecho planos ni cotizado materiales. ¿Qué consecuencia técnica es más probable?",
+      "opciones": [
         "Ahorrarán tiempo en la fase de comunicación.",
         "Desperdiciarán material y dinero por improvisación y errores de medida.",
         "Cumplirán automáticamente con todas las normas de seguridad.",
         "Evitarán tener que realizar la fase de evaluación."
       ],
-      correcta: 1,
-      explicacion: "Saltarse la búsqueda de información y el diseño genera reprocesos, sobrecostos y fallas estructurales durante la construcción."
+      "correcta": 1,
+      "explicacion": "Saltarse la búsqueda de información y el diseño genera reprocesos, sobrecostos y fallas estructurales durante la construcción."
     },
     {
-      pregunta: "Durante las pruebas de un filtro de agua casero, los estudiantes notan que el líquido sale turbio. Según el proceso tecnológico, ¿qué deben hacer?",
-      opciones: [
+      "pregunta": "Durante las pruebas de un filtro de agua casero, los estudiantes notan que el líquido sale turbio. Según el proceso tecnológico, ¿qué deben hacer?",
+      "opciones": [
         "Pasar directamente a la fase de comunicación y ocultar el defecto.",
         "Dar por terminado el proyecto porque ya cumplieron con la construcción.",
         "Documentar la falla en la evaluación y regresar a la fase de diseño para ajustar los materiales filtrantes.",
         "Cambiar el problema inicial para que coincida con el resultado obtenido."
       ],
-      correcta: 2,
-      explicacion: "La fase de evaluación es un filtro de control que obliga a iterar hacia el diseño cuando el prototipo no resuelve el problema."
+      "correcta": 2,
+      "explicacion": "La fase de evaluación es un filtro de control que obliga a iterar hacia el diseño cuando el prototipo no resuelve el problema."
     },
     {
-      pregunta: "¿En qué fase se elaboran los bocetos, los planos acotados y el reparto de responsabilidades del equipo?",
-      opciones: [
+      "pregunta": "¿En qué fase se elaboran los bocetos, los planos acotados y el reparto de responsabilidades del equipo?",
+      "opciones": [
         "Identificación del problema",
         "Búsqueda de información",
         "Diseño",
         "Comunicación"
       ],
-      correcta: 2,
-      explicacion: "El diseño concentra toda la planificación gráfica, dimensional y organizativa antes de iniciar la fabricación."
+      "correcta": 2,
+      "explicacion": "El diseño concentra toda la planificación gráfica, dimensional y organizativa antes de iniciar la fabricación."
     },
     {
-      pregunta: "Al utilizar Inteligencia Artificial para estructurar las fases de un proyecto en Excel, ¿por qué se exige que la salida sea una tabla sin texto adicional?",
-      opciones: [
+      "pregunta": "Al utilizar Inteligencia Artificial para estructurar las fases de un proyecto en Excel, ¿por qué se exige que la salida sea una tabla sin texto adicional?",
+      "opciones": [
         "Porque Excel no permite escribir palabras largas en sus celdas.",
         "Para garantizar la integridad estructural de filas y columnas al tabular los datos sin contaminar las celdas.",
         "Porque la IA no sabe redactar párrafos explicativos.",
         "Para evitar que el archivo supere el límite de memoria del computador."
       ],
-      correcta: 1,
-      explicacion: "Un formato tabular estricto facilita la interoperabilidad entre la IA y la hoja de cálculo manteniendo cada dato en su campo."
+      "correcta": 1,
+      "explicacion": "Un formato tabular estricto facilita la interoperabilidad entre la IA y la hoja de cálculo manteniendo cada dato en su campo."
     },
     {
-      pregunta: "¿Cuál de los siguientes documentos pertenece exclusivamente a la Fase 6 (Comunicación)?",
-      opciones: [
+      "pregunta": "¿Cuál de los siguientes documentos pertenece exclusivamente a la Fase 6 (Comunicación)?",
+      "opciones": [
         "La encuesta diagnóstica aplicada a los usuarios afectados.",
         "El listado de precios de herramientas en el mercado local.",
         "El manual de usuario y la ficha técnica del producto terminado.",
         "El borrador a mano alzada con tres alternativas de forma."
       ],
-      correcta: 2,
-      explicacion: "La comunicación divulga el producto validado mediante manuales, fichas técnicas y presentaciones para su uso correcto."
+      "correcta": 2,
+      "explicacion": "La comunicación divulga el producto validado mediante manuales, fichas técnicas y presentaciones para su uso correcto."
     }
   ],
-  hoja: {
-    preguntas: [
-      { id: "r1", texto: "Explica con tus palabras por qué la fase de Evaluación convierte al proceso tecnológico en un ciclo y no en una línea recta:", lineas: 3 },
-      { id: "r2", texto: "Analiza un caso real: si fueras a diseñar una aplicación móvil para mejorar las rutas de transporte en Buga, ¿qué investigarías en la Fase 2?", lineas: 3 },
-      { id: "r3", texto: "Durante el reto en Excel con IA, ¿qué criterio ético y técnico debes aplicar antes de dar por válida la tabla generada por la Inteligencia Artificial?", lineas: 3 },
-      { id: "r4", texto: "¿Cómo se complementan el Plan de Negocio (tema anterior) y el Proceso Tecnológico en un proyecto de emprendimiento juvenil?", lineas: 3 },
-      { id: "r5", texto: "¿Qué aprendí hoy y qué habilidad técnica fortalecí en la sala de sistemas?", lineas: 2 }
+  "hoja": {
+    "preguntas": [
+      {
+        "id": "r1",
+        "texto": "Explica con tus palabras por qué la fase de Evaluación convierte al proceso tecnológico en un ciclo y no en una línea recta:",
+        "lineas": 3
+      },
+      {
+        "id": "r2",
+        "texto": "Analiza un caso real: si fueras a diseñar una aplicación móvil para mejorar las rutas de transporte en Buga, ¿qué investigarías en la Fase 2?",
+        "lineas": 3
+      },
+      {
+        "id": "r3",
+        "texto": "Durante el reto en Excel con IA, ¿qué criterio ético y técnico debes aplicar antes de dar por válida la tabla generada por la Inteligencia Artificial?",
+        "lineas": 3
+      },
+      {
+        "id": "r4",
+        "texto": "¿Cómo se complementan el Plan de Negocio (tema anterior) y el Proceso Tecnológico en un proyecto de emprendimiento juvenil?",
+        "lineas": 3
+      },
+      {
+        "id": "r5",
+        "texto": "¿Qué aprendí hoy y qué habilidad técnica fortalecí en la sala de sistemas?",
+        "lineas": 2
+      }
     ]
   },
-  notasDocente: [
+  "notasDocente": [
     "Enfatice en los primeros 5 minutos la articulación con el Plan de Negocio de la semana anterior para que los estudiantes perciban continuidad curricular entre gestión empresarial e ingeniería.",
     "Supervise en la sala que los estudiantes usen «Coincidir con el formato de destino» al pegar desde la IA en Excel, evitando que toda la tabla quede incrustada dentro de la única celda A1.",
     "Esta semana no se asigna investigación en cuaderno ni entrega en hoja suelta; evalúe directamente el archivo .xlsx en sala y las respuestas registradas en la hoja digital."
