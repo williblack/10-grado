@@ -1,1 +1,255 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fases en un artefacto: Aplicación de fases y análisis de artefactos | Grado 10°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 10,
+  edad: 15,
+  periodo: 2,
+  semana: 2,
+  tema: "Fases en un artefacto: Aplicación de fases y análisis de artefactos",
+  temaAnterior: "El Proceso Tecnológico: Concepto y sus 6 Fases",
+  video: "",
+  estilo: "galaxia",
+  emoji: "⚙️",
+  objetivo: "Aplicar las seis fases del proceso tecnológico en la creación y el análisis técnico, funcional y socioeconómico de un artefacto real, estructurando la información mediante inteligencia artificial y hojas de cálculo.",
+  competencia: "Analiza sistemas y artefactos tecnológicos identificando los principios científicos, técnicos y socioeconómicos que guiaron su diseño, y utiliza herramientas digitales para sistematizar soluciones de ingeniería básica.",
+  preguntaGancho: "Si tuvieras que desarmar mentalmente el dispositivo que tienes frente a ti en este momento, ¿podrías reconstruir exactamente qué problema obligó a inventarlo y por qué tiene esa forma y esos materiales?",
+  agenda: [
+    { min: 5, titulo: "Conexión y Activación", texto: "Repaso relámpago de las 6 fases del proceso tecnológico aplicadas a un objeto real del aula." },
+    { min: 12, titulo: "Teoría al Cuaderno", texto: "Síntesis estructurada sobre la aplicación de fases en un soporte ergonómico y los tres ejes de análisis de artefactos." },
+    { min: 8, titulo: "Exploración Interactiva", texto: "Revisión de analogías, dimensiones de análisis y clasificación de criterios técnicos en la plataforma." },
+    { min: 15, titulo: "Reto de Sala: IA + Excel", texto: "Ingeniería inversa asistida por IA generativa y tabulación profesional en Microsoft Excel." },
+    { min: 5, titulo: "Quiz y Cierre Reflexivo", texto: "Validación de aprendizajes mediante casos de estudio y registro de conclusiones en la hoja digital." }
+  ],
+  cuaderno: {
+    conexion: "En la clase anterior estudiamos de forma teórica qué es el Proceso Tecnológico y cuáles son sus seis etapas ordenadas. Hoy pasamos de la teoría a la práctica: aplicaremos cada fase sobre un objeto tangible y aprenderemos a realizar ingeniería inversa para analizar cualquier artefacto existente.",
+    bloques: [
+      {
+        icono: "🧭",
+        titulo: "1. ¿Cómo nace un artefacto?",
+        puntos: [
+          { icono: "📦", termino: "Origen intencional", texto: "Todo objeto cotidiano (un lapicero, una silla, un router o una lámpara) surgió para resolver una necesidad humana concreta." },
+          { icono: "🎞️", termino: "Ingeniería inversa", texto: "Analizar un artefacto consiste en «devolver la película» para descubrir qué problema resolvió y cómo fue diseñado y fabricado." }
+        ],
+        ampliacion: "En el mundo de la ingeniería y el diseño industrial, ningún producto llega al mercado por azar. Cuando un ingeniero analiza un objeto ya fabricado, aplica un método llamado **ingeniería inversa**: observa su geometría, identifica sus materiales y deduce las decisiones técnicas que tomó su creador. Por ejemplo, al observar una botella térmica de acero inoxidable con doble pared, entendemos que su diseñador buscaba evitar la transferencia de calor por conducción y convección, manteniendo las bebidas frías o calientes durante horas."
+      },
+      {
+        icono: "📐",
+        titulo: "2. Caso práctico: Soporte ergonómico para celular (Fases 1 a 3)",
+        puntos: [
+          { icono: "1️⃣", termino: "Identificación del problema", texto: "Al ver clases o videos en el celular sobre el escritorio, el cuello sufre fatiga postural y el teléfono tiende a resbalarse." },
+          { icono: "2️⃣", termino: "Exploración de ideas", texto: "Investigamos soluciones existentes en el mercado: soportes plegables de polímero, bases de madera ranurada y estructuras metálicas articuladas." },
+          { icono: "3️⃣", termino: "Diseño y planificación gráfica", texto: "Elaboramos un boceto acotado con medidas exactas (10 cm de alto × 8 cm de base), ángulo de inclinación de 60° y ranura inferior para el cable." }
+        ],
+        ampliacion: "Las tres primeras fases representan la **etapa intelectual y creativa** del proyecto, donde equivocarse cuesta muy poco dinero. Un error frecuente en estudiantes y emprendedores es saltar directamente a cortar materiales sin haber definido medidas ni explorado alternativas previas. Al establecer un **ángulo ergonómico de 60°** y prever el paso del cable de carga en el plano, se garantiza que el artefacto sea funcional antes de gastar un solo peso en materia prima."
+      },
+      {
+        icono: "🛠️",
+        titulo: "3. Caso práctico: Ejecución y validación (Fases 4 a 6)",
+        puntos: [
+          { icono: "4️⃣", termino: "Planificación operativa", texto: "Definimos insumos (MDF de 5 mm o cartón prensado, pegante), herramientas (regla, bisturí o caladora, lija) y secuencia: medir, trazar, cortar, lijar y ensamblar." },
+          { icono: "5️⃣", termino: "Construcción", texto: "Ejecutamos los cortes respetando estrictamente las cotas del plano y aplicando protocolos de seguridad industrial." },
+          { icono: "6️⃣", termino: "Evaluación y divulgación", texto: "Probamos la estabilidad con el celular puesto y el cable conectado; si cumple los requisitos, documentamos el producto para su presentación." }
+        ],
+        ampliacion: "En las fases finales el diseño se transforma en realidad física y se somete a **control de calidad**. La planificación ordena los tiempos y recursos para evitar desperdicios; la construcción exige precisión técnica y cuidado personal; y la evaluación actúa como filtro crítico. Si al probar el soporte el celular se vuelca hacia atrás por falta de contrapeso, el proceso no fracasa: se retroalimenta y se corrige el diseño antes de producirlo en serie."
+      },
+      {
+        icono: "🔬",
+        titulo: "4. Ejes para analizar un artefacto existente",
+        puntos: [
+          { icono: "⚙️", termino: "Análisis funcional", texto: "Responde a las preguntas: ¿Para qué sirve exactamente?, ¿cómo opera paso a paso? y ¿qué energía o fuerza utiliza?" },
+          { icono: "🧱", termino: "Análisis técnico y constructivo", texto: "Examina de qué materiales está fabricado, cuántas piezas lo componen y mediante qué técnicas fueron unidas o ensambladas." },
+          { icono: "🌍", termino: "Análisis socioeconómico y ambiental", texto: "Evalúa qué impacto tiene en la vida cotidiana, cuál es su costo accesible y qué ocurre con sus residuos al terminar su vida útil." }
+        ],
+        ampliacion: "Para un estudiante de grado décimo con proyección universitaria y laboral, analizar un artefacto va mucho más allá de describir su apariencia. El **análisis integral de artefactos** permite evaluar la sostenibilidad y viabilidad comercial de un producto. Por ejemplo, un mouse económico de oficina cumple la misma función básica que un mouse ergonómico vertical, pero su diseño técnico y su impacto en la salud articular (prevención del síndrome del túnel carpiano) marcan una diferencia sustancial en su valor socioeconómico."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Ingeniería inversa", definicion: "Proceso de analizar un objeto o sistema ya construido para comprender su estructura, funcionamiento y decisiones de diseño." },
+    { termino: "Ergonomía", definicion: "Disciplina que adapta los productos, herramientas y entornos a las características físicas y posturales del ser humano." },
+    { termino: "Boceto acotado", definicion: "Dibujo técnico preliminar que incluye las dimensiones reales (alto, ancho, profundidad y ángulos) necesarias para fabricar una pieza." },
+    { termino: "Control de calidad", definicion: "Conjunto de pruebas aplicadas en la fase de evaluación para verificar que un artefacto cumple con las especificaciones diseñadas." },
+    { termino: "Análisis morfológico", definicion: "Estudio de la forma exterior, dimensiones, texturas y colores de un objeto en relación con su uso." }
+  ],
+  sabiasQue: [
+    "James Dyson construyó exactamente 5.127 prototipos durante cinco años antes de perfeccionar su primera aspiradora ciclónica sin bolsa, demostrando que la fase de evaluación y rediseño es el corazón de la innovación.",
+    "El diseño original de las botellas de vidrio de Coca-Cola (1915) nació de un concurso que exigía un envase reconocible incluso al tacto en la oscuridad o hecho pedazos en el suelo.",
+    "En la industria automotriz y aeroespacial actual, la fase de construcción y evaluación se realiza primero mediante «gemelos digitales» (simulaciones 3D por computador) antes de fabricar una sola pieza física."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Analogías Profesionales: Las 6 Fases en Acción",
+      items: [
+        { icono: "🩺", frente: "Fase 1: Identificación del problema", reverso: "Es como el diagnóstico de un médico antes de recetar: si no identificas la causa exacta del dolor, cualquier medicina será inútil." },
+        { icono: "🔎", frente: "Fase 2: Exploración de ideas", reverso: "Es como revisar el estado del arte en una tesis universitaria: investigas qué ya existe para no reinventar la rueda y mejorar lo conocido." },
+        { icono: "🏛️", frente: "Fase 3: Diseño", reverso: "Es como los planos arquitectónicos de un edificio: nadie levanta paredes sin saber dónde van las columnas ni las tuberías." },
+        { icono: "📋", frente: "Fase 4: Planificación", reverso: "Es como la hoja de ruta de un chef antes de abrir el restaurante: ingredientes pesados, utensilios listos y tiempos cronometrados." },
+        { icono: "🏗️", frente: "Fase 5: Construcción", reverso: "Es la ejecución en planta industrial: transformar materia prima en producto terminado siguiendo normas estrictas de precisión y seguridad." },
+        { icono: "🧪", frente: "Fase 6: Evaluación", reverso: "Es el test de choque (crash test) de un vehículo: someter el invento a condiciones reales para certificar que es seguro y eficiente." }
+      ]
+    },
+    explorador: {
+      titulo: "Explorador de Análisis Técnico: Caso Mouse Inalámbrico",
+      items: [
+        {
+          icono: "⚙️",
+          nombre: "1. Dimensión Funcional",
+          secciones: [
+            { titulo: "Función principal", items: ["Traducir el desplazamiento físico de la mano sobre una superficie en coordenadas digitales (X, Y) en la pantalla del computador."] },
+            { titulo: "Principio de operación", items: ["Un diodo LED o láser ilumina la superficie y un sensor óptico captura miles de microfotografías por segundo para calcular el movimiento relativo."] }
+          ]
+        },
+        {
+          icono: "🧱",
+          nombre: "2. Dimensión Técnico-Constructiva",
+          secciones: [
+            { titulo: "Materiales predominantes", items: ["Carcasa exterior en polímero ABS resistente a impactos, rueda de desplazamiento en caucho antideslizante y circuito impreso (PCB) en fibra de vidrio y cobre."] },
+            { titulo: "Ensamblaje", items: ["Unión mediante pestañas a presión y tornillos de precisión ocultos bajo las almohadillas deslizantes de teflón."] }
+          ]
+        },
+        {
+          icono: "🌍",
+          nombre: "3. Dimensión Socioeconómica",
+          secciones: [
+            { titulo: "Impacto en el usuario", items: ["Elimina el enredo de cables en espacios de trabajo modernos y mejora la movilidad en aulas y oficinas."] },
+            { titulo: "Reto ambiental", items: ["Depende de baterías alcalinas o de litio que requieren disposición especial como residuo electrónico (RAEE) para evitar contaminación."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasificador: ¿A qué dimensión de análisis pertenece cada pregunta?",
+      categorias: ["Análisis Funcional", "Análisis Técnico", "Análisis Socioeconómico"],
+      items: [
+        { texto: "¿Qué tipo de energía consume el artefacto para operar?", categoria: 0 },
+        { texto: "¿Qué mecanismos internos transmiten el movimiento?", categoria: 0 },
+        { texto: "¿Por qué se eligió aluminio en lugar de plástico para la carcasa?", categoria: 1 },
+        { texto: "¿Qué herramientas industriales se usaron para unir sus piezas?", categoria: 1 },
+        { texto: "¿Cómo se reciclan sus componentes al terminar su vida útil?", categoria: 2 },
+        { texto: "¿Qué necesidad social o laboral satisface en la comunidad?", categoria: 2 },
+        { texto: "¿Cuál es la secuencia lógica para encender y operar el equipo?", categoria: 0 },
+        { texto: "¿Qué normas de seguridad eléctrica cumple su ensamblaje?", categoria: 1 },
+        { texto: "¿Resulta accesible su precio para el público objetivo?", categoria: 2 }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Ingeniería Inversa con IA y Tabulación Profesional en Excel",
+    descripcion: "Utilizarás un modelo de Inteligencia Artificial Generativa como asistente de ingeniería industrial para descomponer un artefacto real en sus 6 fases y estructurar los datos en Microsoft Excel respetando exactamente filas, columnas y formato profesional.",
+    pasos: [
+      "Selecciona un artefacto tecnológico cotidiano presente en la sala de sistemas o en tu maleta (por ejemplo: mouse inalámbrico, audífonos de diadema, grapadora metálica, memoria USB o botella térmica).",
+      "Abre tu asistente de IA favorito (Gemini, ChatGPT o Copilot) e inicia un chat nuevo.",
+      "Copia el prompt de abajo, reemplaza el texto entre corchetes por el nombre exacto de tu artefacto y envíalo.",
+      "Verifica que la IA entregue únicamente la tabla en formato Markdown con 4 columnas y 7 filas (1 fila de encabezados + 6 fases), sin textos introductorios.",
+      "Selecciona toda la tabla con el ratón, cópiala (Ctrl + C), abre Microsoft Excel en un libro en blanco y ubícate en la celda A1.",
+      "Haz clic derecho en A1 y selecciona «Coincidir con el formato de destino» (o presiona Ctrl + Shift + V) para que cada dato quede en su celda correspondiente.",
+      "Agrega en la fila 8 una fila llamada «Propuesta de Rediseño (Estudiante)», escribe una mejora técnica innovadora para ese artefacto, ajusta anchos de columna, aplica bordes y guarda el archivo como «Analisis_Artefacto_Apellido.xlsx»."
+    ],
+    prompt: "Actúa como un ingeniero de diseño industrial. Analiza el artefacto [ESCRIBE AQUÍ TU ARTEFACTO] aplicando las 6 fases del proceso tecnológico (1. Identificación del problema, 2. Exploración de ideas, 3. Diseño, 4. Planificación de materiales y herramientas, 5. Construcción, 6. Evaluación). Entrégame la respuesta ÚNICAMENTE como una tabla en formato Markdown con 4 columnas exactas: Fase | Pregunta Clave | Aplicación en el Artefacto | Aspecto Técnico o Material Clave. No agregues texto introductorio ni conclusiones fuera de la tabla, para poder copiarla y pegarla directamente en Excel.",
+    herramientas: [
+      { nombre: "Google Gemini", url: "https://gemini.google.com" },
+      { nombre: "ChatGPT", url: "https://chatgpt.com" },
+      { nombre: "Microsoft Copilot", url: "https://copilot.microsoft.com" }
+    ],
+    requisitos: [
+      "La tabla en Excel ocupa exactamente las columnas A, B, C y D sin celdas combinadas erróneas.",
+      "Las 6 fases del proceso tecnológico están completas y adaptadas al artefacto elegido.",
+      "El texto se lee completo sin cortarse (ajuste de texto activado y ancho de columnas calibrado).",
+      "Incluye la fila 8 con una propuesta de mejora técnica redactada con criterio propio por el estudiante.",
+      "El archivo está guardado correctamente en la carpeta de trabajo de la sala de sistemas."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿En qué consiste exactamente aplicar «ingeniería inversa» para analizar un artefacto tecnológico?",
+      opciones: [
+        "Destruir el objeto para vender sus materiales reciclables por separado.",
+        "Partir del objeto terminado para deducir qué problema resolvió, cómo fue diseñado y con qué técnicas se fabricó.",
+        "Copiar exactamente la marca y el logotipo de un producto exitoso para venderlo más barato.",
+        "Programar un software desde cero sin tener en cuenta el hardware donde va a funcionar."
+      ],
+      correcta: 1,
+      explicacion: "La ingeniería inversa reconstruye el camino de las seis fases desde el producto final hacia su origen conceptual y técnico."
+    },
+    {
+      pregunta: "En el ejemplo del soporte ergonómico para celular, ¿en qué fase se define que tendrá un ángulo de 60° y una ranura para el cable de carga?",
+      opciones: [
+        "Fase 1: Identificación del problema.",
+        "Fase 3: Diseño (planificación gráfica).",
+        "Fase 5: Construcción.",
+        "Fase 6: Evaluación y divulgación."
+      ],
+      correcta: 1,
+      explicacion: "Las dimensiones exactas, ángulos y detalles funcionales se establecen gráficamente en el boceto o plano durante la fase de Diseño."
+    },
+    {
+      pregunta: "Si al probar un prototipo en la Fase 6 (Evaluación) descubres que el artefacto pierde estabilidad y se cae, ¿cuál es la decisión técnica correcta?",
+      opciones: [
+        "Dar por terminado el proyecto porque las seis fases ya se ejecutaron en orden.",
+        "Ocultar el defecto en el informe final para aprobar la entrega.",
+        "Retroalimentar el proceso regresando a la fase de Diseño para ajustar el centro de gravedad o la base.",
+        "Cambiar únicamente el color de la pintura para mejorar su apariencia visual."
+      ],
+      correcta: 2,
+      explicacion: "El proceso tecnológico es iterativo: la evaluación detecta fallas para corregir el diseño antes de la producción definitiva."
+    },
+    {
+      pregunta: "Un estudiante analiza un termo de acero inoxidable y estudia el impacto ambiental de su fabricación frente a las botellas plásticas desechables. ¿Qué eje de análisis está aplicando?",
+      opciones: [
+        "Análisis socioeconómico y ambiental.",
+        "Análisis estrictamente morfológico.",
+        "Análisis de circuitos eléctricos.",
+        "Planificación de herramientas de corte."
+      ],
+      correcta: 0,
+      explicacion: "Evaluar la sostenibilidad, la huella ecológica y el beneficio social corresponde al análisis socioeconómico y ambiental."
+    },
+    {
+      pregunta: "¿Por qué en el prompt de ingeniería inversa se le pide a la IA entregar la respuesta únicamente como una tabla Markdown sin texto introductorio?",
+      opciones: [
+        "Porque la IA no sabe redactar párrafos largos en español.",
+        "Para garantizar que al copiar y pegar en Excel los datos respeten automáticamente la estructura de filas y columnas.",
+        "Porque Excel bloquea cualquier texto que contenga signos de puntuación.",
+        "Para reducir el consumo de memoria RAM del navegador web."
+      ],
+      correcta: 1,
+      explicacion: "El formato tabular estructurado evita que los párrafos narrativos desordenen las celdas al pegarse en una hoja de cálculo."
+    },
+    {
+      pregunta: "Al utilizar inteligencia artificial para analizar un artefacto en clase, ¿qué actitud demuestra pensamiento crítico y ética digital?",
+      opciones: [
+        "Copiar y pegar la respuesta de la IA sin leerla asumiendo que nunca comete errores técnicos.",
+        "Borrar la fila de fuentes y presentar el texto de la IA como si fuera una investigación de laboratorio propia.",
+        "Verificar la coherencia técnica de los materiales sugeridos por la IA y aportar una mejora original fundamentada.",
+        "Pedirle a la IA que invente datos falsos sobre la resistencia de los materiales."
+      ],
+      correcta: 2,
+      explicacion: "La IA es un copiloto de análisis; el criterio humano valida la veracidad técnica y aporta la innovación real."
+    }
+  ],
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "1. Comprensión: Con tus propias palabras, explica cuál es la diferencia entre fabricar un artefacto siguiendo las 6 fases y realizar el análisis de un artefacto que ya existe.", lineas: 3 },
+      { id: "r2", texto: "2. Aplicación del reto: ¿Qué artefacto elegiste en el reto de Excel y qué dato técnico aportado por la IA te pareció más interesante o sorprendente?", lineas: 3 },
+      { id: "r3", texto: "3. Pensamiento crítico: Si tuvieras que rediseñar ese mismo artefacto para hacerlo más sostenible o accesible en Colombia, ¿qué material o característica cambiarías y por qué?", lineas: 3 },
+      { id: "r4", texto: "4. Ética e IA: ¿Por qué es indispensable que un profesional revise y valide los datos técnicos que genera una Inteligencia Artificial antes de llevarlos a un proyecto real?", lineas: 3 },
+      { id: "r5", texto: "5. Síntesis: ¿Qué aprendiste hoy que puedas aplicar en tu vida académica o en un futuro proyecto de emprendimiento?", lineas: 2 }
+    ]
+  },
+  notasDocente: [
+    "Enfatizar antes de abrir Excel el uso de «Pegado especial / Coincidir con el formato de destino» (Ctrl + Shift + V) para evitar que los estudiantes peguen toda la tabla dentro de una sola celda.",
+    "Supervisar que los estudiantes no elijan artefactos excesivamente abstractos (como «el Internet»); deben ser objetos físicos tangibles para que el análisis técnico-constructivo sea concreto.",
+    "Recordar al grupo que esta semana no hay investigación en cuaderno ni entrega en hoja suelta: la evidencia evaluable es el archivo de Excel trabajado en la sala de sistemas y la hoja digital."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
